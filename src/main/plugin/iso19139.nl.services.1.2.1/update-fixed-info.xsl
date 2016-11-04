@@ -19,4 +19,18 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
+
+	<!-- remove gmd:identifier with gmx:Anchor inside gmd:code
+    <xsl:template match="gmd:identifier[name(*/gmd:code/*) = 'gmx:Anchor']" /> -->
+    <!-- remove gmd:identifier in gmd:thesaurusName with gmx:Anchor inside gmd:code -->
+    <!--<xsl:template match="gmd:thesaurusName/*/gmd:identifier[name(*/gmd:code/*) = 'gmx:Anchor']" />-->
+
+    <!-- remove http://www.fao.org/geonetwork namespace
+    <xsl:template match="*">
+        <xsl:element name="{name()}">
+            <xsl:copy-of select="namespace::*[not(. = 'http://www.fao.org/geonetwork')]"/>
+            <xsl:apply-templates select="node()|@*"/>
+        </xsl:element>
+    </xsl:template> -->
+
 </xsl:stylesheet>
