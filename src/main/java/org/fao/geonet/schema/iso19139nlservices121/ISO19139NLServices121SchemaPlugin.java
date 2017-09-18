@@ -77,7 +77,7 @@ public class ISO19139NLServices121SchemaPlugin
     }
 
     public ISO19139NLServices121SchemaPlugin() {
-        super(IDENTIFIER);
+        super(IDENTIFIER, allNamespaces);
     }
 
 
