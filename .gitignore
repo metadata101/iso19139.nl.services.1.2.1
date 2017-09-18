@@ -2,3 +2,6 @@ dist
 target
 rebel.xml
 *.iml
+.classpath
+.project
+.settings
