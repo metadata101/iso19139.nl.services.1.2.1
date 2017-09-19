@@ -1,4 +1,189 @@
-<?xml version="1.0" encoding="UTF-8"?><strings>  <understandResource>Informatie over de dataset</understandResource>  <relatedResources>Gerelateerde services en gekoppelde data</relatedResources>  <techInfo>Technische informatie</techInfo>  <contactInfo>Contact informatie</contactInfo>  <mdContactInfo>Metadata contact</mdContactInfo>  <refDate>Referentie datum</refDate>  <temporalRef>Temporele informatie</temporalRef>  <constraintInfo>Toegangs beperking informatie</constraintInfo>  <xml_iso19139>Sla metadata op als ISO19139 XML file</xml_iso19139>  <xml_iso19139Tooai_dc>Sla metadata op als OAI Dublin Core XML file</xml_iso19139Tooai_dc>    <!-- New strings added for the AngularJS editor -->  <!-- View and tabs -->  <advanced>Volledig</advanced>  <default>Eenvoudig</default>  <simple>Eenvoudig</simple>  <inspire>INSPIRE</inspire>  <resource>Bron</resource>  <xml>XML</xml>  <metadata>Metadata</metadata>  <identificationInfo>Identificatie</identificationInfo>  <distributionInfo>Distributie</distributionInfo>  <dataQualityInfo>Quality</dataQualityInfo>  <spatialRepresentationInfo>Spatial rep.</spatialRepresentationInfo>  <referenceSystemInfo>Ref. systeem</referenceSystemInfo>  <contentInfo>Inhoud</contentInfo>  <portrayalCatalogueInfo>Service</portrayalCatalogueInfo>  <metadataConstraints>Md. toegang</metadataConstraints>  <metadataMaintenance>Md. onderhoud</metadataMaintenance>  <applicationSchemaInfo>Schema info</applicationSchemaInfo>  <noThesaurusName>Steekwoorden</noThesaurusName>  <bboxesSection>Geographisch</bboxesSection>  <!-- XSD error translation -->  <invalidElement>Invalid element. Invalid content was found starting with element: </invalidElement>  <onElementOf>One of the following elements </onElementOf>  <isExpected> is expected.</isExpected>  <isNotComplete> is not complete.</isNotComplete>  <elementLocated>Parent element is </elementLocated>  <missingElement>Missing element. The content of element: </missingElement>  <invalidValue>Invalid or missing value.</invalidValue>  <notValidFor> is not a valid value for </notValidFor>  <xsdErrorIs>XSD error is: </xsdErrorIs>  <inElement> in element </inElement>  <enum1>Value </enum1>  <enum2> is not valid for the field </enum2>  <enum3>List of values is :</enum3>  <!-- INSPIRE view labels and help -->  <url>Online resource</url>  <identifier>Resource identifier</identifier>  <rsIdentifier>Projection</rsIdentifier>  <referenceDate>Temporal information</referenceDate>  <creationDate>Creation date</creationDate>  <hierarchyLevel>Hierarchy level</hierarchyLevel>  <publicationDate>Publication date</publicationDate>  <revisionDate>Revision date</revisionDate>  <temporalRangeSection>Temporal extent</temporalRangeSection>  <beginPosition>Begin</beginPosition>  <endPosition>End</endPosition>  <conformity>Conformity</conformity>  <conformity_title>Title</conformity_title>  <conformity_date>Date</conformity_date>  <explanation>Explanation</explanation>  <pass>Conformity</pass>  <indeterminatePosition>Indeterminate position</indeterminatePosition>  <pointOfContact>Contact for the resource</pointOfContact>  <metadataPointOfContact>Contact for the metadata</metadataPointOfContact>  <organisationName>Organisation name</organisationName>  <electronicMailAddress>Email</electronicMailAddress>  <role>Role</role>  <encoding>Encoding</encoding>  <inspireTheme>INSPIRE themes</inspireTheme>  <format>Format</format>  <format_version>Version</format_version>  <lineage>Lineage</lineage>  <spatialResolution>Spatial resolution (scale)</spatialResolution>  <spatialDistance>Spatial resolution (distance)</spatialDistance>  <accessConstraints>Access constraints</accessConstraints>  <useLimitation>Use limitation</useLimitation>  <add-resource-id>Compute resource identifier</add-resource-id>  <add-resource-idHelp>Compose the resource identifier using the catalog URL and the metadata identifier (eg. http://www.organization.org/catalogue/5391bf69-44bc-4ea0-8cc0-6cf6c3bc81ae).</add-resource-idHelp>  <add-extent-from-geokeywords>Compute extent from keyword</add-extent-from-geokeywords>  <add-extent-from-geokeywordsHelp>Analyze each keyword of type place and add matching extent.</add-extent-from-geokeywordsHelp>
-  <understandResource>Informatie over de dienst</understandResource>
-  <relatedResources>Gerelateerde datasets</relatedResources>
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <understandResource>Informatie over de Service</understandResource>
+  <relatedResources>Related data</relatedResources>
+  <techInfo>Technische informatie</techInfo>
+  <contactInfo>Contact informatie</contactInfo>
+  <mdContactInfo>Metadata contact</mdContactInfo>
+  <refDate>Referentie datum</refDate>
+  <temporalRef>Temporele informatie</temporalRef>
+  <constraintInfo>Access constraint information</constraintInfo>
+
+  <!-- New strings added for the AngularJS editor -->
+  <!-- View and tabs -->
+  <advanced>Volledig</advanced>
+  <default>Nederlands profiel</default>
+  <dutchprofile>Nederlands profiel</dutchprofile>
+  <simple>Eenvoudig</simple>
+  <inspire>INSPIRE</inspire>
+
+  <metadata>Over de metadata</metadata>
+  <identificationInfo>Identificatie info</identificationInfo>
+  <distributorContact>Contact informatie</distributorContact>
+  <distributionInfo>Distributie</distributionInfo>
+  <dataQualityInfo>Kwaliteit</dataQualityInfo>
+  <spatialRepresentationInfo>Spatial rep.</spatialRepresentationInfo>
+  <referenceSystemInfo>Referentie systeem</referenceSystemInfo>
+  <contentInfo>Content</contentInfo>
+  <portrayalCatalogueInfo>Portrayal</portrayalCatalogueInfo>
+  <metadataConstraints>Md. constraints</metadataConstraints>
+  <metadataMaintenance>Md. maintenance</metadataMaintenance>
+  <applicationSchemaInfo>Schema info</applicationSchemaInfo>
+  <noThesaurusName>Trefwoorden</noThesaurusName>
+  <bboxesSection>Geographic coverage</bboxesSection>
+
+  <resource>Bron</resource>
+  <xml>XML</xml>
+
+  <Optional>Optionele elementen</Optional>
+  <Required>Verplichte elementen</Required>
+  <INSPIRE>INSPIRE elementen</INSPIRE>
+
+  <metadataPointOfContact>Contact gegevens</metadataPointOfContact>
+  <pointOfContact>Contactgegevens service</pointOfContact>
+  <lineage>Herkomst</lineage>
+	<CI_RoleCode>Rol</CI_RoleCode>
+	<role>Rol</role>
+	
+	<individualName>Naam</individualName>
+	<organisationName>Organisatie</organisationName>
+	<positionName>Functie</positionName>
+	<voice>Telefoon</voice>
+	<facsimile>Fax</facsimile>
+	<electronicMailAddress>Email</electronicMailAddress>
+	<deliveryPoint>Adres</deliveryPoint>
+	<postalCode>Postcode</postalCode>
+	<city>Plaats</city>
+	<administrativeArea>Provincie</administrativeArea>
+	<country>Land</country>
+	<telephone>Telefoon</telephone>
+	<onlineResource>Url</onlineResource>
+	
+	<temporalRangeSection>Temporele dekking</temporalRangeSection>
+	<beginPosition>Van</beginPosition>
+	<endPosition>Tot</endPosition>
+	<inspireTheme>INSPIRE Thema</inspireTheme>
+	<topicCategory>Thema</topicCategory>
+	<conformity>Conformiteitindicatie</conformity>
+
+	<report>Conformiteit</report>
+	<isINSPIREConform></isINSPIREConform>
+	<isNotINSPIREConform></isNotINSPIREConform>
+	<descriptiveKeywords>Trefwoord</descriptiveKeywords>
+
+	<datasetcode>Unieke Identifier van de bron</datasetcode>
+	<ds_language>Taal dataset</ds_language>
+	<md_language>Taal metadata</md_language>
+	<metadataStandardName>Standaard</metadataStandardName>
+	<metadataStandardVersion>Standaard versie</metadataStandardVersion>
+
+	<CompletenessOmission>Compleetheid</CompletenessOmission>
+	<spatialRepresentationType>Ruimtelijk schema</spatialRepresentationType>
+	<extentDescription>Beschrijving temporele dekking</extentDescription>
+	<qualityScope>Niveau kwaliteitsbeschrijving</qualityScope>
+
+  <useLimitation>Gebruiksbeperkingen</useLimitation>
+  <dutchprofile2>Nederlands profiel 2</dutchprofile2>
+  <Basis>Identificatie</Basis>
+  <Metadata>Over de metadata</Metadata>
+
+<Add_DQ_TopologicalConsistency>Topologische samenhang toevoegen</Add_DQ_TopologicalConsistency>
+	<Add_DQ_AbsoluteExternalPositionalAccuracy>Geometrische nauwkeurigheid toevoegen</Add_DQ_AbsoluteExternalPositionalAccuracy>
+	<Add_DQ_CompletenessOmission>Compleetheid toevoegen</Add_DQ_CompletenessOmission>
+	<addIdentifier>Identificatie toevoegen</addIdentifier>
+	<addStatus>Status toevoegen</addStatus>
+	<addLanguage>Taal toevoegen</addLanguage>
+	<addKeywords>Trefwoorden uit eigen thesaurus toevoegen</addKeywords>
+	<addTopic>Onderwerp toevoegen</addTopic>
+	<addCharacterset>Karakterset toevoegen</addCharacterset>
+	<addDate>Datum toevoegen</addDate>
+	<addLineage>Herkomst toevoegen</addLineage>
+	<addUseLimitation>Gebruiksbeperking toevoegen</addUseLimitation>
+	<legalConstraints>Juridische restrictie</legalConstraints>
+	<addLegalConstraints>Juridische restrictie toevoegen</addLegalConstraints>
+	<addResourceConstraints>Beperking toevoegen</addResourceConstraints>
+	<addUrl>URL toevoegen</addUrl>
+	<addStandardName>Standaard toevoegen</addStandardName>
+	<addStandardVersion>Standaard versie toevoegen</addStandardVersion>
+	<addPointOfContact>Contact gegevens toevoegen</addPointOfContact>
+	<addINSPIRETheme>INSPIRE thema toevoegen</addINSPIRETheme>
+	<addConformance>Conformiteits indicatie toevoegen</addConformance>
+	<addSpatialRepresentationType>Ruimtelijk schema toevoegen</addSpatialRepresentationType>
+	<addAlternateTitle>Alternatieve titel toevoegen</addAlternateTitle>
+	<addPurpose>Doel toevoegen</addPurpose>
+	<addSupplementalInformation>Extra informatie toevoegen</addSupplementalInformation>
+	<addEdition>Versie toevoegen</addEdition>
+	<addExtentDescription>Omschrijving toevoegen</addExtentDescription>
+	<Add_Quality>Kwaliteitsindicatie toevoegen</Add_Quality>
+	<addCouplingType>Voeg koppel type toe</addCouplingType>
+	<addServiceType>Voeg service type toe</addServiceType>
+	<addServiceTypeVersion>Voeg versie toe</addServiceTypeVersion>
+	<addOperation>Voeg operaties toe</addOperation>
+	<addReferenceSystem>Referentie systeem toevoegen</addReferenceSystem>
+
+
+	<conformanceStatement>Conformiteits indicatie</conformanceStatement>
+	<ExtentDescription>Omschrijving temporele dekking</ExtentDescription>
+	<DsCharacterSet>Karakterset dataset</DsCharacterSet>
+	<Distribution>Distributie</Distribution>
+	<encoding>Distributie formaat</encoding>
+	<format>Naam distributie formaat</format>
+	<format_version>Versie distributie formaat</format_version>
+	<format_specification>Specificatie distributie formaat</format_specification>
+	<rsIdentifier>Referentie systeem</rsIdentifier>
+	<codeSpace>Namespace</codeSpace>
+	<code>Code</code>
+	<orderProcess>Bestel proces</orderProcess>
+	<orderingInstructions>Bestel instructies</orderingInstructions>
+	<fees>Prijsinformatie</fees>
+	<turnaround>Doorlooptijd</turnaround>
+	<resourceMaintenance>Onderhouds informatie</resourceMaintenance>
+	<maintenanceAndUpdateFrequency>Herzieningsfrequentie</maintenanceAndUpdateFrequency>
+	<dateOfNextUpdate>Datum volgende herziening</dateOfNextUpdate>
+
+  <equivalentScale>Resolutie</equivalentScale>
+  <distance>Afstand</distance>
+  <scope>Scope</scope>
+  <InspireConformance>INSPIRE conformiteit</InspireConformance>
+  <DQ_AbsoluteExternalPositionalAccuracyUnit>Eenheid</DQ_AbsoluteExternalPositionalAccuracyUnit>
+
+  <LI_Source>Bron en inwinning</LI_Source>
+
+	<addHierarchy>Hiërarchisch niveau toevoegen</addHierarchy>
+	<addHierarchyLevelName>Beschrijving hiërarchisch niveau toevoegen</addHierarchyLevelName>
+	<AddSource>Voeg bron toe</AddSource>
+	<AddProcessStep>Voeg bewerkingsstap toe</AddProcessStep>
+	<addTemporalExtent>Voeg inhoudelijke geldigheid toe</addTemporalExtent>
+	<addResourceMaintenance>Voeg onderhouds informatie toe</addResourceMaintenance>
+	<addSeries>Voeg serie informatie toe</addSeries>
+
+	<alternateTitle>Alternatieve titel</alternateTitle>
+	<accessConstraints>Toegangs beperkingen</accessConstraints>
+	<Conformance>Conformiteit</Conformance>
+	<serviceInfo>Service operaties en gekoppelde bronnen</serviceInfo>
+	<restrictions>Restricties en beperkingen</restrictions>
+	<dataQuality>Service kwaliteit</dataQuality>
+	<coupledResource>Relatie operatie met dataset</coupledResource>
+	<addCoupledResource>Dataset operaties toevoegen</addCoupledResource>
+	<operatesOn>Gekoppelde bron</operatesOn>
+	<addOperatesOn>Dataset koppeling toevoegen</addOperatesOn>
+
+	<operationName>Operatienaam</operationName>
+	<identifier>Identifier</identifier>
+	<layername>Laagnaam</layername>
+	<value>Waarde</value>
+	<measure>Maatregel</measure>
+	<description>Omschrijving</description>
+	<ConceptualConsistency>Conceptuele consistentie</ConceptualConsistency>
+	<addExtent>Omgrenzende rechthoek toevoegen</addExtent>
+	
+	<dsIdentifier>Identificatie dataset</dsIdentifier>
+	<metadataLink>Metadata identificatie</metadataLink>
+	<linkTitle>Link titel</linkTitle>
+
+	<securityConstraints>Veiligheidsrestricties</securityConstraints>
+	<addSecurityConstraints>Voeg veiligheidsrestricties toe</addSecurityConstraints>
+	<addUseConstraint>Gebruiksbeperking toevoegen</addUseConstraint>
+	<addOtherConstraint>Overige beperking toevoegen</addOtherConstraint>
+	<addConceptualConsistency>Conceptuele consistentie toevoegen</addConceptualConsistency>
 </strings>

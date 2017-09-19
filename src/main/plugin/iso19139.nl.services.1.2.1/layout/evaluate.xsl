@@ -11,13 +11,13 @@
 
   <xsl:import href="../../iso19139/layout/evaluate.xsl"/>
 
-  <!-- Evaluate an expression. This is schema dependant in order to properly 
+  <!-- Evaluate an expression. This is schema dependant in order to properly
         set namespaces required for evaluate.
-        
-    "The static context for the expression includes all the in-scope namespaces, 
+
+    "The static context for the expression includes all the in-scope namespaces,
     types, and functions from the calling stylesheet or query"
     http://saxonica.com/documentation9.4-demo/html/extensions/functions/evaluate.html
-    
+
        A node returned by evaluate will lost its context (ancestors).
     -->
   <xsl:template name="evaluate-iso19139.nl.services.1.2.1">
