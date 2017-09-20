@@ -23,22 +23,29 @@
 
 package org.fao.geonet.schema.iso19139nlservices121;
 
-import com.google.common.base.Splitter;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import org.apache.commons.lang.StringUtils;
-import org.fao.geonet.kernel.schema.*;
-import org.fao.geonet.utils.Log;
-import org.fao.geonet.utils.Xml;
-import org.jdom.Element;
-import org.jdom.Namespace;
-import org.jdom.filter.ElementFilter;
-import org.jdom.xpath.XPath;
-
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import org.apache.commons.lang.StringUtils;
+import org.fao.geonet.kernel.schema.AssociatedResource;
+import org.fao.geonet.kernel.schema.AssociatedResourcesSchemaPlugin;
+import org.fao.geonet.kernel.schema.ExportablePlugin;
+import org.fao.geonet.kernel.schema.ISOPlugin;
+import org.fao.geonet.kernel.schema.MultilingualSchemaPlugin;
+import org.fao.geonet.utils.Log;
+import org.fao.geonet.utils.Xml;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.Namespace;
+import org.jdom.filter.ElementFilter;
+import org.jdom.xpath.XPath;
+
+import com.google.common.base.Splitter;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 
 /**
  * Created by francois on 6/15/14.
@@ -252,6 +259,40 @@ public class ISO19139NLServices121SchemaPlugin
         }
         freeTextElement.addContent(textGroupElement);
     }
+
+    /**
+     * Remove all multingual aspect of an element. Keep the md language localized strings
+     * as default gco:CharacterString for the element.
+     *
+     * @param element
+     * @param mdLang Metadata lang encoded as #EN
+     * @return
+     * @throws JDOMException
+     */
+    @Override
+    public Element removeTranslationFromElement(Element element, String mdLang) throws JDOMException {
+
+        List<Element> multilangElement = (List<Element>)Xml.selectNodes(element, "*//gmd:PT_FreeText", Arrays.asList(ISO19139NLServices121Namespaces.GMD));
+
+        for(Element el : multilangElement) {
+            String filterAttribute = "*//node()[@locale='" + mdLang + "']";
+            List<Element> localizedElement = (List<Element>)Xml.selectNodes(el, filterAttribute, Arrays.asList(ISO19139NLServices121Namespaces.GMD));
+            if(localizedElement.size() == 1) {
+                String mainLangString = localizedElement.get(0).getText();
+                Element mainCharacterString = ((Element)el.getParent()).getChild("CharacterString", ISO19139NLServices121Namespaces.GCO);
+                if (mainCharacterString != null) {
+                    mainCharacterString.setText(mainLangString);
+                } else {
+                    ((Element) el.getParent()).addContent(
+                        new Element("CharacterString", ISO19139NLServices121Namespaces.GCO).setText(mainLangString)
+                    );
+                }
+            }
+            el.detach();
+        }
+        return element;
+    }
+
 
     @Override
     public String getBasicTypeCharacterStringName() {
