@@ -47,6 +47,8 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 
+import static org.fao.geonet.schema.iso19139nlservices121.ISO19139NLServices121Namespaces.GMD;
+
 /**
  * Created by francois on 6/15/14.
  */
@@ -66,12 +68,12 @@ public class ISO19139NLServices121SchemaPlugin
     static {
         allNamespaces = ImmutableSet.<Namespace>builder()
                 .add(ISO19139NLServices121Namespaces.GCO)
-                .add(ISO19139NLServices121Namespaces.GMD)
+                .add(GMD)
                 .add(ISO19139NLServices121Namespaces.SRV)
                 .build();
         allTypenames = ImmutableMap.<String, Namespace>builder()
                 .put("csw:Record", Namespace.getNamespace("csw", "http://www.opengis.net/cat/csw/2.0.2"))
-                .put("gmd:MD_Metadata", ISO19139NLServices121Namespaces.GMD)
+                .put("gmd:MD_Metadata", GMD)
                 .put("dcat", Namespace.getNamespace("dcat", "http://www.w3.org/ns/dcat#"))
                 .build();
 
@@ -112,17 +114,17 @@ public class ISO19139NLServices121SchemaPlugin
                 try {
                     if (o instanceof Element) {
                         Element sib = (Element) o;
-                        Element agId = (Element) sib.getChild("aggregateDataSetIdentifier", ISO19139NLServices121Namespaces.GMD)
+                        Element agId = (Element) sib.getChild("aggregateDataSetIdentifier", GMD)
                                 .getChildren().get(0);
-                        String sibUuid = getChild(agId, "code", ISO19139NLServices121Namespaces.GMD)
+                        String sibUuid = getChild(agId, "code", GMD)
                                 .getChildText("CharacterString", ISO19139NLServices121Namespaces.GCO);
-                        final Element associationTypeEl = getChild(sib, "associationType", ISO19139NLServices121Namespaces.GMD);
-                        String associationType = getChild(associationTypeEl, "DS_AssociationTypeCode", ISO19139NLServices121Namespaces.GMD)
+                        final Element associationTypeEl = getChild(sib, "associationType", GMD);
+                        String associationType = getChild(associationTypeEl, "DS_AssociationTypeCode", GMD)
                                 .getAttributeValue("codeListValue");
-                        final Element initiativeTypeEl = getChild(sib, "initiativeType", ISO19139NLServices121Namespaces.GMD);
+                        final Element initiativeTypeEl = getChild(sib, "initiativeType", GMD);
                         String initiativeType = "";
                         if (initiativeTypeEl != null) {
-                            initiativeType = getChild(initiativeTypeEl, "DS_InitiativeTypeCode", ISO19139NLServices121Namespaces.GMD)
+                            initiativeType = getChild(initiativeTypeEl, "DS_InitiativeTypeCode", GMD)
                                     .getAttributeValue("codeListValue");
                         }
                         AssociatedResource resource = new AssociatedResource(sibUuid, initiativeType, associationType);
@@ -148,7 +150,7 @@ public class ISO19139NLServices121SchemaPlugin
 
     @Override
     public Set<String> getAssociatedParentUUIDs(Element metadata) {
-        ElementFilter elementFilter = new ElementFilter("parentIdentifier", ISO19139NLServices121Namespaces.GMD);
+        ElementFilter elementFilter = new ElementFilter("parentIdentifier", GMD);
         return Xml.filterElementValues(
                 metadata,
                 elementFilter,
@@ -176,11 +178,11 @@ public class ISO19139NLServices121SchemaPlugin
     }
 
     public Set<String> getAssociatedFeatureCatalogueUUIDs(Element metadata) {
-        return getAttributeUuidrefValues(metadata, "featureCatalogueCitation", ISO19139NLServices121Namespaces.GMD);
+        return getAttributeUuidrefValues(metadata, "featureCatalogueCitation", GMD);
     }
 
     public Set<String> getAssociatedSourceUUIDs(Element metadata) {
-        return getAttributeUuidrefValues(metadata, "source", ISO19139NLServices121Namespaces.GMD);
+        return getAttributeUuidrefValues(metadata, "source", GMD);
     }
 
     private Set<String> getAttributeUuidrefValues(Element metadata, String tagName, Namespace namespace) {
@@ -245,16 +247,16 @@ public class ISO19139NLServices121SchemaPlugin
                 Namespace.getNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance"));
 
         // Create a new translation for the language
-        Element langElem = new Element("LocalisedCharacterString", ISO19139NLServices121Namespaces.GMD);
+        Element langElem = new Element("LocalisedCharacterString", GMD);
         langElem.setAttribute("locale", "#" + languageIdentifier);
         langElem.setText(value);
-        Element textGroupElement = new Element("textGroup", ISO19139NLServices121Namespaces.GMD);
+        Element textGroupElement = new Element("textGroup", GMD);
         textGroupElement.addContent(langElem);
 
         // Get the PT_FreeText node where to insert the translation into
-        Element freeTextElement = element.getChild("PT_FreeText", ISO19139NLServices121Namespaces.GMD);
+        Element freeTextElement = element.getChild("PT_FreeText", GMD);
         if (freeTextElement == null) {
-            freeTextElement = new Element("PT_FreeText", ISO19139NLServices121Namespaces.GMD);
+            freeTextElement = new Element("PT_FreeText", GMD);
             element.addContent(freeTextElement);
         }
         freeTextElement.addContent(textGroupElement);
@@ -270,29 +272,61 @@ public class ISO19139NLServices121SchemaPlugin
      * @throws JDOMException
      */
     @Override
-    public Element removeTranslationFromElement(Element element, String mdLang) throws JDOMException {
 
-        List<Element> multilangElement = (List<Element>)Xml.selectNodes(element, "*//gmd:PT_FreeText", Arrays.asList(ISO19139NLServices121Namespaces.GMD));
+    public Element removeTranslationFromElement(Element element, List<String> langs) throws JDOMException {
+        String mainLanguage = langs != null && langs.size() > 0 ? langs.get(0) : "#EN";
 
-        for(Element el : multilangElement) {
-            String filterAttribute = "*//node()[@locale='" + mdLang + "']";
-            List<Element> localizedElement = (List<Element>)Xml.selectNodes(el, filterAttribute, Arrays.asList(ISO19139NLServices121Namespaces.GMD));
-            if(localizedElement.size() == 1) {
-                String mainLangString = localizedElement.get(0).getText();
-                Element mainCharacterString = ((Element)el.getParent()).getChild("CharacterString", ISO19139NLServices121Namespaces.GCO);
-                if (mainCharacterString != null) {
-                    mainCharacterString.setText(mainLangString);
-                } else {
-                    ((Element) el.getParent()).addContent(
-                        new Element("CharacterString", ISO19139NLServices121Namespaces.GCO).setText(mainLangString)
-                    );
-                }
+        List<Element> nodesWithStrings = (List<Element>) Xml.selectNodes(element, "*//gmd:PT_FreeText", Arrays.asList(GMD));
+
+        for(Element e : nodesWithStrings) {
+            // Retrieve or create the main language element
+            Element mainCharacterString = ((Element)e.getParent()).getChild("CharacterString", ISO19139Namespaces.GCO);
+            if (mainCharacterString == null) {
+                // create it if it does not exist
+                mainCharacterString = new Element("CharacterString", ISO19139Namespaces.GCO);
+                ((Element)e.getParent()).addContent(0, mainCharacterString);
             }
-            el.detach();
+
+            // Retrieve the main language value if exist
+            List<Element> mainLangElement = (List<Element>) Xml.selectNodes(
+                e,
+                "*//gmd:LocalisedCharacterString[@locale='" + mainLanguage + "']",
+                Arrays.asList(ISO19139Namespaces.GMD));
+
+            // Set the main language value
+            if (mainLangElement.size() == 1) {
+                String mainLangString = mainLangElement.get(0).getText();
+
+                if (StringUtils.isNotEmpty(mainLangString)) {
+                    mainCharacterString.setText(mainLangString);
+                } else if (mainCharacterString.getAttribute("nilReason", ISO19139Namespaces.GCO) == null){
+                    ((Element)mainCharacterString.getParent()).setAttribute("nilReason", "missing", ISO19139Namespaces.GCO);
+                }
+            } else if (StringUtils.isEmpty(mainCharacterString.getText())) {
+                ((Element)mainCharacterString.getParent()).setAttribute("nilReason", "missing", ISO19139Namespaces.GCO);
+            }
         }
+
+        // Remove unused lang entries
+        List<Element> translationNodes = (List<Element>)Xml.selectNodes(element, "*//node()[@locale]");
+        for(Element el : translationNodes) {
+            // Remove all translations if there is no or only one language requested
+            if(langs.size() <= 1 ||
+                !langs.contains(el.getAttribute("locale").getValue())) {
+                Element parent = (Element)el.getParent();
+                parent.detach();
+            }
+        }
+
+        // Remove PT_FreeText which might be emptied by above processing
+        for(Element el : nodesWithStrings) {
+            if (el.getChildren().size() == 0) {
+                el.detach();
+            }
+        }
+
         return element;
     }
-
 
     @Override
     public String getBasicTypeCharacterStringName() {
