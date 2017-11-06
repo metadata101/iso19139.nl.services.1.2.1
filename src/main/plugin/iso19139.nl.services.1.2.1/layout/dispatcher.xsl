@@ -11,6 +11,9 @@
                 xmlns:saxon="http://saxon.sf.net/" extension-element-prefixes="saxon"
                 exclude-result-prefixes="#all">
 
+  <xsl:include href="evaluate.xsl"/>
+  <xsl:include href="layout.xsl"/>
+
   <!--
     Load the schema configuration for the editor.
     Same configuration as ISO19139 here.
@@ -30,59 +33,6 @@
       <xsl:with-param name="overrideLabel" select="$overrideLabel"/>
       <xsl:with-param name="refToDelete" select="$refToDelete"/>
     </xsl:apply-templates>
-  </xsl:template>
-
-
-  <!-- The following templates usually delegates all to iso19139. -->
-  <xsl:template name="evaluate-iso19139.nl.services.1.2.1">
-    <xsl:param name="base" as="node()"/>
-    <xsl:param name="in"/>
-
-    <xsl:call-template name="evaluate-iso19139">
-      <xsl:with-param name="base" select="$base"/>
-      <xsl:with-param name="in" select="$in"/>
-    </xsl:call-template>
-  </xsl:template>
-
-  <xsl:template name="evaluate-iso19139.nl.services.1.2.1-boolean">
-    <xsl:param name="base" as="node()"/>
-    <xsl:param name="in"/>
-
-    <xsl:call-template name="evaluate-iso19139-boolean">
-      <xsl:with-param name="base" select="$base"/>
-      <xsl:with-param name="in" select="$in"/>
-    </xsl:call-template>
-  </xsl:template>
-
-
-  <xsl:template name="get-iso19139.nl.services.1.2.1-is-service">
-    <xsl:call-template name="get-iso19139-is-service">
-    </xsl:call-template>
-  </xsl:template>
-
-  <xsl:template name="get-iso19139.nl.services.1.2.1-language">
-    <xsl:call-template name="get-iso19139-language">
-    </xsl:call-template>
-  </xsl:template>
-
-  <xsl:template name="get-iso19139.nl.services.1.2.1-other-languages-as-json">
-    <xsl:call-template name="get-iso19139-other-languages-as-json">
-    </xsl:call-template>
-  </xsl:template>
-
-  <xsl:template name="get-iso19139.nl.services.1.2.1-other-languages">
-    <xsl:call-template name="get-iso19139-other-languages">
-    </xsl:call-template>
-  </xsl:template>
-
-  <xsl:template name="get-iso19139.nl.services.1.2.1-extents-as-json">
-    <xsl:call-template name="get-iso19139-extents-as-json">
-    </xsl:call-template>
-  </xsl:template>
-
-  <xsl:template name="get-iso19139.nl.services.1.2.1-online-source-config">
-    <xsl:call-template name="get-iso19139-online-source-config">
-    </xsl:call-template>
   </xsl:template>
 
 </xsl:stylesheet>

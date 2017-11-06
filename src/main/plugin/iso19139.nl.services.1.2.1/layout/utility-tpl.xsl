@@ -12,7 +12,16 @@
       <xsl:with-param name="pattern" select="$pattern"/>
     </xsl:call-template>
   </xsl:template>
-  
+
+  <xsl:template name="get-iso19139.nl.services.1.2.1-title">
+    <xsl:call-template name="get-iso19139-title"/>
+  </xsl:template>
+
+  <xsl:template name="get-iso19139.nl.services.1.2.1-extents-as-json">
+    <xsl:call-template name="get-iso19139-extents-as-json">
+    </xsl:call-template>
+  </xsl:template>
+
   <xsl:template name="get-iso19139.nl.services.1.2.1-is-service">
     <xsl:call-template name="get-iso19139-is-service">
     </xsl:call-template>
