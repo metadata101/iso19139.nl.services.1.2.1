@@ -35,6 +35,7 @@ import org.fao.geonet.kernel.schema.AssociatedResourcesSchemaPlugin;
 import org.fao.geonet.kernel.schema.ExportablePlugin;
 import org.fao.geonet.kernel.schema.ISOPlugin;
 import org.fao.geonet.kernel.schema.MultilingualSchemaPlugin;
+import org.fao.geonet.schema.iso19139.ISO19139Namespaces;
 import org.fao.geonet.utils.Log;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
