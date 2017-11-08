@@ -246,7 +246,17 @@
 
     <view name="default" upAndDownControlHidden="true">
 
+      <sidePanel>
+        <directive data-gn-validation-report=""/>
+        <directive data-gn-suggestion-list=""/>
+      </sidePanel>
+
+
       <tab id="default" default="true" mode="flat">
+        <text ref="viewTitle"/>
+        <text ref="viewDescription"/>
+
+        <directive data-gn-onlinesrc-list=""/>
 
         <section name="Basis">
 
@@ -265,7 +275,7 @@
               </snippet>
             </template>
           </action>
-			
+
 		   <field name="alternateTitle"
                xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:citation/gmd:CI_Citation/gmd:alternateTitle"></field>
         <action type="add" del="." removable="true"
@@ -279,8 +289,8 @@
               </gmd:alternateTitle>
             </snippet>
           </template>
-        </action>	
-			
+        </action>
+
 		 <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:citation/gmd:CI_Citation/gmd:date"/>
 
         <action type="add" name="referenceDate" or="date"
@@ -303,16 +313,16 @@
               </gmd:date>
             </snippet>
           </template>
-        </action>	
-			
-			
+        </action>
+
+
     <!-- 5.2.2 Resource abstract -->
           <field
             xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:abstract"
            />
 
-		   
-          
+
+
     <!--  5.2.21 Responsible party  -->
           <field name="pointOfContact"
                  templateModeOnly="true"
@@ -340,7 +350,7 @@
                				<key label="postalCode"
                					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:postalCode/gco:CharacterString"/>
                				<key label="country"
-               					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString"/>  
+               					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString"/>
                				<key label="electronicMailAddress"
                					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString"
                					use="email"/>
@@ -385,7 +395,7 @@
                            </snippet>
                          </template>
                  </field>
-		   
+
     <!--  5.2.12 Keyword value -->
           <field
           xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/
@@ -437,7 +447,7 @@
             </template>
           </action>
     <!-- 5.2.15 Temporal reference -->
-       
+
 
 
           <field name="temporalRangeSection" templateModeOnly="true" notDisplayedIfMissing="true" del="."
@@ -496,15 +506,15 @@
               </snippet>
             </template>
           </action>
-          
-        
-          
+
+
+
           <!--  5.2.18 Specification  -->
     <!--  5.2.19 Limitations on public access  -->
     <!-- 5.2.20 Conditions applying to access and use  -->
-          
+
           </section>
-		  
+
 		  <section name="referenceSystemInfo">
         <!--     5.27 Code referentiesysteem ... -->
         <field name="rsIdentifier" templateModeOnly="true"
@@ -557,10 +567,10 @@
             </snippet>
           </template>
         </action>
-		
+
 		</section>
-		  
-		  
+
+
 		  <section name="restrictions">
 
   		<field name="useLimitation" del="." removable="true"
@@ -581,12 +591,12 @@
                   </gmd:resourceConstraints>
                 </snippet>
               </template>
-            </action>	
+            </action>
 
-			
+
   		  <field name="accessConstraints" del="." removable="true"
                    xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints"/>
-				 
+
             <action type="add"
                     btnLabel="addResourceConstraints"
                     name="resourceConstraints" or="resourceConstraints" forceLabel="true"
@@ -612,22 +622,22 @@
                 </snippet>
               </template>
             </action>
-          
-          
-          
+
+
+
       </section>
-      
-	  
+
+
 	  <section name="serviceInfo">
-	  
-	  
+
+
     <!-- 5.2.3 Resource type - zie bij metadata -->
-          
+
     <!-- Resource locator - zie zijpneel -->
     <!-- 5.2.5 Protocol -->
           <!-- 5.2.6 Connect Point Linkage -->
     <!-- 5.2.7 Coupled resource - zie zijpaneel-->
-    
+
     <!-- 5.2.8 Coupling Type -->
     <field
         xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:couplingType"/>
@@ -658,7 +668,7 @@
                 </snippet>
             </template>
         </action>
-          
+
           <field
             xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:serviceTypeVersion"/>
           <action type="add"
@@ -675,7 +685,7 @@
         </action>
 
           <!-- 5.2.10 Operation Name -->
-          
+
     <!-- 5.2.11 DCP -->
           <field
             xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:containsOperations"/>
@@ -712,18 +722,18 @@
               </snippet>
             </template>
           </action>
-	  
+
 	  <field name="coupledResource" templateModeOnly="true" notDisplayedIfMissing="true" del="."
             xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:coupledResource">
 			<template>
 			<values>
-              <key label="operationName" 
+              <key label="operationName"
                    xpath="srv:SV_CoupledResource/srv:operationName/gco:CharacterString"/>
-              <key label="dsIdentifier" 
+              <key label="dsIdentifier"
                    xpath="srv:SV_CoupledResource/srv:identifier/gco:CharacterString"/>
-				<key label="codeSpace" 
+				<key label="codeSpace"
                    xpath="srv:SV_CoupledResource/gco:ScopedName/@codeSpace"/>
-				<key label="layername" 
+				<key label="layername"
                    xpath="srv:SV_CoupledResource/gco:ScopedName"/>
             </values>
               <snippet>
@@ -763,18 +773,18 @@
               </snippet>
             </template>
       </action>
-	  
+
 	  <field
             xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:operatesOn"
 			name="operatesOn" templateModeOnly="true" notDisplayedIfMissing="true" del=".">
-			
+
 			<template>
 			<values>
-              <key label="dsIdentifier" 
+              <key label="dsIdentifier"
                    xpath="./@uuidref"/>
-				<key label="metadataLink" 
+				<key label="metadataLink"
                    xpath="./@xlink:href"/>
-				<key label="linkTitle" 
+				<key label="linkTitle"
                    xpath="./@xlink:title"/>
             </values>
               <snippet>
@@ -795,15 +805,15 @@
               </snippet>
             </template>
       </action>
-	  
-	 
-	  
+
+
+
 	  </section>
-	  
-	  
+
+
 	  <section name="dataQuality">
 
-          
+
     <!--  5.2.16 Scope -->
           <field name="scope"
                  xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:scope"/>
@@ -846,8 +856,8 @@
               </snippet>
             </template>
           </action>
-		  
-		  
+
+
     <!-- 5.2.17 Degree -->
 
           <field name="Conformance"
@@ -950,7 +960,7 @@
 	 <!-- 5.4 Hiërarchieniveau.-->
  <field
    xpath="/gmd:MD_Metadata/gmd:hierarchyLevel" removable="false" />
-   
+
  <action type="add"
          btnLabel="addHierarchy"
          or="hierarchyLevel"
@@ -1008,7 +1018,7 @@
 		<key label="postalCode"
 			xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:postalCode/gco:CharacterString"/>
 		<key label="country"
-			xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString"/>  
+			xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString"/>
        <key label="electronicMailAddress"
 			xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString"
             use="email"/>
@@ -1063,7 +1073,7 @@
  			   <gmd:CI_ResponsibleParty>
  					<gmd:organisationName><gco:CharacterString></gco:CharacterString></gmd:organisationName>
  					<gmd:role><gmd:CI_RoleCode codeListValue="pointOfContact" codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode"/></gmd:role>
-                    
+
  				</gmd:CI_ResponsibleParty>
                </gmd:contact>
              </snippet>
@@ -1108,7 +1118,7 @@
      </snippet>
    </template>
  </action>
-          
+
 
     <!--  5.2.26 Metadata date  -->
 
@@ -1118,8 +1128,17 @@
     </view>
 
      <view name="advanced">
-      <tab id="identificationInfo" default="true">
 
+       <sidePanel>
+         <directive data-gn-validation-report=""/>
+         <directive data-gn-suggestion-list=""/>
+       </sidePanel>
+
+       <tab id="identificationInfo" default="true">
+         <text ref="fullViewTitle"/>
+         <text ref="fullViewDescription"/>
+
+         <directive data-gn-onlinesrc-list=""/>
 
         <section xpath="/gmd:MD_Metadata/gmd:identificationInfo" or="identificationInfo"
                  in="/gmd:MD_Metadata"/>
@@ -1146,20 +1165,46 @@
         </section>
       </tab>
       <tab id="metadataConstraints" toggle="true">
+        <text ref="fullViewTitle"/>
+        <text ref="fullViewDescription"/>
+
+        <directive data-gn-onlinesrc-list=""/>
+
         <section xpath="/gmd:MD_Metadata/gmd:metadataConstraints" or="metadataConstraints"
                  in="/gmd:MD_Metadata"/>
       </tab>
       <tab id="metadataMaintenance" toggle="true">
+        <text ref="fullViewTitle"/>
+        <text ref="fullViewDescription"/>
+
+        <directive data-gn-onlinesrc-list=""/>
+
         <section xpath="/gmd:MD_Metadata/gmd:metadataMaintenance" or="metadataMaintenance"
                  in="/gmd:MD_Metadata"/>
       </tab>
       <tab id="applicationSchemaInfo" toggle="true">
+        <text ref="fullViewTitle"/>
+        <text ref="fullViewDescription"/>
+
+        <directive data-gn-onlinesrc-list=""/>
+
         <section xpath="/gmd:MD_Metadata/gmd:applicationSchemaInfo" or="applicationSchemaInfo"
                  in="/gmd:MD_Metadata"/>
       </tab>
     </view>
 
     <view name="xml">
+
+      <sidePanel>
+        <directive data-gn-validation-report=""/>
+        <directive data-gn-suggestion-list=""/>
+      </sidePanel>
+
+      <text ref="xmlViewTitle"/>
+      <text ref="xmlViewDescription"/>
+
+      <directive data-gn-onlinesrc-list=""/>
+
       <tab id="xml" default="true"/>
     </view>
   </views>
