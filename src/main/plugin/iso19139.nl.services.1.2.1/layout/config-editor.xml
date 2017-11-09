@@ -244,7 +244,7 @@
   <!-- View configuration -->
   <views>
 
-    <view name="default" upAndDownControlHidden="true">
+    <view name="default" upAndDownControlHidden="true" displayTooltips="true" displayTooltipsMode="icon">
 
       <sidePanel>
         <directive data-gn-validation-report=""/>
@@ -1127,7 +1127,7 @@
 
     </view>
 
-     <view name="advanced">
+     <view name="advanced" displayTooltips="true" displayTooltipsMode="icon">
 
        <sidePanel>
          <directive data-gn-validation-report=""/>
