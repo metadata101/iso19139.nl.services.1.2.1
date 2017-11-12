@@ -49,7 +49,7 @@
     <p>scale-denominator-formatter</p>
     <p>add-extent-from-geokeywords</p>-->
     <p>add-info-from-wms</p>
-    <p>add-service-info-from-wxs</p>
+    <p>add-service-info-from-wxs-nl</p>
    <!-- <p>linked-data-checker</p>
     <p>related-metadata-checker</p>
     <p>add-resource-id</p>-->
