@@ -328,36 +328,35 @@
                  templateModeOnly="true"
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:pointOfContact"
                  del=".">
-
                		 <template>
-                           <values readonlyIf="count(@xlink:href) > 0">
-               				<key label="individualName"
-               					xpath="gmd:CI_ResponsibleParty/gmd:individualName/gco:CharacterString"/>
-               				<key label="organisationName" required="true"
-               					xpath="gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString"/>
-               				<key label="positionName"
-               					xpath="gmd:CI_ResponsibleParty/gmd:positionName/gco:CharacterString"/>
-               				<key label="voice"
-               					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gco:CharacterString"/>
-               				<key label="facsimile"
-               					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:facsimile/gco:CharacterString"/>
-               				<key label="deliveryPoint"
-               					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:deliveryPoint/gco:CharacterString"/>
-               				<key label="city"
-               					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:city/gco:CharacterString"/>
-               				<key label="administrativeArea"
-               					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:administrativeArea/gco:CharacterString"/>
-               				<key label="postalCode"
-               					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:postalCode/gco:CharacterString"/>
-               				<key label="country"
-               					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString"/>
-               				<key label="electronicMailAddress"
-               					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString"
-               					use="email" required="true"/>
-               				<key label="onlineResource"
-               					xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL"/>
-               				<key label="role" required="true"
-               					xpath="gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue">
+                      <values readonlyIf="count(@xlink:href) > 0">
+               				<key label="individualName" tooltip="gmd:individualName"
+                        xpath="gmd:CI_ResponsibleParty/gmd:individualName/gco:CharacterString"/>
+                      <key label="organisationName" required="true" tooltip="gmd:organisationName"
+                        xpath="gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString"/>
+                      <key label="positionName" tooltip="gmd:positionName"
+                        xpath="gmd:CI_ResponsibleParty/gmd:positionName/gco:CharacterString"/>
+                      <key label="voice" tooltip="gmd:voice"
+                        xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gco:CharacterString"/>
+                      <key label="facsimile" tooltip="gmd:facsimile"
+                        xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:facsimile/gco:CharacterString"/>
+                      <key label="deliveryPoint" tooltip="gmd:deliveryPoint"
+                        xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:deliveryPoint/gco:CharacterString"/>
+                      <key label="city" tooltip="gmd:city"
+                        xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:city/gco:CharacterString"/>
+                      <key label="administrativeArea" tooltip="gmd:administrativeArea"
+                        xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:administrativeArea/gco:CharacterString"/>
+                      <key label="postalCode" tooltip="gmd:postalCode"
+                        xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:postalCode/gco:CharacterString"/>
+                      <key label="country" tooltip="gmd:country"
+                        xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString"/>
+                      <key label="electronicMailAddress" tooltip="gmd:electronicMailAddress"
+                        xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString"
+                              use="email" required="true"/>
+                      <key label="onlineResource" tooltip="gmd:onlineResource"
+                        xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL"/>
+                      <key label="role" required="true" tooltip="gmd:CI_RoleCode"
+                              xpath="gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue">
                				<codelist name="gmd:CI_RoleCode"/>
                				</key>
                            </values>
@@ -727,13 +726,13 @@
             xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:coupledResource">
 			<template>
 			<values>
-              <key label="operationName"
-                   xpath="srv:SV_CoupledResource/srv:operationName/gco:CharacterString"/>
-              <key label="dsIdentifier"
-                   xpath="srv:SV_CoupledResource/srv:identifier/gco:CharacterString"/>
-				<key label="codeSpace"
+        <key label="operationName" tooltip="srv:operationName"
+             xpath="srv:SV_CoupledResource/srv:operationName/gco:CharacterString"/>
+        <key label="dsIdentifier" tooltip="srv:identifier"
+             xpath="srv:SV_CoupledResource/srv:identifier/gco:CharacterString"/>
+				<key label="codeSpace" tooltip="codeSpace"
                    xpath="srv:SV_CoupledResource/gco:ScopedName/@codeSpace"/>
-				<key label="layername"
+				<key label="layername" tooltip="gco:ScopedName"
                    xpath="srv:SV_CoupledResource/gco:ScopedName"/>
             </values>
               <snippet>
@@ -780,12 +779,12 @@
 
 			<template>
 			<values>
-              <key label="dsIdentifier"
-                   xpath="./@uuidref"/>
-				<key label="metadataLink"
-                   xpath="./@xlink:href"/>
-				<key label="linkTitle"
-                   xpath="./@xlink:title"/>
+        <key label="dsIdentifier" tooltip="uuidref"
+            xpath="./@uuidref"/>
+				<key label="metadataLink" tooltip="xlink:href"
+            xpath="./@xlink:href"/>
+				<key label="linkTitle" tooltip="xlink:title"
+            xpath="./@xlink:title"/>
             </values>
               <snippet>
                 <srv:operatesOn uuidref="{{dsIdentifier}}" xlink:href="{{metadataLink}}" xlink:title="{{linkTitle}}"/>
@@ -998,33 +997,33 @@
         notDisplayedIfMissing="true"
         xpath="/gmd:MD_Metadata/gmd:contact" del=".">
    <template>
-     <values readonlyIf="count(@xlink:href) > 0">
-		<key label="individualName"
+    <values readonlyIf="count(@xlink:href) > 0">
+		<key label="individualName" tooltip="gmd:individualName"
 			xpath="gmd:CI_ResponsibleParty/gmd:individualName/gco:CharacterString"/>
-		<key label="organisationName" required="true"
+		<key label="organisationName" required="true" tooltip="gmd:organisationName"
             xpath="gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString"/>
-		<key label="positionName"
+		<key label="positionName" tooltip="gmd:positionName"
 			xpath="gmd:CI_ResponsibleParty/gmd:positionName/gco:CharacterString"/>
-		<key label="voice"
+		<key label="voice" tooltip="gmd:voice"
 			xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gco:CharacterString"/>
-		<key label="facsimile"
+		<key label="facsimile" tooltip="gmd:facsimile"
 			xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:facsimile/gco:CharacterString"/>
-		<key label="deliveryPoint"
+		<key label="deliveryPoint" tooltip="gmd:deliveryPoint"
 			xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:deliveryPoint/gco:CharacterString"/>
-		<key label="city"
+		<key label="city" tooltip="gmd:city"
 			xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:city/gco:CharacterString"/>
-		<key label="administrativeArea"
+		<key label="administrativeArea" tooltip="gmd:administrativeArea"
 			xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:administrativeArea/gco:CharacterString"/>
-		<key label="postalCode"
+		<key label="postalCode" tooltip="gmd:postalCode"
 			xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:postalCode/gco:CharacterString"/>
-		<key label="country"
+		<key label="country" tooltip="gmd:country"
 			xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString"/>
-       <key label="electronicMailAddress"
+       <key label="electronicMailAddress" tooltip="gmd:electronicMailAddress"
 			xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString"
             use="email" required="true"/>
-		<key label="onlineResource"
+		<key label="onlineResource" tooltip="gmd:onlineResource"
 			xpath="gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL"/>
-       <key label="role" required="true"
+       <key label="role" required="true" tooltip="gmd:CI_RoleCode"
             xpath="gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue">
          <codelist name="gmd:CI_RoleCode"/>
        </key>
