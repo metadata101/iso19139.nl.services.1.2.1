@@ -105,13 +105,15 @@
 	<addIdentifier>Identificatie toevoegen</addIdentifier>
 	<addStatus>Status toevoegen</addStatus>
 	<addLanguage>Taal toevoegen</addLanguage>
+	<addKeywords>Trefwoorden uit eigen thesaurus toevoegen</addKeywords>
 	<addTopic>Onderwerp toevoegen</addTopic>
 	<addCharacterset>Karakterset toevoegen</addCharacterset>
 	<addDate>Datum toevoegen</addDate>
 	<addLineage>Herkomst toevoegen</addLineage>
-	<addUseLimitation>Gebruiksbeperkingen toevoegen</addUseLimitation>
-	<addLegalConstraints>Juridische beperkingen toevoegen</addLegalConstraints>
-	<addResourceConstraints>Bron beperkingen toevoegen</addResourceConstraints>
+	<addUseLimitation>Gebruiksbeperking toevoegen</addUseLimitation>
+	<legalConstraints>Juridische restrictie</legalConstraints>
+	<addLegalConstraints>Juridische restrictie toevoegen</addLegalConstraints>
+	<addResourceConstraints>Beperking toevoegen</addResourceConstraints>
 	<addUrl>URL toevoegen</addUrl>
 	<addStandardName>Standaard toevoegen</addStandardName>
 	<addStandardVersion>Standaard versie toevoegen</addStandardVersion>
@@ -163,7 +165,7 @@
 	<addHierarchyLevelName>Beschrijving hiërarchisch niveau toevoegen</addHierarchyLevelName>
 	<AddSource>Voeg bron toe</AddSource>
 	<AddProcessStep>Voeg bewerkingsstap toe</AddProcessStep>
-	<addTemporalExtent>Voeg juridische geldigheid toe</addTemporalExtent>
+	<addTemporalExtent>Voeg inhoudelijke geldigheid toe</addTemporalExtent>
 	<addResourceMaintenance>Voeg onderhouds informatie toe</addResourceMaintenance>
 	<addSeries>Voeg serie informatie toe</addSeries>
 
@@ -173,15 +175,27 @@
 	<serviceInfo>Service operaties en gekoppelde bronnen</serviceInfo>
 	<restrictions>Restricties en beperkingen</restrictions>
 	<dataQuality>Service kwaliteit</dataQuality>
-	<addCoupledResource>Relatie toevoegen</addCoupledResource>
-	<addOperatesOn>Gekoppelde bron toevoegen</addOperatesOn>
+	<coupledResource>Relatie operatie met dataset</coupledResource>
+	<addCoupledResource>Dataset operaties toevoegen</addCoupledResource>
+	<operatesOn>Gekoppelde bron</operatesOn>
+	<addOperatesOn>Dataset koppeling toevoegen</addOperatesOn>
 
 	<operationName>Operatienaam</operationName>
 	<identifier>Identifier</identifier>
 	<layername>Laagnaam</layername>
+	<value>Waarde</value>
+	<measure>Maatregel</measure>
+	<description>Omschrijving</description>
+	<ConceptualConsistency>Conceptuele consistentie</ConceptualConsistency>
+	<addExtent>Omgrenzende rechthoek toevoegen</addExtent>
 
 	<dsIdentifier>Identificatie dataset</dsIdentifier>
 	<metadataLink>Metadata identificatie</metadataLink>
 	<linkTitle>Link titel</linkTitle>
 
+	<securityConstraints>Veiligheidsrestricties</securityConstraints>
+	<addSecurityConstraints>Voeg veiligheidsrestricties toe</addSecurityConstraints>
+	<addUseConstraint>Gebruiksbeperking toevoegen</addUseConstraint>
+	<addOtherConstraint>Overige beperking toevoegen</addOtherConstraint>
+	<addConceptualConsistency>Conceptuele consistentie toevoegen</addConceptualConsistency>
 </strings>
