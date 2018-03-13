@@ -161,17 +161,20 @@ public class ISO19139NLServices121SchemaPlugin
 
     public Set<String> getAssociatedDatasetUUIDs(Element metadata) {
         // Dutch metadata stores in uuidref the gmd:code of the dataset and in xlink:href the link to the CSW GetRecordById
-        Set<String> datasetLinks = getAttributeXlinkhrefValues(metadata, "operatesOn", ISO19139NLServices121Namespaces.SRV);
-        datasetLinks = getAttributeUuidrefValues(metadata, "operatesOn", ISO19139NLServices121Namespaces.SRV);
-        datasetLinks = getAttributeXlinkhrefValues(metadata, "operatesOn", ISO19139NLServices121Namespaces.SRV);
+        Set<String> datasetLinks = getAttributeXlinkhrefValues(metadata, "operatesOn",ISO19139NLServices121Namespaces.SRV);
+        //datasetLinks = getAttributeUuidrefValues(metadata, "operatesOn", ISO19139NLServices121Namespaces.SRV);
+        //datasetLinks = getAttributeXlinkhrefValues(metadata, "operatesOn", ISO19139NLServices121Namespaces.SRV);
         Set<String> uuids = new HashSet<String>();
 
         for(String link: datasetLinks) {
-            String query = link.toLowerCase().split("\\?")[1];
-            final Map<String, String> map = Splitter.on('&').trimResults().withKeyValueSeparator("=").split(query);
-            String uuid = map.get("id");
-            if (StringUtils.isNotEmpty(uuid)) {
-                uuids.add(uuid);
+            String[] links = link.toLowerCase().split("\\?");
+            if (links.length>1){
+                String query = links[1];
+                final Map<String, String> map = Splitter.on('&').trimResults().withKeyValueSeparator("=").split(query);
+                String uuid = map.get("id");
+                if (StringUtils.isNotEmpty(uuid)) {
+                    uuids.add(uuid);
+                }
             }
         }
 
