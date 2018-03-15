@@ -2,7 +2,8 @@
 
 <xsl:stylesheet   xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
                   xmlns:geonet="http://www.fao.org/geonetwork"
-                  xmlns:gmd="http://www.isotc211.org/2005/gmd" exclude-result-prefixes="gmd geonet">
+                  xmlns:gmd="http://www.isotc211.org/2005/gmd"  
+                  exclude-result-prefixes="#all">
 
   <xsl:param name="removeEmptyElement" select="'false'"/>
 

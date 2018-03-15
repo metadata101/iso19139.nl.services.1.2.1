@@ -3,7 +3,7 @@
 <xsl:stylesheet   xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
                   xmlns:geonet="http://www.fao.org/geonetwork"
                   xmlns:gmd="http://www.isotc211.org/2005/gmd"
-                  exclude-result-prefixes="gmd xsl geonet">
+                  exclude-result-prefixes="#all">
 
   <xsl:template match="/">
     <changes>
