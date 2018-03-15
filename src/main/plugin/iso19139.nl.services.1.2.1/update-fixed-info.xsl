@@ -8,14 +8,14 @@
 	<xsl:template match="gmd:dateStamp" priority="99">
 		<xsl:choose>
 			<xsl:when test="/root/env/changeDate">
-				<xsl:copy>
+				<xsl:copy copy-namespaces="no">
 					<gco:Date>
 						 <xsl:value-of select="tokenize(/root/env/changeDate,'T')[1]" />
 					</gco:Date>
 				</xsl:copy>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:copy-of select="." />
+				<xsl:copy-of select="."  copy-namespaces="no"/>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
