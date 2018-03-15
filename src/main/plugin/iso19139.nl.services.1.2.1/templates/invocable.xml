@@ -12,7 +12,7 @@
       <gco:CharacterString>c2d7dc4c-b4d4-4fd8-aec4-577aaa99f53d</gco:CharacterString>
   </gmd:fileIdentifier>
   <gmd:language>
-      <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="dut"/>
+    <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="dut" />
   </gmd:language>
   <gmd:characterSet>
       <gmd:MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_CharacterSetCode"
@@ -23,26 +23,26 @@
                         codeListValue="service"/>
   </gmd:hierarchyLevel>
   <gmd:contact>
-      <gmd:CI_ResponsibleParty>
-         <gmd:organisationName>
+    <gmd:CI_ResponsibleParty>
+      <gmd:organisationName>
             <gco:CharacterString/>
-         </gmd:organisationName>
-         <gmd:contactInfo>
-            <gmd:CI_Contact>
-               <gmd:address>
-                  <gmd:CI_Address>
-                     <gmd:electronicMailAddress>
+      </gmd:organisationName>
+      <gmd:contactInfo>
+        <gmd:CI_Contact>
+          <gmd:address>
+            <gmd:CI_Address>
+              <gmd:electronicMailAddress>
                         <gco:CharacterString/>
-                     </gmd:electronicMailAddress>
-                  </gmd:CI_Address>
-               </gmd:address>
-            </gmd:CI_Contact>
-         </gmd:contactInfo>
-         <gmd:role>
+              </gmd:electronicMailAddress>
+            </gmd:CI_Address>
+          </gmd:address>
+        </gmd:CI_Contact>
+      </gmd:contactInfo>
+      <gmd:role>
             <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_RoleCode"
                              codeListValue="pointOfContact"/>
-         </gmd:role>
-      </gmd:CI_ResponsibleParty>
+      </gmd:role>
+    </gmd:CI_ResponsibleParty>
   </gmd:contact>
   <gmd:dateStamp>
       <gco:Date/>
@@ -55,281 +55,281 @@
   </gmd:metadataStandardVersion>
   <gmd:identificationInfo>
       <srv:SV_ServiceIdentification>
-         <gmd:citation>
-            <gmd:CI_Citation>
-               <gmd:title>
+      <gmd:citation>
+        <gmd:CI_Citation>
+          <gmd:title>
                   <gco:CharacterString>2. Template NL profiel op ISO 19119 en INSPIRE SDS invocable</gco:CharacterString>
-               </gmd:title>
-               <gmd:date>
-                  <gmd:CI_Date>
-                     <gmd:date>
+          </gmd:title>
+          <gmd:date>
+            <gmd:CI_Date>
+              <gmd:date>
                         <gco:Date/>
-                     </gmd:date>
-                     <gmd:dateType>
+              </gmd:date>
+              <gmd:dateType>
                         <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode"
                                              codeListValue=""/>
-                     </gmd:dateType>
-                  </gmd:CI_Date>
-               </gmd:date>
-            </gmd:CI_Citation>
-         </gmd:citation>
-         <gmd:abstract>
+              </gmd:dateType>
+            </gmd:CI_Date>
+          </gmd:date>
+        </gmd:CI_Citation>
+      </gmd:citation>
+      <gmd:abstract>
             <gco:CharacterString/>
-         </gmd:abstract>
-         <gmd:pointOfContact>
-            <gmd:CI_ResponsibleParty>
-               <gmd:organisationName>
+      </gmd:abstract>
+      <gmd:pointOfContact>
+        <gmd:CI_ResponsibleParty>
+          <gmd:organisationName>
                   <gco:CharacterString/>
-               </gmd:organisationName>
-               <gmd:contactInfo>
-                  <gmd:CI_Contact>
-                     <gmd:address>
-                        <gmd:CI_Address>
-                           <gmd:electronicMailAddress>
+          </gmd:organisationName>
+          <gmd:contactInfo>
+            <gmd:CI_Contact>
+              <gmd:address>
+                <gmd:CI_Address>
+                  <gmd:electronicMailAddress>
                               <gco:CharacterString/>
-                           </gmd:electronicMailAddress>
-                        </gmd:CI_Address>
-                     </gmd:address>
-                  </gmd:CI_Contact>
-               </gmd:contactInfo>
-               <gmd:role>
+                  </gmd:electronicMailAddress>
+                </gmd:CI_Address>
+              </gmd:address>
+            </gmd:CI_Contact>
+          </gmd:contactInfo>
+          <gmd:role>
                   <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_RoleCode"
                                    codeListValue=""/>
-               </gmd:role>
-            </gmd:CI_ResponsibleParty>
-         </gmd:pointOfContact>
-         <gmd:descriptiveKeywords>
-            <gmd:MD_Keywords>
-               <gmd:keyword>
+          </gmd:role>
+        </gmd:CI_ResponsibleParty>
+      </gmd:pointOfContact>
+      <gmd:descriptiveKeywords>
+        <gmd:MD_Keywords>
+          <gmd:keyword>
                   <gco:CharacterString/>
-               </gmd:keyword>
-            </gmd:MD_Keywords>
-         </gmd:descriptiveKeywords>
-         <gmd:descriptiveKeywords>
-            <gmd:MD_Keywords>
-               <gmd:keyword>
+          </gmd:keyword>
+        </gmd:MD_Keywords>
+      </gmd:descriptiveKeywords>
+      <gmd:descriptiveKeywords>
+        <gmd:MD_Keywords>
+          <gmd:keyword>
                   <gco:CharacterString/>
-               </gmd:keyword>
-               <gmd:thesaurusName>
-                  <gmd:CI_Citation>
-                     <gmd:title>
+          </gmd:keyword>
+          <gmd:thesaurusName>
+            <gmd:CI_Citation>
+              <gmd:title>
                         <gco:CharacterString>GEMET - INSPIRE themes, version 1.0</gco:CharacterString>
-                     </gmd:title>
-                     <gmd:date>
-                        <gmd:CI_Date>
-                           <gmd:date>
+              </gmd:title>
+              <gmd:date>
+                <gmd:CI_Date>
+                  <gmd:date>
                               <gco:Date>2008-06-01</gco:Date>
-                           </gmd:date>
-                           <gmd:dateType>
+                  </gmd:date>
+                  <gmd:dateType>
                               <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode"
                                                    codeListValue="publication">publication</gmd:CI_DateTypeCode>
-                           </gmd:dateType>
-                        </gmd:CI_Date>
-                     </gmd:date>
-                  </gmd:CI_Citation>
-               </gmd:thesaurusName>
-            </gmd:MD_Keywords>
-         </gmd:descriptiveKeywords>
-         <gmd:resourceConstraints>
-            <gmd:MD_Constraints>
-               <gmd:useLimitation>
+                  </gmd:dateType>
+                </gmd:CI_Date>
+              </gmd:date>
+            </gmd:CI_Citation>
+          </gmd:thesaurusName>
+        </gmd:MD_Keywords>
+      </gmd:descriptiveKeywords>
+      <gmd:resourceConstraints>
+        <gmd:MD_Constraints>
+          <gmd:useLimitation>
                   <gco:CharacterString/>
-               </gmd:useLimitation>
-            </gmd:MD_Constraints>
-         </gmd:resourceConstraints>
-         <gmd:resourceConstraints>
-            <gmd:MD_LegalConstraints>
-               <gmd:accessConstraints>
+          </gmd:useLimitation>
+        </gmd:MD_Constraints>
+      </gmd:resourceConstraints>
+      <gmd:resourceConstraints>
+        <gmd:MD_LegalConstraints>
+          <gmd:accessConstraints>
                   <gmd:MD_RestrictionCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_RestrictionCode"
                                           codeListValue="otherRestrictions"/>
-               </gmd:accessConstraints>
-               <gmd:otherConstraints>
+          </gmd:accessConstraints>
+          <gmd:otherConstraints>
                   <gco:CharacterString/>
-               </gmd:otherConstraints>
-               <gmd:otherConstraints>
+          </gmd:otherConstraints>
+          <gmd:otherConstraints>
                   <gco:CharacterString/>
-               </gmd:otherConstraints>
-            </gmd:MD_LegalConstraints>
-         </gmd:resourceConstraints>
-         <srv:serviceType>
+          </gmd:otherConstraints>
+        </gmd:MD_LegalConstraints>
+      </gmd:resourceConstraints>
+      <srv:serviceType>
             <gco:LocalName>other</gco:LocalName>
-         </srv:serviceType>
-         <srv:extent>
-            <gmd:EX_Extent>
-                    <gmd:geographicElement>
-                      <gmd:EX_GeographicBoundingBox>
-					   <gmd:westBoundLongitude>
+      </srv:serviceType>
+      <srv:extent>
+        <gmd:EX_Extent>
+          <gmd:geographicElement>
+            <gmd:EX_GeographicBoundingBox>
+              <gmd:westBoundLongitude>
                         <gco:Decimal></gco:Decimal>
-                     </gmd:westBoundLongitude>
-                     <gmd:eastBoundLongitude>
+              </gmd:westBoundLongitude>
+              <gmd:eastBoundLongitude>
                         <gco:Decimal></gco:Decimal>
-                     </gmd:eastBoundLongitude>
-                     <gmd:southBoundLatitude>
+              </gmd:eastBoundLongitude>
+              <gmd:southBoundLatitude>
                         <gco:Decimal></gco:Decimal>
-                     </gmd:southBoundLatitude>
-                     <gmd:northBoundLatitude>
+              </gmd:southBoundLatitude>
+              <gmd:northBoundLatitude>
                         <gco:Decimal></gco:Decimal>
                      </gmd:northBoundLatitude></gmd:EX_GeographicBoundingBox>
-                    </gmd:geographicElement>
-                  </gmd:EX_Extent>
-         </srv:extent>
-         <srv:coupledResource/>
-         <srv:couplingType>
+          </gmd:geographicElement>
+        </gmd:EX_Extent>
+      </srv:extent>
+      <srv:coupledResource />
+      <srv:couplingType>
             <srv:SV_CouplingType codeList="http://www.isotc211.org/2005/iso19119/resources/Codelist/gmxCodelists.xml#SV_CouplingType"
                                  codeListValue=""/>
-         </srv:couplingType>
-         <srv:containsOperations>
-            <srv:SV_OperationMetadata>
-               <srv:operationName>
+      </srv:couplingType>
+      <srv:containsOperations>
+        <srv:SV_OperationMetadata>
+          <srv:operationName>
                   <gco:CharacterString/>
-               </srv:operationName>
-               <srv:DCP>
+          </srv:operationName>
+          <srv:DCP>
                   <srv:DCPList codeList="http://www.isotc211.org/2005/iso19119/resources/Codelist/gmxCodelists.xml#DCPList"
                                codeListValue=""/>
-               </srv:DCP>
-               <srv:connectPoint>
-                  <gmd:CI_OnlineResource>
-                     <gmd:linkage>
-                        <gmd:URL/>
-                     </gmd:linkage>
-                  </gmd:CI_OnlineResource>
-               </srv:connectPoint>
-            </srv:SV_OperationMetadata>
-         </srv:containsOperations>
+          </srv:DCP>
+          <srv:connectPoint>
+            <gmd:CI_OnlineResource>
+              <gmd:linkage>
+                <gmd:URL />
+              </gmd:linkage>
+            </gmd:CI_OnlineResource>
+          </srv:connectPoint>
+        </srv:SV_OperationMetadata>
+      </srv:containsOperations>
          <srv:operatesOn uuidref="" xlink:href=""/>
-      </srv:SV_ServiceIdentification>
+    </srv:SV_ServiceIdentification>
   </gmd:identificationInfo>
   <gmd:distributionInfo>
-      <gmd:MD_Distribution>
-         <gmd:transferOptions>
-            <gmd:MD_DigitalTransferOptions>
-               <gmd:onLine>
-                  <gmd:CI_OnlineResource>
-                     <gmd:linkage>
-                        <gmd:URL>Voeg hier de SDS link toe</gmd:URL>
-                     </gmd:linkage>
-                     <gmd:protocol>
+    <gmd:MD_Distribution>
+      <gmd:transferOptions>
+        <gmd:MD_DigitalTransferOptions>
+          <gmd:onLine>
+            <gmd:CI_OnlineResource>
+              <gmd:linkage>
+                <gmd:URL>Voeg hier de SDS link toe</gmd:URL>
+              </gmd:linkage>
+              <gmd:protocol>
                         <gco:CharacterString/>
-                     </gmd:protocol>
-                     <gmd:description>
+              </gmd:protocol>
+              <gmd:description>
                         <gco:CharacterString>accessPoint</gco:CharacterString>
-                     </gmd:description>
-                     <gmd:function>
+              </gmd:description>
+              <gmd:function>
                         <gmd:CI_OnLineFunctionCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_OnLineFunctionCode"
                                                    codeListValue="information"/>
-                     </gmd:function>
-                  </gmd:CI_OnlineResource>
-               </gmd:onLine>
-            </gmd:MD_DigitalTransferOptions>
-         </gmd:transferOptions>
-      </gmd:MD_Distribution>
+              </gmd:function>
+            </gmd:CI_OnlineResource>
+          </gmd:onLine>
+        </gmd:MD_DigitalTransferOptions>
+      </gmd:transferOptions>
+    </gmd:MD_Distribution>
   </gmd:distributionInfo>
   <gmd:dataQualityInfo>
-      <gmd:DQ_DataQuality>
-         <gmd:scope>
-            <gmd:DQ_Scope>
-               <gmd:level>
+    <gmd:DQ_DataQuality>
+      <gmd:scope>
+        <gmd:DQ_Scope>
+          <gmd:level>
                   <gmd:MD_ScopeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_ScopeCode"
                                     codeListValue="service"/>
-               </gmd:level>
-            </gmd:DQ_Scope>
-         </gmd:scope>
-         <gmd:report>
-            <gmd:DQ_DomainConsistency>
-               <gmd:result>
-                  <gmd:DQ_ConformanceResult>
-                     <gmd:specification>
-                        <gmd:CI_Citation>
-                           <gmd:title>
+          </gmd:level>
+        </gmd:DQ_Scope>
+      </gmd:scope>
+      <gmd:report>
+        <gmd:DQ_DomainConsistency>
+          <gmd:result>
+            <gmd:DQ_ConformanceResult>
+              <gmd:specification>
+                <gmd:CI_Citation>
+                  <gmd:title>
                               <gco:CharacterString>VERORDENING (EU) Nr. 1089/2010 VAN DE COMMISSIE van 23 november 2010 ter uitvoering van Richtlijn 2007/2/EG van het Europees Parlement en de Raad betreffende de interoperabiliteit van verzamelingen ruimtelijke gegevens en van diensten met betrekking tot ruimtelijke gegevens</gco:CharacterString>
-                           </gmd:title>
-                           <gmd:date>
-                              <gmd:CI_Date>
-                                 <gmd:date>
+                  </gmd:title>
+                  <gmd:date>
+                    <gmd:CI_Date>
+                      <gmd:date>
                                     <gco:Date>2010-12-08</gco:Date>
-                                 </gmd:date>
-                                 <gmd:dateType>
+                      </gmd:date>
+                      <gmd:dateType>
                                     <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode"
                                                          codeListValue="publication"/>
-                                 </gmd:dateType>
-                              </gmd:CI_Date>
-                           </gmd:date>
-                        </gmd:CI_Citation>
-                     </gmd:specification>
-                     <gmd:explanation>
+                      </gmd:dateType>
+                    </gmd:CI_Date>
+                  </gmd:date>
+                </gmd:CI_Citation>
+              </gmd:specification>
+              <gmd:explanation>
                         <gco:CharacterString>Deze service voldoet aan de specificaties voor spatial data services</gco:CharacterString>
-                     </gmd:explanation>
-                     <gmd:pass>
+              </gmd:explanation>
+              <gmd:pass>
                         <gco:Boolean>true</gco:Boolean>
-                     </gmd:pass>
-                  </gmd:DQ_ConformanceResult>
-               </gmd:result>
-            </gmd:DQ_DomainConsistency>
-         </gmd:report>
-         <gmd:report>
-            <gmd:DQ_DomainConsistency>
-               <gmd:result>
-                  <gmd:DQ_ConformanceResult>
-                     <gmd:specification>
-                        <gmd:CI_Citation>
-                           <gmd:title>
+              </gmd:pass>
+            </gmd:DQ_ConformanceResult>
+          </gmd:result>
+        </gmd:DQ_DomainConsistency>
+      </gmd:report>
+      <gmd:report>
+        <gmd:DQ_DomainConsistency>
+          <gmd:result>
+            <gmd:DQ_ConformanceResult>
+              <gmd:specification>
+                <gmd:CI_Citation>
+                  <gmd:title>
                               <gco:CharacterString>invocable</gco:CharacterString>
-                           </gmd:title>
-                           <gmd:date>
-                              <gmd:CI_Date>
-                                 <gmd:date>
+                  </gmd:title>
+                  <gmd:date>
+                    <gmd:CI_Date>
+                      <gmd:date>
                                     <gco:Date>2014-12-11</gco:Date>
-                                 </gmd:date>
-                                 <gmd:dateType>
+                      </gmd:date>
+                      <gmd:dateType>
                                     <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode"
                                                          codeListValue="publication"/>
-                                 </gmd:dateType>
-                              </gmd:CI_Date>
-                           </gmd:date>
-                        </gmd:CI_Citation>
-                     </gmd:specification>
-                     <gmd:explanation>
+                      </gmd:dateType>
+                    </gmd:CI_Date>
+                  </gmd:date>
+                </gmd:CI_Citation>
+              </gmd:specification>
+              <gmd:explanation>
                         <gco:CharacterString>De service voldoet aan de requirements van de invocable conformance class</gco:CharacterString>
-                     </gmd:explanation>
-                     <gmd:pass>
+              </gmd:explanation>
+              <gmd:pass>
                         <gco:Boolean>true</gco:Boolean>
-                     </gmd:pass>
-                  </gmd:DQ_ConformanceResult>
-               </gmd:result>
-            </gmd:DQ_DomainConsistency>
-         </gmd:report>
-         <gmd:report>
-            <gmd:DQ_DomainConsistency>
-               <gmd:result>
-                  <gmd:DQ_ConformanceResult>
-                     <gmd:specification>
-                        <gmd:CI_Citation>
+              </gmd:pass>
+            </gmd:DQ_ConformanceResult>
+          </gmd:result>
+        </gmd:DQ_DomainConsistency>
+      </gmd:report>
+      <gmd:report>
+        <gmd:DQ_DomainConsistency>
+          <gmd:result>
+            <gmd:DQ_ConformanceResult>
+              <gmd:specification>
+                <gmd:CI_Citation>
                            <gmd:title gco:nilReason="missing">
-                              <gco:CharacterString/>
-                           </gmd:title>
-                           <gmd:date>
-                              <gmd:CI_Date>
-                                 <gmd:date>
+                    <gco:CharacterString />
+                  </gmd:title>
+                  <gmd:date>
+                    <gmd:CI_Date>
+                      <gmd:date>
                                     <gco:Date xsi:nil="true"/>
-                                 </gmd:date>
-                                 <gmd:dateType>
+                      </gmd:date>
+                      <gmd:dateType>
                                     <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode"
                                                          codeListValue=""/>
-                                 </gmd:dateType>
-                              </gmd:CI_Date>
-                           </gmd:date>
-                        </gmd:CI_Citation>
-                     </gmd:specification>
+                      </gmd:dateType>
+                    </gmd:CI_Date>
+                  </gmd:date>
+                </gmd:CI_Citation>
+              </gmd:specification>
                      <gmd:explanation gco:nilReason="missing">
-                        <gco:CharacterString>Technische specificatie waarmee de service volledig conform is</gco:CharacterString>
-                     </gmd:explanation>
-                     <gmd:pass>
+                <gco:CharacterString>Technische specificatie waarmee de service volledig conform is</gco:CharacterString>
+              </gmd:explanation>
+              <gmd:pass>
                         <gco:Boolean>true</gco:Boolean>
-                     </gmd:pass>
-                  </gmd:DQ_ConformanceResult>
-               </gmd:result>
-            </gmd:DQ_DomainConsistency>
-         </gmd:report>
-      </gmd:DQ_DataQuality>
+              </gmd:pass>
+            </gmd:DQ_ConformanceResult>
+          </gmd:result>
+        </gmd:DQ_DomainConsistency>
+      </gmd:report>
+    </gmd:DQ_DataQuality>
   </gmd:dataQualityInfo>
 </gmd:MD_Metadata>
