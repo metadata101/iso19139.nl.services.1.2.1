@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	version="2.0" xmlns:gco="http://www.isotc211.org/2005/gco"
-	xmlns:gmd="http://www.isotc211.org/2005/gmd" >
+	xmlns:gmd="http://www.isotc211.org/2005/gmd"
+  xmlns:srv="http://www.isotc211.org/2005/srv" >
+
 	<xsl:import href="../iso19139/update-fixed-info.xsl" />
 
 	<!-- Dutch profile uses gco:Date instead of gco:DateTime -->
@@ -19,6 +21,10 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
+
+<xsl:template match="srv:operatesOn|gmd:featureCatalogueCitation" priority="99">
+  <xsl:copy-of select="."  copy-namespaces="no"/>
+</xsl:template>
 
 	<!-- remove gmd:identifier with gmx:Anchor inside gmd:code
     <xsl:template match="gmd:identifier[name(*/gmd:code/*) = 'gmx:Anchor']" /> -->
