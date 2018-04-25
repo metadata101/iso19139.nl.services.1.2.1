@@ -6,5 +6,5 @@ More documentation at [https://github.com/metadata101/iso19139.nl.geografie.1.3.
 
 ## Reference documents:
 
-* http://www.geonovum.nl/wegwijzer/standaarden/nederlands-metadataprofiel-op-iso-19119-services-121
+* https://www.geonovum.nl/uploads/standards/downloads/Nederlands%20metadata%20profiel%20op%20ISO%2019119%20voor%20services%20-%20v1.2.1%20def_1.pdf
 
