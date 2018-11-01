@@ -23,11 +23,7 @@
 
 package org.fao.geonet.schema.iso19139nlservices121;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import org.apache.commons.lang.StringUtils;
 import org.fao.geonet.kernel.schema.AssociatedResource;
@@ -48,8 +44,6 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 
-import static org.fao.geonet.schema.iso19139nlservices121.ISO19139NLServices121Namespaces.GMD;
-
 /**
  * Created by francois on 6/15/14.
  */
@@ -68,13 +62,13 @@ public class ISO19139NLServices121SchemaPlugin
 
     static {
         allNamespaces = ImmutableSet.<Namespace>builder()
-                .add(ISO19139NLServices121Namespaces.GCO)
-                .add(GMD)
-                .add(ISO19139NLServices121Namespaces.SRV)
+                .add(ISO19139Namespaces.GCO)
+                .add(ISO19139Namespaces.GMD)
+                .add(ISO19139Namespaces.SRV)
                 .build();
         allTypenames = ImmutableMap.<String, Namespace>builder()
                 .put("csw:Record", Namespace.getNamespace("csw", "http://www.opengis.net/cat/csw/2.0.2"))
-                .put("gmd:MD_Metadata", GMD)
+                .put("gmd:MD_Metadata", ISO19139Namespaces.GMD)
                 .put("dcat", Namespace.getNamespace("dcat", "http://www.w3.org/ns/dcat#"))
                 .build();
 
@@ -115,17 +109,17 @@ public class ISO19139NLServices121SchemaPlugin
                 try {
                     if (o instanceof Element) {
                         Element sib = (Element) o;
-                        Element agId = (Element) sib.getChild("aggregateDataSetIdentifier", GMD)
+                        Element agId = (Element) sib.getChild("aggregateDataSetIdentifier", ISO19139Namespaces.GMD)
                                 .getChildren().get(0);
-                        String sibUuid = getChild(agId, "code", GMD)
-                                .getChildText("CharacterString", ISO19139NLServices121Namespaces.GCO);
-                        final Element associationTypeEl = getChild(sib, "associationType", GMD);
-                        String associationType = getChild(associationTypeEl, "DS_AssociationTypeCode", GMD)
+                        String sibUuid = getChild(agId, "code", ISO19139Namespaces.GMD)
+                                .getChildText("CharacterString", ISO19139Namespaces.GCO);
+                        final Element associationTypeEl = getChild(sib, "associationType", ISO19139Namespaces.GMD);
+                        String associationType = getChild(associationTypeEl, "DS_AssociationTypeCode", ISO19139Namespaces.GMD)
                                 .getAttributeValue("codeListValue");
-                        final Element initiativeTypeEl = getChild(sib, "initiativeType", GMD);
+                        final Element initiativeTypeEl = getChild(sib, "initiativeType", ISO19139Namespaces.GMD);
                         String initiativeType = "";
                         if (initiativeTypeEl != null) {
-                            initiativeType = getChild(initiativeTypeEl, "DS_InitiativeTypeCode", GMD)
+                            initiativeType = getChild(initiativeTypeEl, "DS_InitiativeTypeCode", ISO19139Namespaces.GMD)
                                     .getAttributeValue("codeListValue");
                         }
                         AssociatedResource resource = new AssociatedResource(sibUuid, initiativeType, associationType);
@@ -151,17 +145,17 @@ public class ISO19139NLServices121SchemaPlugin
 
     @Override
     public Set<String> getAssociatedParentUUIDs(Element metadata) {
-        ElementFilter elementFilter = new ElementFilter("parentIdentifier", GMD);
+        ElementFilter elementFilter = new ElementFilter("parentIdentifier", ISO19139Namespaces.GMD);
         return Xml.filterElementValues(
                 metadata,
                 elementFilter,
-                "CharacterString", ISO19139NLServices121Namespaces.GCO,
+                "CharacterString", ISO19139Namespaces.GCO,
                 null);
     }
 
     public Set<String> getAssociatedDatasetUUIDs(Element metadata) {
         // Dutch metadata stores in uuidref the gmd:code of the dataset and in xlink:href the link to the CSW GetRecordById
-        Set<String> datasetLinks = getAttributeXlinkhrefValues(metadata, "operatesOn",ISO19139NLServices121Namespaces.SRV);
+        Set<String> datasetLinks = getAttributeXlinkhrefValues(metadata, "operatesOn",ISO19139Namespaces.SRV);
         //datasetLinks = getAttributeUuidrefValues(metadata, "operatesOn", ISO19139NLServices121Namespaces.SRV);
         //datasetLinks = getAttributeXlinkhrefValues(metadata, "operatesOn", ISO19139NLServices121Namespaces.SRV);
         Set<String> uuids = new HashSet<String>();
@@ -182,11 +176,11 @@ public class ISO19139NLServices121SchemaPlugin
     }
 
     public Set<String> getAssociatedFeatureCatalogueUUIDs(Element metadata) {
-        return getAttributeUuidrefValues(metadata, "featureCatalogueCitation", GMD);
+        return getAttributeUuidrefValues(metadata, "featureCatalogueCitation", ISO19139Namespaces.GMD);
     }
 
     public Set<String> getAssociatedSourceUUIDs(Element metadata) {
-        return getAttributeUuidrefValues(metadata, "source", GMD);
+        return getAttributeUuidrefValues(metadata, "source", ISO19139Namespaces.GMD);
     }
 
     private Set<String> getAttributeUuidrefValues(Element metadata, String tagName, Namespace namespace) {
@@ -205,7 +199,7 @@ public class ISO19139NLServices121SchemaPlugin
                 elementFilter,
                 null, null,
                 "href",
-                ISO19139NLServices121Namespaces.XLINK
+            ISO19139Namespaces.XLINK
                 );
     }
 
@@ -251,16 +245,16 @@ public class ISO19139NLServices121SchemaPlugin
                 Namespace.getNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance"));
 
         // Create a new translation for the language
-        Element langElem = new Element("LocalisedCharacterString", GMD);
+        Element langElem = new Element("LocalisedCharacterString", ISO19139Namespaces.GMD);
         langElem.setAttribute("locale", "#" + languageIdentifier);
         langElem.setText(value);
-        Element textGroupElement = new Element("textGroup", GMD);
+        Element textGroupElement = new Element("textGroup", ISO19139Namespaces.GMD);
         textGroupElement.addContent(langElem);
 
         // Get the PT_FreeText node where to insert the translation into
-        Element freeTextElement = element.getChild("PT_FreeText", GMD);
+        Element freeTextElement = element.getChild("PT_FreeText", ISO19139Namespaces.GMD);
         if (freeTextElement == null) {
-            freeTextElement = new Element("PT_FreeText", GMD);
+            freeTextElement = new Element("PT_FreeText", ISO19139Namespaces.GMD);
             element.addContent(freeTextElement);
         }
         freeTextElement.addContent(textGroupElement);
@@ -280,7 +274,7 @@ public class ISO19139NLServices121SchemaPlugin
     public Element removeTranslationFromElement(Element element, List<String> langs) throws JDOMException {
         String mainLanguage = langs != null && langs.size() > 0 ? langs.get(0) : "#EN";
 
-        List<Element> nodesWithStrings = (List<Element>) Xml.selectNodes(element, "*//gmd:PT_FreeText", Arrays.asList(GMD));
+        List<Element> nodesWithStrings = (List<Element>) Xml.selectNodes(element, "*//gmd:PT_FreeText", Arrays.asList(ISO19139Namespaces.GMD));
 
         for(Element e : nodesWithStrings) {
             // Retrieve or create the main language element
@@ -339,7 +333,7 @@ public class ISO19139NLServices121SchemaPlugin
 
     @Override
     public Element createBasicTypeCharacterString() {
-        return new Element("CharacterString", ISO19139NLServices121Namespaces.GCO);
+        return new Element("CharacterString", ISO19139Namespaces.GCO);
     }
 
     @Override
@@ -350,5 +344,104 @@ public class ISO19139NLServices121SchemaPlugin
     @Override
     public Map<String, String> getExportFormats() {
         return allExportFormats;
+    }
+
+    @Override
+    public Element addOperatesOn(Element serviceRecord,
+                                 Map<String, String> layers,
+                                 String serviceType,
+                                 String baseUrl) {
+
+        Element root = serviceRecord
+            .getChild("identificationInfo", ISO19139Namespaces.GMD)
+            .getChild("SV_ServiceIdentification", ISO19139Namespaces.SRV);
+
+        if (root != null) {
+
+            // Coupling type MUST be present as it is the insertion point
+            // for coupledResource
+            Element couplingType = root.getChild("couplingType", ISO19139Namespaces.SRV);
+            int coupledResourceIdx = root.indexOf(couplingType);
+
+            layers.keySet().forEach(uuid -> {
+                String layerName = layers.get(uuid);
+
+                // Create coupled resources elements to register all layername
+                // in service metadata. This information could be used to add
+                // interactive map button when viewing service metadata.
+                Element coupledResource = new Element("coupledResource", ISO19139Namespaces.SRV);
+                coupledResource.setAttribute("nilReason", "synchronizedFromOGC", ISO19139Namespaces.GCO);
+                Element scr = new Element("SV_CoupledResource", ISO19139Namespaces.SRV);
+
+
+                // Create operation according to service type
+                Element operation = new Element("operationName", ISO19139Namespaces.SRV);
+                Element operationValue = new Element("CharacterString", ISO19139Namespaces.GCO);
+
+                if (serviceType.startsWith("WMS"))
+                    operationValue.setText("GetMap");
+                else if (serviceType.startsWith("WFS"))
+                    operationValue.setText("GetFeature");
+                else if (serviceType.startsWith("WCS"))
+                    operationValue.setText("GetCoverage");
+                else if (serviceType.startsWith("SOS"))
+                    operationValue.setText("GetObservation");
+                operation.addContent(operationValue);
+
+                // Create identifier (which is the metadata identifier)
+                Element id = new Element("identifier", ISO19139Namespaces.SRV);
+                Element idValue = new Element("CharacterString", ISO19139Namespaces.GCO);
+                idValue.setText(uuid);
+                id.addContent(idValue);
+
+                // Create scoped name element as defined in CSW 2.0.2 ISO profil
+                // specification to link service metadata to a layer in a service.
+                Element scopedName = new Element("ScopedName", ISO19139Namespaces.GCO);
+                scopedName.setText(layerName);
+
+                scr.addContent(operation);
+                scr.addContent(id);
+                scr.addContent(scopedName);
+                coupledResource.addContent(scr);
+
+                // Add coupled resource before coupling type element
+                if (coupledResourceIdx != -1) {
+                    root.addContent(coupledResourceIdx, coupledResource);
+                }
+
+
+                // Add operatesOn element at the end of identification section.
+                Element op = new Element("operatesOn", ISO19139Namespaces.SRV);
+                op.setAttribute("nilReason", "synchronizedFromOGC", ISO19139Namespaces.GCO);
+                op.setAttribute("uuidref", uuid);
+
+                String hRefLink = baseUrl + "api/records/" + uuid + "/formatters/xml";
+                op.setAttribute("href", hRefLink, ISO19139Namespaces.XLINK);
+
+                root.addContent(op);
+            });
+        }
+
+        return serviceRecord;
+    }
+    @Override
+    public List<Extent> getExtents(Element record) {
+        List<Extent> extents = new ArrayList<>();
+
+        ElementFilter bboxFinder = new ElementFilter("EX_GeographicBoundingBox", ISO19139Namespaces.GMD);
+        @SuppressWarnings("unchecked")
+        Iterator<Element> bboxes = record.getDescendants(bboxFinder);
+        while (bboxes.hasNext()) {
+            Element box = bboxes.next();
+            try {
+                extents.add(new Extent(
+                    Double.valueOf(box.getChild("westBoundLongitude", ISO19139Namespaces.GMD).getChild("Decimal", ISO19139Namespaces.GCO).getText()),
+                    Double.valueOf(box.getChild("eastBoundLongitude", ISO19139Namespaces.GMD).getChild("Decimal", ISO19139Namespaces.GCO).getText()),
+                    Double.valueOf(box.getChild("southBoundLatitude", ISO19139Namespaces.GMD).getChild("Decimal", ISO19139Namespaces.GCO).getText()),
+                    Double.valueOf(box.getChild("northBoundLatitude", ISO19139Namespaces.GMD).getChild("Decimal", ISO19139Namespaces.GCO).getText())
+                ));
+            } catch (NullPointerException e) {}
+        }
+        return extents;
     }
 }
