@@ -176,7 +176,7 @@
     the widget should have. If expanded, then one
     field per language is displayed. -->
     <expanded>
-  
+
     </expanded>
     <!-- All fields in ISO could be multilingual.
     Define element to exclude.
@@ -315,7 +315,8 @@
   <!-- View configuration -->
   <views>
 
-    <view name="default" upAndDownControlHidden="true"
+    <view name="default"
+      hideTimeInCalendar="true" upAndDownControlHidden="true"
       displayTooltips="true" displayTooltipsMode="icon">
 
       <sidePanel>
@@ -466,56 +467,14 @@
           </field>
 
           <!--  5.2.12 Keyword value -->
-          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords[*/gmd:thesaurusName]"/>
-          <field name="descriptiveKeywords"
-                 xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords[not(*/gmd:thesaurusName)]"/>
+         <field
+            xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:descriptiveKeywords"
+            or="descriptiveKeywords"
+            in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification"/>
 
+</section>
+<section name="spatial">
 
-          <action type="add"
-                  addDirective="data-gn-thesaurus-selector"
-                  name="gmd:descriptiveKeywords" or="descriptiveKeywords"
-                  in="/gmd:MD_Metadata/gmd:identificationInfo/*">
-            <directiveAttributes data-include="xpath::string-join(gmd:MD_Metadata/gmd:identificationInfo
-                                          //gmd:thesaurusName/*/gmd:identifier/*/
-                                          gmd:code/gmx:Anchor/
-                                          concat('-', substring-after(text()[. != ''], 'geonetwork.thesaurus.')), ',')"/>
-          </action>
-
-          <action type="add"
-                  btnLabel="addKeywords"
-                  name="descriptiveKeywords" or="descriptiveKeywords"
-                  in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification">
-            <template>
-              <snippet>
-               <gmd:descriptiveKeywords>
-                 <gmd:MD_Keywords>
-                  <gmd:keyword>
-                    <gco:CharacterString></gco:CharacterString>
-                  </gmd:keyword>
-                  <gmd:thesaurusName>
-                    <gmd:CI_Citation>
-                     <gmd:title>
-                      <gco:CharacterString></gco:CharacterString>
-                    </gmd:title>
-                    <gmd:date>
-                      <gmd:CI_Date>
-                       <gmd:date>
-                        <gco:Date></gco:Date>
-                      </gmd:date>
-                      <gmd:dateType>
-                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
-                         codeListValue="publication"/>
-                       </gmd:dateType>
-                     </gmd:CI_Date>
-                   </gmd:date>
-                 </gmd:CI_Citation>
-               </gmd:thesaurusName>
-             </gmd:MD_Keywords>
-           </gmd:descriptiveKeywords>
-              </snippet>
-            </template>
-          </action>
-      
           <!-- 5.2.13 Originating controlled vocabulary -->
           <!-- 5.2.14 Geographic location -->
           <field
@@ -523,9 +482,7 @@
               srv:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox"/>
 
           <action type="add" name="extent" or="extent" btnLabel="addExtent"
-                  in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification"
-                  if="count(gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/
-                  srv:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox)=0">
+                  in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification">
             <template>
               <snippet>
                 <srv:extent>
@@ -548,6 +505,34 @@
                     </gmd:geographicElement>
                   </gmd:EX_Extent>
                 </srv:extent>
+              </snippet>
+            </template>
+          </action>
+
+          <!--     5.27 Code referentiesysteem ... -->
+          <field name="rsIdentifier"
+                 xpath="/gmd:MD_Metadata/gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier"
+                 del="../.."/>
+          <action type="add"
+                  btnLabel="addReferenceSystem"
+                  or="referenceSystemInfo"
+                  in="/gmd:MD_Metadata">
+            <template>
+              <snippet>
+                <gmd:referenceSystemInfo>
+                  <gmd:MD_ReferenceSystem>
+                    <gmd:referenceSystemIdentifier>
+                      <gmd:RS_Identifier>
+                        <gmd:code>
+                          <gco:CharacterString></gco:CharacterString>
+                        </gmd:code>
+                        <gmd:codeSpace>
+                          <gco:CharacterString></gco:CharacterString>
+                        </gmd:codeSpace>
+                      </gmd:RS_Identifier>
+                    </gmd:referenceSystemIdentifier>
+                  </gmd:MD_ReferenceSystem>
+                </gmd:referenceSystemInfo>
               </snippet>
             </template>
           </action>
@@ -589,36 +574,6 @@
           <!--  5.2.19 Limitations on public access  -->
           <!-- 5.2.20 Conditions applying to access and use  -->
 
-        </section>
-
-        <section name="referenceSystemInfo">
-          <!--     5.27 Code referentiesysteem ... -->
-          <field name="rsIdentifier"
-                 xpath="/gmd:MD_Metadata/gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier"
-                 del="../.."/>
-          <action type="add"
-                  btnLabel="addReferenceSystem"
-                  or="referenceSystemInfo"
-                  in="/gmd:MD_Metadata">
-            <template>
-              <snippet>
-                <gmd:referenceSystemInfo>
-                  <gmd:MD_ReferenceSystem>
-                    <gmd:referenceSystemIdentifier>
-                      <gmd:RS_Identifier>
-                        <gmd:code>
-                          <gco:CharacterString></gco:CharacterString>
-                        </gmd:code>
-                        <gmd:codeSpace>
-                          <gco:CharacterString></gco:CharacterString>
-                        </gmd:codeSpace>
-                      </gmd:RS_Identifier>
-                    </gmd:referenceSystemIdentifier>
-                  </gmd:MD_ReferenceSystem>
-                </gmd:referenceSystemInfo>
-              </snippet>
-            </template>
-          </action>
         </section>
 
         <section name="restrictions">
@@ -711,7 +666,7 @@
 
           <!-- 5.2.8 Coupling Type -->
           <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:couplingType"/>
-      
+
           <action type="add"
                   forceLabel="true"
                   btnLabel="addCouplingType"
@@ -728,7 +683,7 @@
           <!-- 5.2.9 Spatial data service type -->
           <field
             xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:serviceType"/>
-            
+
           <action type="add"
                   forceLabel="true"
                   btnLabel="addServiceType"
@@ -950,7 +905,7 @@
           <!--  5.2.24 Metadata point of contact  -->
           <!--  5.53 Taal van de metadata.. -->
           <field name="md_language" xpath="/gmd:MD_Metadata/gmd:language" or="language" in="/gmd:MD_Metadata"/>
-     
+
           <action type="add"
                   btnLabel="addLanguage"
                   if="count(gmd:MD_Metadata/gmd:language) = 0"
@@ -985,24 +940,41 @@
             </template>
           </action>
 
-          <!-- 5.4 Hiërarchieniveau.-->
-          <field
-           xpath="/gmd:MD_Metadata/gmd:hierarchyLevel" removable="false" />
+        <field
+          xpath="/gmd:MD_Metadata/gmd:hierarchyLevel" removable="false" />
+        <action type="add"
+                btnLabel="addHierarchy"
+                or="hierarchyLevel"
+                if="count(gmd:MD_Metadata/gmd:hierarchyLevel) = 0"
+                in="/gmd:MD_Metadata" >
+          <template>
+            <snippet>
+              <gmd:hierarchyLevel>
+                <gmd:MD_ScopeCode
+                  codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode"
+                  codeListValue="dataset"/>
+              </gmd:hierarchyLevel>
+            </snippet>
+          </template>
+        </action>
 
-          <action type="add"
-                  btnLabel="addHierarchy"
-                  or="hierarchyLevel"
-                  in="/gmd:MD_Metadata" >
-            <template>
-              <snippet>
-                <gmd:hierarchyLevel>
-                  <gmd:MD_ScopeCode
-                    codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode"
-                    codeListValue="service"/>
-                </gmd:hierarchyLevel>
-              </snippet>
-            </template>
-          </action>
+          <field
+          xpath="/gmd:MD_Metadata/gmd:hierarchyLevelName" removable="true" />
+        <action type="add"
+                if="count(gmd:MD_Metadata/gmd:hierarchyLevelName) = 0"
+                btnLabel="addhierarchyLevelName"
+                name="hierarchyLevelName" or="hierarchyLevelName"
+                in="/gmd:MD_Metadata">
+          <template>
+            <snippet>
+              <gmd:hierarchyLevelName>
+                <gco:CharacterString></gco:CharacterString>
+              </gmd:hierarchyLevelName>
+            </snippet>
+          </template>
+        </action>
+
+
 
           <!--  5.49 Verantwoordelijke organisatie metadata  -->
           <field name="metadataPointOfContact" templateModeOnly="true" header="true"
@@ -1150,7 +1122,9 @@
       </flatModeExceptions>
     </view>
 
-    <view name="advanced" displayTooltips="true"
+    <view name="dutchprofile"
+      hideTimeInCalendar="true"
+      displayTooltips="true"
       displayTooltipsMode="icon">
 
        <sidePanel>
@@ -1159,8 +1133,9 @@
        </sidePanel>
 
        <tab id="identificationInfo" default="true">
-         <text ref="fullViewTitle"/>
-         <text ref="fullViewDescription"/>
+
+        <text ref="dutchProfileTitle"/>
+        <text ref="dutchProfileDescription"/>
 
          <directive data-gn-onlinesrc-list=""
           types="thumbnail|onlinesrc|dataset"/>
@@ -1292,7 +1267,8 @@
 
     </view>
 
-    <view name="advanced" displayTooltips="true" displayTooltipsMode="icon">
+    <view name="advanced"
+      hideTimeInCalendar="true" displayTooltips="true" displayTooltipsMode="icon">
       <sidePanel>
         <directive data-gn-validation-report=""/>
         <directive data-gn-suggestion-list=""/>
@@ -1304,7 +1280,7 @@
         <text ref="fullViewTitle"/>
         <text ref="fullViewDescription"/>
 
-        <section xpath="/gmd:MD_Metadata/gmd:identificationInfo" 
+        <section xpath="/gmd:MD_Metadata/gmd:identificationInfo"
                  or="identificationInfo"
                  in="/gmd:MD_Metadata"/>
       </tab>

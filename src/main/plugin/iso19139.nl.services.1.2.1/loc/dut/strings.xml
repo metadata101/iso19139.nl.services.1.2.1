@@ -150,6 +150,8 @@
     <Add_Quality>Kwaliteitsindicatie toevoegen</Add_Quality>
     <addCouplingType>Voeg koppel type toe</addCouplingType>
     <addServiceType>Voeg service type toe</addServiceType>
+    <serviceType>Service type</serviceType>
+    <serviceTypeVersion>Service type versie</serviceTypeVersion>
     <addServiceTypeVersion>Voeg versie toe</addServiceTypeVersion>
     <addOperation>Voeg operaties toe</addOperation>
     <addReferenceSystem>Referentie systeem toevoegen</addReferenceSystem>
@@ -219,4 +221,6 @@
     <addUseConstraint>Gebruiksbeperking toevoegen</addUseConstraint>
     <addOtherConstraint>Overige beperking toevoegen</addOtherConstraint>
     <addConceptualConsistency>Conceptuele consistentie toevoegen</addConceptualConsistency>
+
+    <spatial>Ruimtelijke informatie</spatial>
 </strings>
