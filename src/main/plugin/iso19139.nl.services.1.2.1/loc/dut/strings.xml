@@ -12,7 +12,7 @@
     <!-- New strings added for the AngularJS editor -->
     <!-- View and tabs -->
     <viewTitle>
-        <h3>Basis weergave</h3>
+        <h3>Nederlands profiel voor Services 1.2.1 - Basis</h3>
     </viewTitle>
     <viewDescription>
         <div>Het basis formulier kan gebruikt worden voor het bewerken van metadata van Nederlandstalige datasets die
@@ -23,14 +23,14 @@
     </viewDescription>
 
     <dutchProfileTitle>
-        <h3>Nederlands profiel weergave</h3>
+        <h3>Nederlands profiel voor Services 1.2.1 - Volledig</h3>
     </dutchProfileTitle>
     <dutchProfileDescription>
         <div>In deze weergave worden alle elementen van het Nederlands profiel getoond.</div>
     </dutchProfileDescription>
 
     <fullViewTitle>
-        <h3>Volledige weergave</h3>
+        <h3>Volledige iso19139 weergave + services extensie</h3>
     </fullViewTitle>
     <fullViewDescription>
         <div>De volledige weergave toont alle ISO elementen.</div>
