@@ -11,6 +11,7 @@
 
     <!-- New strings added for the AngularJS editor -->
     <!-- View and tabs -->
+    <default>Basis</default>
     <viewTitle>
         <h3>Nederlands profiel voor Services 1.2.1 - Basis</h3>
     </viewTitle>
@@ -22,6 +23,7 @@
         </div>
     </viewDescription>
 
+    <dutchprofile>Nederlands profiel</dutchprofile>
     <dutchProfileTitle>
         <h3>Nederlands profiel voor Services 1.2.1 - Volledig</h3>
     </dutchProfileTitle>
