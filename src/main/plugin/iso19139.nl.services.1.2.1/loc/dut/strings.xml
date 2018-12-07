@@ -11,21 +11,16 @@
 
     <!-- New strings added for the AngularJS editor -->
     <!-- View and tabs -->
-    <default>Basis</default>
     <viewTitle>
         <h3>Nederlands profiel voor Services 1.2.1 - Basis</h3>
     </viewTitle>
     <viewDescription>
-        <div>Het basis formulier kan gebruikt worden voor het bewerken van metadata van Nederlandstalige datasets die
-            gebaseerd zijn op het Rijksdriehoekstelsel. Dit formulier toont een beperkte set van elementen en doet een
-            aantal aannames. Voor het bewerken van alle elementen uit het Nederlands profiel gebruikt u het formulier
-            met titel "Nederlands profiel" (via de weergave knop met het "oogje" aan de rechter zijkant).
+        <div>Het basis formulier kan gebruikt worden voor het bewerken van metadata van Nederlandstalige datasets. Dit formulier toont een beperkte set van elementen en doet een aantal aannames. Voor het bewerken van alle elementen uit het Nederlands profiel gebruikt u het formulier met titel "Optionele elementen" (via de weergave knop met het "oogje" aan de rechter zijkant).
         </div>
     </viewDescription>
 
-    <dutchprofile>Nederlands profiel</dutchprofile>
     <dutchProfileTitle>
-        <h3>Nederlands profiel voor Services 1.2.1 - Volledig</h3>
+        <h3>Nederlands profiel voor Services 1.2.1 - Optionele elementen</h3>
     </dutchProfileTitle>
     <dutchProfileDescription>
         <div>In deze weergave worden alle elementen van het Nederlands profiel getoond.</div>
@@ -42,12 +37,12 @@
         <h3>XML weergave</h3>
     </xmlViewTitle>
     <xmlViewDescription>
-        <div>In deze weergave worden alle ingevulde elementen getoond in XML.</div>
+        <div>In deze weergave de metadata getoond in XML.</div>
     </xmlViewDescription>
 
+    <default>Basis</default>
+    <dutchprofile>Optionele elementen</dutchprofile>
     <advanced>Volledig</advanced>
-    <default>Nederlands profiel</default>
-    <dutchprofile>Nederlands profiel</dutchprofile>
     <simple>Eenvoudig</simple>
     <inspire>INSPIRE</inspire>
 

@@ -1255,30 +1255,30 @@
 
     <!-- ==================================================== -->
 
-    <element name="srv:operatesOn"
+    <element name="gmd:title"
              context="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:operatesOn/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title">
-        <label>Operates on titel</label>
+        <label>Titel gekoppelde bron</label>
     </element>
 
     <!-- ==================================================== -->
 
-    <element name="srv:operatesOn"
+    <element name="gmd:date"
              context="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:operatesOn/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date">
-        <label>Operates on datum</label>
+        <label>Datum gekoppelde bron</label>
     </element>
 
     <!-- ==================================================== -->
 
-    <element name="srv:operatesOn"
+    <element name="gmd:abstract"
              context="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:operatesOn/gmd:MD_DataIdentification/gmd:abstract">
-        <label>Operates on samenvatting</label>
+        <label>Samenvatting gekoppelde bron</label>
     </element>
 
     <!-- ==================================================== -->
 
-    <element name="srv:operatesOn"
+    <element name="gmd:language"
              context="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:operatesOn/gmd:MD_DataIdentification/gmd:language">
-        <label>Operates on taal</label>
+        <label>Taal gekoppelde bron</label>
     </element>
 
     <!-- ==================================================== -->
@@ -1538,4 +1538,13 @@
             <option value="TEXT">TEXT</option>
         </helper>
     </element>
+
+    <element name="gco:nilReason">
+      <label>Rede lege waarde</label>
+    </element>
+
+    <element name="gco:CharacterString">
+      <label>String</label>
+    </element>
+
 </labels>
