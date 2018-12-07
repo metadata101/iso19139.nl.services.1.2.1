@@ -329,7 +329,7 @@
   <!-- View configuration -->
   <views>
 
-    <view name="default"
+    <view name="Basis"
       hideTimeInCalendar="true" upAndDownControlHidden="true"
       displayTooltips="true" displayTooltipsMode="icon">
 
@@ -339,7 +339,8 @@
       </sidePanel>
 
 
-      <tab id="default" default="true" mode="flat">
+
+      <tab id="Basis" default="true" mode="flat">
         <text ref="viewTitle"/>
         <text ref="viewDescription"/>
 
@@ -689,7 +690,7 @@
               <gmd:hierarchyLevel>
                 <gmd:MD_ScopeCode
                   codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode"
-                  codeListValue="dataset"/>
+                  codeListValue="service"/>
               </gmd:hierarchyLevel>
             </snippet>
           </template>
@@ -705,7 +706,7 @@
           <template>
             <snippet>
               <gmd:hierarchyLevelName>
-                <gco:CharacterString></gco:CharacterString>
+                <gco:CharacterString>service</gco:CharacterString>
               </gmd:hierarchyLevelName>
             </snippet>
           </template>
@@ -824,7 +825,7 @@
         <directive data-gn-onlinesrc-list=""
           types="thumbnail|onlinesrc|dataset"/>
 
-        <section name="Basis">
+        <section name="dutchprofile">
           <!-- 5.2.1 Resource title -->
           <field
             xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:citation/gmd:CI_Citation/gmd:title" />
@@ -1585,7 +1586,7 @@
             <template>
               <snippet>
                 <gmd:metadataStandardVersion>
-                  <gco:CharacterString >Nederlands metadata profiel op ISO 19119 voor services 1.2.1
+                  <gco:CharacterString>Nederlands metadata profiel op ISO 19119 voor services 1.2.1
                   </gco:CharacterString>
                 </gmd:metadataStandardVersion>
               </snippet>
