@@ -796,6 +796,7 @@
     <element name="gmd:otherConstraints"
              context="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints">
         <label>Overige beperkingen</label>
+        <btnLabel>Overige beperking toevoegen</btnLabel>
         <description>Andere restricties of beperkingen. Dit veld is te gebruiken om de URL naar de licentie van Public
             domain, Creative Commons Publieke Domein Verklaring (CC0) of Geo Gedeeld in te vullen.
         </description>
@@ -1240,8 +1241,7 @@
 
     <!-- ==================================================== -->
 
-    <element name="srv:operatesOn"
-             context="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:operatesOn">
+    <element name="srv:operatesOn">
         <label>Gekoppelde bron</label>
         <description>Dit element is conditioneel in INSPIRE. Het is verplicht als er links naar de datasets waarop de
             service opereert
@@ -1352,8 +1352,7 @@
 
     <!-- ==================================================== -->
 
-    <element name="srv:serviceTypeVersion"
-             context="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:serviceTypeVersion">
+    <element name="srv:serviceTypeVersion">
         <label>Service Type Versie</label>
         <description>De versie die hier gehanteerd dient te worden is de versie van de specificatie van de service
             instance. Niet een implementatie versie van de software die geimplementeerd. Als scheidingsteken tussen de

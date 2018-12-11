@@ -627,13 +627,11 @@
 
           <field
             xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:operatesOn"/>
-          <!--  or="operatesOn"
-            in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification"
-            />-->
 
           <action type="add"
                   forceLabel="true"
                   btnLabel="addOperatesOn"
+                  name="operatesOn"
                   or="operatesOn"
                   in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification"
                   if="count(gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification) > 0">
@@ -1072,10 +1070,12 @@
         <section name="restrictions">
 
           <field name="useLimitation" removable="true"
+                 or="resourceConstraints"
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints[gmd:MD_Constraints]"/>
+
           <action type="add"
-                  btnLabel="addResourceConstraints"
-                  name="resourceConstraints" or="resourceConstraints" forceLabel="true"
+                  btnLabel="addUseLimitation"
+                  name="useLimitation" or="resourceConstraints" forceLabel="true"
                   in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification">
             <template>
               <snippet>

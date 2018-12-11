@@ -175,7 +175,7 @@
 
     <equivalentScale>Resolutie</equivalentScale>
     <distance>Afstand</distance>
-    <scope>Scope</scope>
+    <scope>Niveau kwaliteitsbeschrijving</scope>
     <InspireConformance>INSPIRE conformiteit</InspireConformance>
     <DQ_AbsoluteExternalPositionalAccuracyUnit>Eenheid</DQ_AbsoluteExternalPositionalAccuracyUnit>
 
@@ -197,7 +197,7 @@
     <dataQuality>Service kwaliteit</dataQuality>
     <coupledResource>Relatie operatie met dataset</coupledResource>
     <addCoupledResource>Dataset operaties toevoegen</addCoupledResource>
-    <operatesOn>Gekoppelde bron</operatesOn>
+    <operatesOn>Gekoppelde dataset</operatesOn>
     <addOperatesOn>Dataset koppeling toevoegen</addOperatesOn>
 
     <operationName>Operatienaam</operationName>
