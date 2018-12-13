@@ -11,6 +11,7 @@
   <!-- i18n information -->
   <xsl:variable name="vacuum-loc">
     <msg id="a" xml:lang="eng">Remove empty elements from this record.</msg>
+    <msg id="a" xml:lang="dut">Verwijder lege elementen uit dit record.</msg>
     <msg id="a" xml:lang="fre">Supprimer les éléments vides de cette fiche.</msg>
   </xsl:variable>
 
