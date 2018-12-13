@@ -329,7 +329,7 @@
   <!-- View configuration -->
   <views>
 
-    <view name="Basis"
+    <view name="Basis" default="true"
       hideTimeInCalendar="true" upAndDownControlHidden="true"
       displayTooltips="true" displayTooltipsMode="icon">
 
@@ -338,9 +338,7 @@
         <directive data-gn-suggestion-list=""/>
       </sidePanel>
 
-
-
-      <tab id="Basis" default="true" mode="flat">
+      <tab id="default" default="true" mode="flat">
         <text ref="viewTitle"/>
         <text ref="viewDescription"/>
 
@@ -795,32 +793,27 @@
         <for name="gmd:spatialResolution"/>
         <for name="gmd:pointOfContact"/>
         <for name="gmd:distributor"/>
-        <for name="gmd:useConstraints"/>
-        <for name="gmd:otherConstraints"/>
         <for name="gmd:contact"/>
+        <for name="gmd:processor"/>
         <for name="gmd:topicCategory"/>
       </flatModeExceptions>
     </view>
 
     <view name="dutchprofile"
-      hideTimeInCalendar="true"
-      displayTooltips="true"
-      displayTooltipsMode="icon">
+          hideTimeInCalendar="true" upAndDownControlHidden="true"
+          displayTooltips="true" displayTooltipsMode="icon">
 
        <sidePanel>
          <directive data-gn-validation-report=""/>
          <directive data-gn-suggestion-list=""/>
        </sidePanel>
 
-       <tab id="dutchprofile" default="true">
+       <tab id="dutchprofile" mode="flat" default="true">
 
         <text ref="dutchProfileTitle"/>
         <text ref="dutchProfileDescription"/>
 
          <directive data-gn-onlinesrc-list=""
-          types="thumbnail|onlinesrc|dataset"/>
-
-        <directive data-gn-onlinesrc-list=""
           types="thumbnail|onlinesrc|dataset"/>
 
         <section name="dutchprofile">
@@ -963,8 +956,6 @@
             or="descriptiveKeywords"
             in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification"/>
 
-</section>
-<section name="spatial">
 
           <!-- 5.2.13 Originating controlled vocabulary -->
           <!-- 5.2.14 Geographic location -->
@@ -1291,6 +1282,23 @@
 
         </section>
 
+       <section name="distributionInfo">
+       <!-- Button to add distribution section if not present -->
+          <action type="add"
+                  btnLabel="addDistribution"
+                  name="distributionInfo" or="distributionInfo"
+                  if="count(gmd:MD_Metadata/gmd:distributionInfo) = 0"
+                  in="/gmd:MD_Metadata">
+            <template>
+              <snippet>
+                <gmd:distributionInfo>
+                  <gmd:MD_Distribution />
+                </gmd:distributionInfo>
+              </snippet>
+            </template>
+          </action>
+        </section>
+
         <section name="dataQuality">
           <!--  5.2.16 Scope -->
           <field name="scope"
@@ -1410,6 +1418,25 @@
                   <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="dut">Nederlands
                   </gmd:LanguageCode>
                 </gmd:language>
+              </snippet>
+            </template>
+          </action>
+
+<!--    5.56 locale -->
+          <field xpath="/gmd:MD_Metadata/gmd:locale/gmd:PT_Locale"/>
+          <action type="add"
+                  btnLabel="addLocale"
+                  or="metadataLocale"
+                  in="/gmd:MD_Metadata">
+            <template>
+              <snippet>
+                <gmd:locale>
+                  <gmd:PT_Locale>
+                    <gmd:languageCode>
+                      <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="" />
+                    </gmd:languageCode>
+                  </gmd:PT_Locale>
+                </gmd:locale>
               </snippet>
             </template>
           </action>
@@ -1598,31 +1625,28 @@
         </section>
       </tab>
 
-      <!-- Elements that should not use the "flat" mode -->
+      <!-- Elements that should not use the "<view" mode -->
       <flatModeExceptions>
-        <!-- <for name="srv:containsOperations" />
-       <for name="srv:SV_OperationMetadata" />-->
         <for name="srv:parameters" />
         <for name="gmd:keyword"/>
         <for name="gmd:thesaurusName"/>
         <for name="gmd:spatialResolution"/>
         <for name="gmd:pointOfContact"/>
         <for name="gmd:distributor"/>
-        <for name="gmd:useConstraints"/>
-        <for name="gmd:otherConstraints"/>
         <for name="gmd:contact"/>
+        <for name="gmd:processor"/>
         <for name="gmd:topicCategory"/>
       </flatModeExceptions>
 
     </view>
 
     <view name="advanced"
-      hideTimeInCalendar="true" displayTooltips="true" displayTooltipsMode="icon">
+      hideTimeInCalendar="true" upAndDownControlHidden="true"
+      displayTooltips="true" displayTooltipsMode="icon">
       <sidePanel>
         <directive data-gn-validation-report=""/>
         <directive data-gn-suggestion-list=""/>
       </sidePanel>
-
 
       <tab id="identificationInfo" default="true">
 
@@ -1710,7 +1734,8 @@
       </tab>
     </view>
 
-    <view name="xml">
+    <view name="xml" upAndDownControlHidden="true"
+          displayTooltips="true" displayTooltipsMode="icon">
       <sidePanel>
         <directive data-gn-validation-report=""/>
       </sidePanel>
@@ -1718,7 +1743,7 @@
       <text ref="xmlViewTitle"/>
       <text ref="xmlViewDescription"/>
 
-      <tab id="xml" default="true"/>
+      <tab id="xml"/>
     </view>
   </views>
 </editor>

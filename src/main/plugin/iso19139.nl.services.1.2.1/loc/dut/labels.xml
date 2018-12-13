@@ -434,7 +434,7 @@
 
     <element name="gmd:DQ_Scope"
              context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:scope/gmd:DQ_Scope">
-        <label>Niveau</label>
+        <label>Niveau kwaliteitsbeschrijving</label>
         <description>Niveau waar de kwaliteitsbeschrijving betrekking op heeft.</description>
         <condition>mandatory</condition>
     </element>
