@@ -392,12 +392,12 @@
 
           <!--  5.2.21 Responsible party  -->
           <field name="pointOfContact"
-            notDisplayedIfMissing="true"
             xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:pointOfContact"/>
 
           <action type="add"
                   btnLabel="addPointOfContact"
                   or="pointOfContact"
+                  if="count(gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:pointOfContact)=0"
                   in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification">
             <template>
               <snippet>
@@ -670,27 +670,7 @@
 
         <section name="Metadata">
 
-          <!-- 5.2.22 Responsible party role  -->
-          <!--  5.2.23 Metadata identifier  -->
-          <!--  5.2.24 Metadata point of contact  -->
 
-        <field
-          xpath="/gmd:MD_Metadata/gmd:hierarchyLevel" removable="false" />
-        <action type="add"
-                btnLabel="addHierarchy"
-                or="hierarchyLevel"
-                if="count(gmd:MD_Metadata/gmd:hierarchyLevel) = 0"
-                in="/gmd:MD_Metadata" >
-          <template>
-            <snippet>
-              <gmd:hierarchyLevel>
-                <gmd:MD_ScopeCode
-                  codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode"
-                  codeListValue="service"/>
-              </gmd:hierarchyLevel>
-            </snippet>
-          </template>
-        </action>
 
           <field
           xpath="/gmd:MD_Metadata/gmd:hierarchyLevelName" removable="true" />
@@ -702,19 +682,19 @@
           <template>
             <snippet>
               <gmd:hierarchyLevelName>
-                <gco:CharacterString>service</gco:CharacterString>
+                <gco:CharacterString/>
               </gmd:hierarchyLevelName>
             </snippet>
           </template>
         </action>
 
 
-<field name="metadataPointOfContact"
-                 notDisplayedIfMissing="true"
-                 xpath="/gmd:MD_Metadata/gmd:contact" del="." />
+        <field name="metadataPointOfContact"
+          xpath="/gmd:MD_Metadata/gmd:contact" del="." />
 
           <action type="add" name="metadataPointOfContact"
                   btnLabel="addPointOfContact"
+                  if="count(gmd:MD_Metadata/gmd:contact)=0"
                   or="contact" in="/gmd:MD_Metadata">
             <template>
               <snippet>

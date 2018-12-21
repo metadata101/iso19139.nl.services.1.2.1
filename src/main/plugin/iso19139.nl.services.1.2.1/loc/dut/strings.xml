@@ -87,6 +87,10 @@
     <country>Land</country>
     <telephone>Telefoon</telephone>
     <onlineResource>Url</onlineResource>
+    <operationName>Operatie</operationName>
+    <DCP>Type</DCP>
+    <connectPoint>Endpoint</connectPoint>
+
 
     <temporalRangeSection>Temporele dekking</temporalRangeSection>
     <beginPosition>Van</beginPosition>
@@ -199,7 +203,7 @@
     <addCoupledResource>Dataset operaties toevoegen</addCoupledResource>
     <operatesOn>Gekoppelde dataset</operatesOn>
     <addOperatesOn>Dataset koppeling toevoegen</addOperatesOn>
-
+    <addConnectPoint>Endpoint toevoegen</addConnectPoint>
     <operationName>Operatienaam</operationName>
     <identifier>Identifier</identifier>
     <layername>Laagnaam</layername>
