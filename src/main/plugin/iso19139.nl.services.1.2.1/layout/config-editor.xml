@@ -1739,7 +1739,7 @@
       <text ref="xmlViewTitle"/>
       <text ref="xmlViewDescription"/>
 
-      <tab id="xml"/>
+      <tab id="xml" default="true"/>
     </view>
   </views>
 </editor>
