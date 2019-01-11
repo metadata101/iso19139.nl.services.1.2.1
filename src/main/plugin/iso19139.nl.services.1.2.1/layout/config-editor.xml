@@ -338,7 +338,7 @@
          <directive data-gn-suggestion-list=""/>
        </sidePanel>
 
-       <tab id="dutchprofile" mode="flat" default="true">
+       <tab id="default" mode="flat" default="true">
 
         <text ref="dutchProfileTitle"/>
         <text ref="dutchProfileDescription"/>
