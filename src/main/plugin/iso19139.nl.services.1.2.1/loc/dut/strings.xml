@@ -15,15 +15,15 @@
         <h3>Nederlands profiel voor Services 1.2.1 - Basis</h3>
     </viewTitle>
     <viewDescription>
-        <div>Het basis formulier kan gebruikt worden voor het bewerken van metadata van Nederlandstalige datasets. Dit formulier toont een beperkte set van elementen en doet een aantal aannames. Voor het bewerken van alle elementen uit het Nederlands profiel gebruikt u het formulier met titel "Optionele elementen" (via de weergave knop met het "oogje" aan de rechter zijkant).
+        <div>Het basis formulier kan gebruikt worden voor het bewerken van metadata van Nederlandstalige services. Dit formulier toont een beperkte set van elementen en doet een aantal aannames. Voor het bewerken van alle elementen uit het Nederlands profiel gebruikt u het formulier met titel "Optionele elementen" (via de weergave knop met het "oogje" aan de rechter zijkant).
         </div>
     </viewDescription>
 
     <dutchProfileTitle>
-        <h3>Nederlands profiel voor Services 1.2.1 - Optionele elementen</h3>
+        <h3>Nederlands profiel voor Services 1.2.1 - Optionele &amp; conditionele elementen</h3>
     </dutchProfileTitle>
     <dutchProfileDescription>
-        <div>In deze weergave worden alle elementen van het Nederlands profiel getoond.</div>
+        <div>Dit formulier kan gebruikt worden voor het bewerken van metadata van services op Nederlandstalige datasets. In deze weergave worden verplichte, optionele en conditionele elementen van het Nederlands profiel getoond.</div>
     </dutchProfileDescription>
 
     <fullViewTitle>
@@ -186,10 +186,10 @@
     <LI_Source>Bron en inwinning</LI_Source>
 
     <addHierarchy>Hiërarchisch niveau toevoegen</addHierarchy>
-    <addHierarchyLevelName>Beschrijving hiërarchisch niveau toevoegen</addHierarchyLevelName>
+    <addhierarchyLevelName>Beschrijving hiërarchisch niveau toevoegen</addhierarchyLevelName>
     <AddSource>Voeg bron toe</AddSource>
     <AddProcessStep>Voeg bewerkingsstap toe</AddProcessStep>
-    <addTemporalExtent>Voeg inhoudelijke geldigheid toe</addTemporalExtent>
+    <addTemporalExtent>Voeg temporele dekking toe</addTemporalExtent>
     <addResourceMaintenance>Voeg onderhouds informatie toe</addResourceMaintenance>
     <addSeries>Voeg serie informatie toe</addSeries>
 
