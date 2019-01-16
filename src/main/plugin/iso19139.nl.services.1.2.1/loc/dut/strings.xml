@@ -132,6 +132,7 @@
     <addCharacterset>Karakterset toevoegen</addCharacterset>
     <addDate>Datum toevoegen</addDate>
     <addLineage>Herkomst toevoegen</addLineage>
+    <addLocale>Taal toevoegen</addLocale>
     <addUseLimitation>Gebruiksbeperking toevoegen</addUseLimitation>
     <legalConstraints>Juridische restrictie</legalConstraints>
     <addLegalConstraints>Juridische restrictie toevoegen</addLegalConstraints>

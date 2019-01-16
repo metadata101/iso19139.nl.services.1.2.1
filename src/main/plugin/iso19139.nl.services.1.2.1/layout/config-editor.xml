@@ -968,16 +968,17 @@
 
 <!--    5.56 locale -->
           <field xpath="/gmd:MD_Metadata/gmd:locale/gmd:PT_Locale"/>
+
           <action type="add"
                   btnLabel="addLocale"
-                  or="metadataLocale"
+                  or="locale"
                   in="/gmd:MD_Metadata">
             <template>
               <snippet>
                 <gmd:locale>
                   <gmd:PT_Locale>
                     <gmd:languageCode>
-                      <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="" />
+                      <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="eng" />
                     </gmd:languageCode>
                   </gmd:PT_Locale>
                 </gmd:locale>
