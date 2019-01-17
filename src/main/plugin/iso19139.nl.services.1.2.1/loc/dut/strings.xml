@@ -41,7 +41,7 @@
     </xmlViewDescription>
 
     <default>Basis</default>
-    <dutchprofile>Optionele elementen</dutchprofile>
+    <dutchprofile>Nederlands profiel</dutchprofile>
     <advanced>Volledig</advanced>
     <simple>Eenvoudig</simple>
     <inspire>INSPIRE</inspire>
@@ -116,7 +116,7 @@
     <qualityScope>Niveau kwaliteitsbeschrijving</qualityScope>
 
     <useLimitation>Gebruiksbeperkingen</useLimitation>
-    <dutchprofile2>Nederlands profiel 2</dutchprofile2>
+    <dutchprofile2>Nederlands profiel</dutchprofile2>
     <Basis>Basis</Basis>
     <Metadata>Over de metadata</Metadata>
 
