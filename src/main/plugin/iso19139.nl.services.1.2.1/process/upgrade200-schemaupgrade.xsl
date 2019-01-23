@@ -75,4 +75,205 @@
       </gmd:metadataStandardVersion>
   </xsl:template>
 
+  <!-- Use Anchor for gmd:MD_Identifier/gmd:code -->
+  <!-- Keep xlink:href empty so users can fill the proper value -->
+  <xsl:template match="gmd:identifier/gmd:MD_Identifier/gmd:code" priority="2">
+    <xsl:copy>
+      <xsl:copy-of select="@*" />
+      <xsl:choose>
+        <xsl:when test="gmx:Anchor">
+          <xsl:apply-templates select="gmx:Anchor" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:variable name="code" select="gco:CharacterString" />
+          <gmx:Anchor
+            xlink:href="">
+            <xsl:value-of select="$code"/></gmx:Anchor>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:copy>
+  </xsl:template>
+
+
+  <!-- Online resources description: accessPoint, endPoint -->
+  <xsl:template match="gmd:onLine/gmd:CI_OnlineResource" priority="2">
+
+    <xsl:copy>
+      <xsl:copy-of select="@*" />
+
+      <xsl:variable name="protocol" select="gmd:protocol/*/text()" />
+
+      <xsl:choose>
+        <!-- Add request=GetCapabilities if missing -->
+        <xsl:when test="geonet:contains-any-of($protocol, ('OGC:WMS', 'OGC:WMTS', 'OGC:WFS', 'OGC:WCS'))">
+          <xsl:variable name="url" select="gmd:linkage/gmd:URL" />
+          <xsl:variable name="paramRequest" select="'request=GetCapabilities'" />
+          <gmd:linkage>
+            <xsl:choose>
+              <xsl:when test="not(contains(lower-case($url), lower-case($paramRequest)))">
+                <xsl:choose>
+                  <xsl:when test="ends-with($url, '?')">
+                    <gmd:URL><xsl:value-of select="concat($url, $paramRequest)" /></gmd:URL>
+                  </xsl:when>
+                  <xsl:when test="contains($url, '?')">
+                    <gmd:URL><xsl:value-of select="concat($url, '&amp;', $paramRequest)" /></gmd:URL>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <gmd:URL><xsl:value-of select="concat($url, '?', $paramRequest)" /></gmd:URL>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:apply-templates select="gmd:linkage" />
+              </xsl:otherwise>
+            </xsl:choose>
+          </gmd:linkage>
+
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="gmd:linkage" />
+        </xsl:otherwise>
+      </xsl:choose>
+
+
+      <xsl:apply-templates select="gmd:protocol" />
+      <xsl:apply-templates select="gmd:applicationProfile" />
+      <xsl:apply-templates select="gmd:name" />
+
+      <!-- gmd:description -->
+      <xsl:choose>
+        <!-- Access points -->
+        <xsl:when test="geonet:contains-any-of($protocol, ('OGC:WMS', 'OGC:WMTS', 'OGC:WFS', 'OGC:WCS', 'INSPIRE Atom',
+          'landingpage', 'application', 'dataset', 'OGC:WPS', 'OGC:SOS',
+          'OGC:SensorThings', 'OAS', 'W3C:SPARQL', 'OASIS:OData', 'OGC:CSW',
+          'OGC:WCTS', 'OGC:WFS-G', 'OGC:SPS', 'OGC:SAS', 'OGC:WNS', 'OGC:ODS', 'OGC:OGS', 'OGC:OUS', 'OGC:OPS', 'OGC:ORS', 'UKST'))">
+
+          <gmd:description>
+            <gmx:Anchor
+              xlink:href="http://inspire.ec.europa.eu/metadata-codelist/OnLineDescriptionCode/accessPoint">
+              accessPoint</gmx:Anchor>
+          </gmd:description>
+        </xsl:when>
+
+        <!-- End points -->
+        <xsl:when test="geonet:contains-any-of($protocol, ('gml', 'geojson', 'gpkg', 'tiff', 'kml', 'csv', 'zip',
+          'wmc', 'json', 'jsonld', 'rdf-xml', 'xml', 'png', 'gif', 'jp2', 'mapbox-vector-tile', 'UKMT'))">
+          <gmd:description>
+            <gmx:Anchor
+              xlink:href="http://inspire.ec.europa.eu/metadata-codelist/OnLineDescriptionCode/endPoint">
+              endPoint</gmx:Anchor>
+          </gmd:description>
+        </xsl:when>
+
+        <!-- Other cases: copy current gmd:description element -->
+        <xsl:otherwise>
+          <xsl:apply-templates select="gmd:description" />
+        </xsl:otherwise>
+      </xsl:choose>
+
+      <xsl:apply-templates select="gmd:function" />
+    </xsl:copy>
+  </xsl:template>
+
+
+  <!-- Temporal element -->
+  <xsl:template match="gmd:extent/gml:TimePeriod[gml:begin]" priority="2">
+    <xsl:copy>
+      <xsl:copy-of select="@*" />
+
+      <gml:beginPosition><xsl:value-of select="gml:begin/gml:TimeInstant/gml:timePosition"/></gml:beginPosition>
+      <gml:endPosition><xsl:value-of select="gml:end/gml:TimeInstant/gml:timePosition"/></gml:endPosition>
+    </xsl:copy>
+  </xsl:template>
+
+  <!-- INSPIRE Theme thesaurus name -->
+  <xsl:template match="gmd:thesaurusName/gmd:CI_Citation[gmd:title/gco:CharacterString = 'GEMET - INSPIRE themes, version 1.0']" priority="2">
+    <xsl:copy>
+      <xsl:copy-of select="@*" />
+
+      <gmd:title>
+        <gmx:Anchor
+          xlink:href="http://www.eionet.europa.eu/gemet/nl/inspire-themes/">GEMET - INSPIRE themes, version 1.0</gmx:Anchor>
+      </gmd:title>
+
+      <xsl:apply-templates select="gmd:alternateTitle" />
+      <xsl:apply-templates select="gmd:date" />
+      <xsl:apply-templates select="gmd:edition" />
+      <xsl:apply-templates select="gmd:editionDate" />
+      <xsl:apply-templates select="gmd:identifier" />
+      <xsl:apply-templates select="gmd:citedResponsibleParty" />
+      <xsl:apply-templates select="gmd:presentationForm" />
+      <xsl:apply-templates select="gmd:series" />
+      <xsl:apply-templates select="gmd:otherCitationDetails" />
+      <xsl:apply-templates select="gmd:collectiveTitle" />
+      <xsl:apply-templates select="gmd:otherCitationDetails" />
+      <xsl:apply-templates select="gmd:ISBN" />
+      <xsl:apply-templates select="gmd:ISSN" />
+    </xsl:copy>
+  </xsl:template>
+
+  <!-- INSPIRE Theme keywords -->
+  <xsl:template match="gmd:keyword[../gmd:thesaurusName/*/gmd:title/gco:CharacterString = 'GEMET - INSPIRE themes, version 1.0']" priority="2">
+    <xsl:copy>
+      <xsl:copy-of select="@*" />
+
+      <xsl:choose>
+        <xsl:when test="gmx:Anchor">
+          <xsl:apply-templates select="gmx:Anchor" />
+        </xsl:when>
+
+        <xsl:otherwise>
+          <xsl:variable name="keyword" select="gco:CharacterString" />
+          <xsl:variable name="inspireThemeURI" select="$inspire-theme[skos:prefLabel = $keyword]/@rdf:about"/>
+
+          <gmx:Anchor
+            xlink:href="{$inspireThemeURI}">
+            <xsl:value-of select="$keyword" />
+          </gmx:Anchor>
+        </xsl:otherwise>
+      </xsl:choose>
+
+    </xsl:copy>
+  </xsl:template>
+
+
+  <!-- Reference System Identifier - use Anchor -->
+  <xsl:template match="gmd:referenceSystemIdentifier[gmd:RS_Identifier/gmd:code/gco:CharacterString = '28992']">
+    <gmd:referenceSystemIdentifier>
+      <gmd:RS_Identifier>
+        <gmd:code>
+          <gmx:Anchor
+            xlink:href="http://www.opengis.net/def/crs/EPSG/0/28992">28992</gmx:Anchor>
+        </gmd:code>
+      </gmd:RS_Identifier>
+    </gmd:referenceSystemIdentifier>
+  </xsl:template>
+
+
+  <!-- Legal constraints with 2 otherContraints: 1 with a link and other with a text -> join them using an Anchor -->
+  <xsl:template match="gmd:resourceConstraints/gmd:MD_LegalConstraints[count(gmd:otherConstraints[gco:CharacterString]) = 2]">
+    <xsl:copy>
+      <xsl:copy-of select="@*" />
+
+      <xsl:apply-templates select="gmd:accessConstraints" />
+      <xsl:apply-templates select="gmd:useConstraints" />
+
+      <xsl:choose>
+        <xsl:when test="count(gmd:otherConstraints[starts-with(normalize-space(gco:CharacterString), 'http')]) = 1">
+          <xsl:variable name="textValue" select="normalize-space(gmd:otherConstraints[not(starts-with(normalize-space(gco:CharacterString), 'http'))]/gco:CharacterString)" />
+          <xsl:variable name="linkValue" select="normalize-space(gmd:otherConstraints[starts-with(normalize-space(gco:CharacterString), 'http')]/gco:CharacterString)" />
+
+          <gmd:otherConstraints>
+            <gmx:Anchor
+              xlink:href="{$linkValue}"><xsl:value-of select="$textValue" /></gmx:Anchor>
+          </gmd:otherConstraints>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="gmd:otherConstraints" />
+        </xsl:otherwise>
+      </xsl:choose>
+
+    </xsl:copy>
+  </xsl:template>
+
 </xsl:stylesheet>
