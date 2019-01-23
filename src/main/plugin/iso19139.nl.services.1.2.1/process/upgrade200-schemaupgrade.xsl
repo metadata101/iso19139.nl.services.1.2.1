@@ -238,12 +238,13 @@
 
 
   <!-- Reference System Identifier - use Anchor -->
-  <xsl:template match="gmd:referenceSystemIdentifier[gmd:RS_Identifier/gmd:code/gco:CharacterString = '28992']">
+  <xsl:template match="gmd:referenceSystemIdentifier[string(gmd:RS_Identifier/gmd:code/gco:CharacterString)]">
+    <xsl:variable name="code" select="normalize-space(gmd:RS_Identifier/gmd:code/gco:CharacterString)"/>
     <gmd:referenceSystemIdentifier>
       <gmd:RS_Identifier>
         <gmd:code>
           <gmx:Anchor
-            xlink:href="http://www.opengis.net/def/crs/EPSG/0/28992">28992</gmx:Anchor>
+            xlink:href="http://www.opengis.net/def/crs/EPSG/0/{$code}"><xsl:value-of select="$code" /></gmx:Anchor>
         </gmd:code>
       </gmd:RS_Identifier>
     </gmd:referenceSystemIdentifier>
