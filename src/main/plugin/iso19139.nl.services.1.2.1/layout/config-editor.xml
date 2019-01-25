@@ -615,6 +615,20 @@
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints[gmd:MD_LegalConstraints]"/>
 
           <action type="add"
+                  btnLabel="addOtherConstraint"
+                   or="otherConstraints" forceLabel="true"
+                  in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints"
+				          if="count(gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints) &lt; 2">
+            <template>
+              <snippet>
+                    <gmd:otherConstraints>
+                      <gco:CharacterString/>
+                    </gmd:otherConstraints>
+              </snippet>
+            </template>
+          </action>
+
+          <action type="add"
                   btnLabel="addLegalConstraints"
                   name="legalConstraints" or="resourceConstraints" forceLabel="true"
                   in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification">
