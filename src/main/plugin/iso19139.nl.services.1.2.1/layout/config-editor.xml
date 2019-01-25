@@ -617,8 +617,7 @@
           <action type="add"
                   btnLabel="addOtherConstraint"
                    or="otherConstraints" forceLabel="true"
-                  in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints"
-				          if="count(gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints) &lt; 2">
+                  in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints">
             <template>
               <snippet>
                     <gmd:otherConstraints>
@@ -686,8 +685,7 @@
           <action type="add"
                   btnLabel="addOtherConstraint"
                   or="otherConstraints" forceLabel="true"
-                  in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints"
-                  if="count(gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints) &lt; 2">
+                  in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints">
             <template>
               <snippet>
                 <gmd:otherConstraints>
@@ -1187,6 +1185,7 @@
       <!-- Elements that should not use the "<view" mode -->
       <flatModeExceptions>
         <for name="srv:parameters" />
+        <for name="gmd:otherConstraints"/>
         <for name="gmd:keyword"/>
         <for name="gmd:thesaurusName"/>
         <for name="gmd:spatialResolution"/>

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <labels xmlns:gmd="http://www.isotc211.org/2005/gmd"
         xmlns:gts="http://www.isotc211.org/2005/gts"
         xmlns:gco="http://www.isotc211.org/2005/gco"
@@ -793,8 +792,7 @@
 
     <!-- ==================================================== -->
 
-    <element name="gmd:otherConstraints"
-             context="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints">
+    <element name="gmd:otherConstraints">
         <label>Overige beperkingen</label>
         <btnLabel>Overige beperking toevoegen</btnLabel>
         <description>Andere restricties of beperkingen. Dit veld is te gebruiken om de URL naar de licentie van Public
