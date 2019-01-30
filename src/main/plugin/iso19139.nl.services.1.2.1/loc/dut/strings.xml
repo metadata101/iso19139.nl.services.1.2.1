@@ -133,6 +133,7 @@
     <addDate>Datum toevoegen</addDate>
     <addLineage>Herkomst toevoegen</addLineage>
     <addLocale>Taal toevoegen</addLocale>
+    <addDistribution>Distributie toevoegen</addDistribution>
     <addUseLimitation>Gebruiksbeperking toevoegen</addUseLimitation>
     <legalConstraints>Juridische restrictie</legalConstraints>
     <addLegalConstraints>Juridische restrictie toevoegen</addLegalConstraints>

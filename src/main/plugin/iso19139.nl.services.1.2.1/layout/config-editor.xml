@@ -59,6 +59,7 @@
         data-template-add-action="true"
         data-search-action="true"
         data-popup-action="false"
+        data-insert-modes="text"
         data-filter='{"_root": "gmd:DQ_DomainConsistency"}'
         data-template-type="report"/>
     </for>
@@ -93,7 +94,10 @@
     <name>gmd:portrayalCatalogueInfo</name>
     <name>gmd:portrayalCatalogueCitation</name>
     <name>gmd:thesaurusName</name>
-    <name>gmd:resourceConstraints</name>
+    <!--<name>gmd:resourceConstraints</name>-->
+    <name>gmd:MD_LegalConstraints</name>
+    <name>gmd:MD_SecurityConstraints</name>
+    <name>gmd:MD_Constraints</name>
     <name>gmd:spatialRepresentationInfo</name>
     <name>gmd:pointOfContact</name>
     <name>gmd:contact</name>
@@ -117,7 +121,6 @@
     <name>srv:containsOperations</name>
     <name>srv:parameters</name>
     <name>srv:SV_CoupledResource</name>
-    <name>gmd:metadataConstraints</name>
     <name>gmd:aggregationInfo</name>
     <name>gmd:processStep</name>
     <name>gmd:referenceSystemIdentifier</name>
@@ -615,19 +618,6 @@
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints[gmd:MD_LegalConstraints]"/>
 
           <action type="add"
-                  btnLabel="addOtherConstraint"
-                   or="otherConstraints" forceLabel="true"
-                  in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints">
-            <template>
-              <snippet>
-                    <gmd:otherConstraints>
-                      <gco:CharacterString/>
-                    </gmd:otherConstraints>
-              </snippet>
-            </template>
-          </action>
-
-          <action type="add"
                   btnLabel="addLegalConstraints"
                   name="legalConstraints" or="resourceConstraints" forceLabel="true"
                   in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification">
@@ -682,18 +672,6 @@
             </template>
           </action>
 
-          <action type="add"
-                  btnLabel="addOtherConstraint"
-                  or="otherConstraints" forceLabel="true"
-                  in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints">
-            <template>
-              <snippet>
-                <gmd:otherConstraints>
-                  <gco:CharacterString></gco:CharacterString>
-                </gmd:otherConstraints>
-              </snippet>
-            </template>
-          </action>
         </section>
 
         <section name="serviceInfo">
@@ -979,7 +957,7 @@
           </action>
 
 <!--    5.56 locale -->
-          <field xpath="/gmd:MD_Metadata/gmd:locale/gmd:PT_Locale"/>
+          <field xpath="/gmd:MD_Metadata/gmd:locale/gmd:PT_Locale" del=".."/>
 
           <action type="add"
                   btnLabel="addLocale"
