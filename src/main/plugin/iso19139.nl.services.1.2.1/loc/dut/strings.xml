@@ -92,7 +92,7 @@
     <connectPoint>Endpoint</connectPoint>
 
 
-    <temporalRangeSection>Temporele dekking</temporalRangeSection>
+    <temporalRangeSection>temporele dekking</temporalRangeSection>
     <beginPosition>Van</beginPosition>
     <endPosition>Tot</endPosition>
     <inspireTheme>INSPIRE Thema</inspireTheme>
@@ -115,7 +115,7 @@
     <extentDescription>Beschrijving temporeledekking</extentDescription>
     <qualityScope>Niveau kwaliteitsbeschrijving</qualityScope>
 
-    <useLimitation>Gebruiksbeperkingen</useLimitation>
+    <useLimitation>Gebruiks beperkingen</useLimitation>
     <dutchprofile2>Nederlands profiel</dutchprofile2>
     <Basis>Basis</Basis>
     <Metadata>Over de metadata</Metadata>
