@@ -108,26 +108,31 @@
         <xsl:when test="geonet:contains-any-of($protocol, ('OGC:WMS', 'OGC:WMTS', 'OGC:WFS', 'OGC:WCS'))">
           <xsl:variable name="url" select="gmd:linkage/gmd:URL" />
           <xsl:variable name="paramRequest" select="'request=GetCapabilities'" />
-          <gmd:linkage>
-            <xsl:choose>
-              <xsl:when test="not(contains(lower-case($url), lower-case($paramRequest)))">
-                <xsl:choose>
-                  <xsl:when test="ends-with($url, '?')">
+
+          <xsl:choose>
+            <xsl:when test="not(contains(lower-case($url), lower-case($paramRequest)))">
+              <xsl:choose>
+                <xsl:when test="ends-with($url, '?')">
+                  <gmd:linkage>
                     <gmd:URL><xsl:value-of select="concat($url, $paramRequest)" /></gmd:URL>
-                  </xsl:when>
-                  <xsl:when test="contains($url, '?')">
+                  </gmd:linkage>
+                </xsl:when>
+                <xsl:when test="contains($url, '?')">
+                  <gmd:linkage>
                     <gmd:URL><xsl:value-of select="concat($url, '&amp;', $paramRequest)" /></gmd:URL>
-                  </xsl:when>
-                  <xsl:otherwise>
+                  </gmd:linkage>
+                </xsl:when>
+                <xsl:otherwise>
+                  <gmd:linkage>
                     <gmd:URL><xsl:value-of select="concat($url, '?', $paramRequest)" /></gmd:URL>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:apply-templates select="gmd:linkage" />
-              </xsl:otherwise>
-            </xsl:choose>
-          </gmd:linkage>
+                  </gmd:linkage>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:apply-templates select="gmd:linkage" />
+            </xsl:otherwise>
+          </xsl:choose>
 
         </xsl:when>
         <xsl:otherwise>
