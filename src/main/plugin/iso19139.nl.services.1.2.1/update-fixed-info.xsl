@@ -26,7 +26,41 @@
   <xsl:copy-of select="."  copy-namespaces="no"/>
 </xsl:template>
 
-	<!-- remove gmd:identifier with gmx:Anchor inside gmd:code
+  <xsl:template
+    match="srv:SV_ServiceIdentification|*[contains(@gco:isoType, 'SV_ServiceIdentification')]">
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+
+      <xsl:apply-templates select="gmd:citation" />
+      <xsl:apply-templates select="gmd:abstract" />
+      <xsl:apply-templates select="gmd:purpose" />
+      <xsl:apply-templates select="gmd:credit" />
+      <xsl:apply-templates select="gmd:status" />
+      <xsl:apply-templates select="gmd:pointOfContact" />
+      <xsl:apply-templates select="gmd:resourceMaintenance" />
+      <xsl:apply-templates select="gmd:graphicOverview" />
+      <xsl:apply-templates select="gmd:resourceFormat" />
+      <xsl:apply-templates select="gmd:descriptiveKeywords" />
+      <xsl:apply-templates select="gmd:resourceSpecificUsage" />
+
+      <!-- Order resource constraints. Related schematron validations depends on the order of the constraints
+          - gmd:MD_Constraints
+          - gmd:MD_LegalConstraints
+          - gmd:MD_SecurityConstraints
+      -->
+      <xsl:apply-templates select="gmd:resourceConstraints[gmd:MD_Constraints]" />
+      <xsl:apply-templates select="gmd:resourceConstraints[gmd:MD_LegalConstraints]" />
+      <xsl:apply-templates select="gmd:resourceConstraints[gmd:MD_SecurityConstraints]" />
+
+      <xsl:apply-templates select="gmd:aggregationInfo" />
+
+      <xsl:apply-templates select="srv:*"/>
+
+    </xsl:copy>
+  </xsl:template>
+
+
+  <!-- remove gmd:identifier with gmx:Anchor inside gmd:code
     <xsl:template match="gmd:identifier[name(*/gmd:code/*) = 'gmx:Anchor']" /> -->
     <!-- remove gmd:identifier in gmd:thesaurusName with gmx:Anchor inside gmd:code -->
     <!--<xsl:template match="gmd:thesaurusName/*/gmd:identifier[name(*/gmd:code/*) = 'gmx:Anchor']" />-->
