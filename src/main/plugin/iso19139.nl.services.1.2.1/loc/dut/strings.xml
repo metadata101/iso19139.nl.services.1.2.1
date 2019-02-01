@@ -160,7 +160,7 @@
     <addReferenceSystem>Referentie systeem toevoegen</addReferenceSystem>
 
 
-    <conformanceStatement>Conformiteits indicatie</conformanceStatement>
+    <conformanceStatement>Conformiteitindicatie met de specificatie</conformanceStatement>
     <ExtentDescription>Omschrijving temporele dekking</ExtentDescription>
     <DsCharacterSet>Karakterset dataset</DsCharacterSet>
     <Distribution>Distributie</Distribution>
@@ -188,7 +188,7 @@
     <LI_Source>Bron en inwinning</LI_Source>
 
     <addHierarchy>Hiërarchisch niveau toevoegen</addHierarchy>
-    <addhierarchyLevelName>Beschrijving hiërarchisch niveau toevoegen</addhierarchyLevelName>
+    <addhierarchyLevelName>Naam hiërarchisch niveau toevoegen</addhierarchyLevelName>
     <AddSource>Voeg bron toe</AddSource>
     <AddProcessStep>Voeg bewerkingsstap toe</AddProcessStep>
     <addTemporalExtent>Voeg temporele dekking toe</addTemporalExtent>
