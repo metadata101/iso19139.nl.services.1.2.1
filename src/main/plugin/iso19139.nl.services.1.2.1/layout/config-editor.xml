@@ -1164,6 +1164,7 @@
       <flatModeExceptions>
         <for name="srv:parameters" />
         <for name="gmd:otherConstraints"/>
+        <for name="gmd:useConstraints"/>
         <for name="gmd:keyword"/>
         <for name="gmd:thesaurusName"/>
         <for name="gmd:spatialResolution"/>

@@ -26,11 +26,24 @@
                 xmlns:geonet="http://www.fao.org/geonetwork"
                 xmlns:gco="http://www.isotc211.org/2005/gco"
                 xmlns:gmd="http://www.isotc211.org/2005/gmd"
+                xmlns:gmx="http://www.isotc211.org/2005/gmx"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:gml="http://www.opengis.net/gml"
+                xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:java="java:org.fao.geonet.util.XslUtil" version="2.0"
                 exclude-result-prefixes="#all">
 
   <xsl:import href="process-utility.xsl"/>
+ <!-- See WEB-INF/oasis-catalog.xml -->
+  <xsl:import href="../../../xsl/utils-fn.xsl"/>
 
+  <xsl:variable name="thesauriDir" select="java:getThesaurusDir()"/>
+
+  <xsl:variable name="inspire-thesaurus"
+    select="document(concat('file:///', replace($thesauriDir, '\\', '/'), '/external/thesauri/theme/httpinspireeceuropaeutheme-theme.rdf'))"/>
+  <xsl:variable name="inspire-theme" select="$inspire-thesaurus//skos:Concept"/>
 
   <!-- i18n information -->
   <xsl:variable name="upgrade-schema-version-loc">

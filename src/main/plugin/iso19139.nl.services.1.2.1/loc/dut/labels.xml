@@ -863,7 +863,7 @@
         <description>Dit element is conditioneel. Het is verplicht als er een URL is opgegeven. Bijvoorbeeld naar een
             WMS of WFS.Het bevat het protocol voor het afhandelen van de URL. Door het hanteren van INSPIRE servicetypes
             bij het element service type is de relatie met de OGC types verloren, tenzij dit element wordt aangegeven.
-            De namen uit codelijst SV_ServiceType (bijlage 1) wordt hier gehanteerd.
+            De namen uit codelijst protocol wordt hier gehanteerd.
         </description>
         <help_link>http://wiki.geonovum.nl/index.php/Protocol</help_link>
         <helper>
