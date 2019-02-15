@@ -866,7 +866,6 @@
         </description>
         <help_link>http://wiki.geonovum.nl/index.php/Protocol</help_link>
         <helper>
-            <helper>
                 <option value="OGC:CSW"> Web Catalog service </option>
                 <option value="OGC:WMS"> Web Map service</option>
                 <option value="OGC:WMTS"> Web Mapping Tiling Service</option>
