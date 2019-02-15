@@ -280,7 +280,7 @@ Acronyms should be written in full when first used.]]></help>
   the resource shall be provided in the linkage element with EEA:FILEPATH as related protocol.
  </help>
 </element>
-<element name="gmd:protocol" context="/gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:protocol"  alias="protocol">
+<element name="gmd:protocol"  alias="protocol">
     <label>Protocol </label>
     <description>Protocol of the resource</description>
     <helper>
@@ -306,6 +306,9 @@ Acronyms should be written in full when first used.]]></help>
       <option value="OGC:OUS"> OpenLS Utility Service </option>
       <option value="OGC:OPS"> OpenLS Presentation Service </option>
       <option value="OGC:ORS"> OpenLS Route Service</option>
+      <option value="website"> website</option>
+	    <option value="download"> download</option>
+	    <option value="dataset"> URI naar locale dataset locatie</option>
     </helper>
     <condition>conditional</condition>
   </element>
