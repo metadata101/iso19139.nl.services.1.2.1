@@ -857,7 +857,7 @@
 
     <!-- ==================================================== -->
 
-    <element name="gmd:protocol">
+    <element name="gmd:protocol" alias="protocol">
         <label>Protocol</label>
         <description>Dit element is conditioneel. Het is verplicht als er een URL is opgegeven. Bijvoorbeeld naar een
             WMS of WFS.Het bevat het protocol voor het afhandelen van de URL. Door het hanteren van INSPIRE servicetypes
