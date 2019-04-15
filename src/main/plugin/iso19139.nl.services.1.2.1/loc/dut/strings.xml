@@ -36,14 +36,16 @@
         <h3>Nederlands profiel op ISO 19119 voor Services versie 1.2.1 - Volledig iso19139 + services extensie</h3>
     </fullViewTitle>
     <fullViewDescription>
-        <div>De volledige weergave toont alle ISO elementen.</div>
+        <div>De volledige weergave toont alle ISO elementen.
+        Op de <a href="catalog.search#/page/Help?page=Help" target="_blank">Help pagina</a> vindt u meer informatie over deze applicatie.</div>
     </fullViewDescription>
 
     <xmlViewTitle>
         <h3>XML weergave</h3>
     </xmlViewTitle>
     <xmlViewDescription>
-        <div>In deze weergave wordt de metadata getoond in XML.</div>
+        <div>In deze weergave wordt de metadata getoond in XML.
+        Op de <a href="catalog.search#/page/Help?page=Help" target="_blank">Help pagina</a> vindt u meer informatie over deze applicatie.</div>
     </xmlViewDescription>
 
     <default>Basis</default>
