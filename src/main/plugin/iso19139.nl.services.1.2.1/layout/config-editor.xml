@@ -775,9 +775,9 @@
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:coupledResource">
             <template>
               <values>
-                <key label="operationName" tooltip="srv:operationName"
+                <key label="operationName" tooltip="srv:operationName" required="true"
                      xpath="srv:SV_CoupledResource/srv:operationName/gco:CharacterString"/>
-                <key label="dsIdentifier" tooltip="srv:identifier"
+                <key label="dsIdentifier" tooltip="srv:identifier" required="true"
                      xpath="srv:SV_CoupledResource/srv:identifier/gco:CharacterString"/>
                 <key label="codeSpace" tooltip="codeSpace"
                      xpath="srv:SV_CoupledResource/gco:ScopedName/@codeSpace"/>
