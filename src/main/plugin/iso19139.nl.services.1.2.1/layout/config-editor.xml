@@ -242,6 +242,19 @@
                  or="parameters" in="srv:SV_OperationMetadata"/>
       </row>
     </table>
+    <table for="srv:operatesOn">
+      <header>
+        <col label="uuidref" class="gn-required"/>
+        <col label="operatesOn" class="gn-required"/>
+        <col/>
+      </header>
+      <row>
+        <col xpath="uuidref"/>
+        <col xpath="@xlink:href"/>
+        <col del="."/>
+      </row>
+    </table>
+
     <table for="gmd:CI_OnlineResource">
       <header>
         <col label="gmd:linkage" class="gn-required"/>
