@@ -228,9 +228,9 @@
   <tableFields>
     <table for="srv:SV_OperationMetadata">
       <header>
-        <col label="srv:operationName"/>
-        <col label="srv:DCP"/>
-        <col label="srv:connectPoint"/>
+        <col label="srv:operationName" class="gn-required" />
+        <col label="srv:DCP" class="gn-required"/>
+        <col label="srv:connectPoint" class="gn-required"/>
         <col/>
       </header>
       <row>
