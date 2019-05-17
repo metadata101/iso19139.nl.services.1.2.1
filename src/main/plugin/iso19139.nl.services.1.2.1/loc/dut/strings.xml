@@ -105,7 +105,7 @@
     <endPosition>Tot</endPosition>
     <inspireTheme>INSPIRE Thema</inspireTheme>
     <topicCategory>Thema</topicCategory>
-    <conformity>Conformiteitindicatie</conformity>
+    <conformity>Conformiteit indicatie</conformity>
 
     <report>Conformiteit</report>
     <isINSPIREConform></isINSPIREConform>
@@ -168,7 +168,7 @@
     <addReferenceSystem>Referentie systeem toevoegen</addReferenceSystem>
 
 
-    <conformanceStatement>Conformiteitindicatie met de specificatie</conformanceStatement>
+    <conformanceStatement>Conformiteit indicatie met de specificatie</conformanceStatement>
     <ExtentDescription>Omschrijving temporele dekking</ExtentDescription>
     <DsCharacterSet>Karakterset dataset</DsCharacterSet>
     <Distribution>Distributie</Distribution>
@@ -227,9 +227,9 @@
     <metadataLink>Metadata identificatie</metadataLink>
     <linkTitle>Link titel</linkTitle>
 
-    <securityConstraints>Veiligheidsrestricties</securityConstraints>
+    <securityConstraints>Veiligheids restricties</securityConstraints>
     <addSecurityConstraints>Voeg veiligheidsrestricties toe</addSecurityConstraints>
-    <addUseConstraint>Gebruiksbeperking toevoegen</addUseConstraint>
+    <addUseConstraint>Gebruiks beperking toevoegen</addUseConstraint>
     <addOtherConstraint>Overige beperking toevoegen</addOtherConstraint>
     <addConceptualConsistency>Conceptuele consistentie toevoegen</addConceptualConsistency>
 

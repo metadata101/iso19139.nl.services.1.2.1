@@ -277,7 +277,7 @@
     <!-- ==================================================== -->
 
     <element name="gmd:dataQualityInfo" context="/gmd:MD_Metadata/gmd:dataQualityInfo">
-        <label>Kwaliteitsbeschrijving</label>
+        <label>Kwaliteits beschrijving</label>
         <description>Informatie over de kwaliteit van de gegevens.</description>
     </element>
 
@@ -407,7 +407,7 @@
 
     <element name="gmd:DQ_ConformanceResult"
              context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult">
-        <label>Conformiteitindicatie</label>
+        <label>Conformiteit indicatie</label>
         <description>Conformiteit met de specificatie.</description>
         <condition>mandatory</condition>
     </element>
@@ -433,7 +433,7 @@
 
     <element name="gmd:DQ_Scope"
              context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:scope/gmd:DQ_Scope">
-        <label>Niveau kwaliteitsbeschrijving</label>
+        <label>Niveau kwaliteits beschrijving</label>
         <description>Niveau waar de kwaliteitsbeschrijving betrekking op heeft.</description>
         <condition>mandatory</condition>
     </element>
@@ -630,7 +630,7 @@
 
     <element name="gmd:level"
              context="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:scope/gmd:DQ_Scope/gmd:level">
-        <label>Niveau kwaliteitsbeschrijving</label>
+        <label>Niveau kwaliteits beschrijving</label>
         <description>Niveau waar de kwaliteitsbeschrijving betrekking op heeft.</description>
         <condition>mandatory</condition>
     </element>
@@ -737,7 +737,7 @@
 
     <element name="gmd:MD_SecurityConstraints"
              context="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:resourceConstraints/gmd:MD_SecurityConstraints">
-        <label>Veiligheidsrestricties</label>
+        <label>Veiligheids restricties</label>
         <description>Restricties op de data of service met betrekking tot het onderwerp (nationale) veiligheid.
         </description>
     </element>

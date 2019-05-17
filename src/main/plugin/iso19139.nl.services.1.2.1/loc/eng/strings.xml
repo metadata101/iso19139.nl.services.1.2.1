@@ -76,7 +76,7 @@
   <endPosition>Tot</endPosition>
   <inspireTheme>INSPIRE Thema</inspireTheme>
   <topicCategory>Thema</topicCategory>
-  <conformity>Conformiteitindicatie</conformity>
+  <conformity>Conformiteit indicatie</conformity>
 
   <report>Conformiteit</report>
   <isINSPIREConform></isINSPIREConform>
@@ -94,7 +94,7 @@
   <extentDescription>Beschrijving temporeledekking</extentDescription>
   <qualityScope>Niveau kwaliteitsbeschrijving</qualityScope>
 
-  <useLimitation>Gebruiksbeperkingen</useLimitation>
+  <useLimitation>Gebruiks beperkingen</useLimitation>
   <dutchprofile2>Nederlands profiel 2</dutchprofile2>
   <Basis>Basic</Basis>
   <Metadata>Over de metadata</Metadata>
@@ -109,7 +109,7 @@
   <addCharacterset>Karakterset toevoegen</addCharacterset>
   <addDate>date toevoegen</addDate>
   <addLineage>Herkomst toevoegen</addLineage>
-  <addUseLimitation>Gebruiksbeperkingen toevoegen</addUseLimitation>
+  <addUseLimitation>Gebruiks beperkingen toevoegen</addUseLimitation>
   <addLegalConstraints>Juridische beperkingen toevoegen</addLegalConstraints>
   <addResourceConstraints>Bron beperkingen toevoegen</addResourceConstraints>
   <addUrl>URL toevoegen</addUrl>
