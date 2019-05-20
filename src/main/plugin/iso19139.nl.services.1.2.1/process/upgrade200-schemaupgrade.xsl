@@ -269,30 +269,69 @@
   </xsl:template>
 
 
-  <!-- Legal constraints with 2 otherContraints: 1 with a link and other with a text -> join them using an Anchor -->
-  <xsl:template match="gmd:resourceConstraints/gmd:MD_LegalConstraints[count(gmd:otherConstraints[gco:CharacterString]) = 2]">
-    <xsl:copy>
-      <xsl:copy-of select="@*" />
+  <!-- Legal constraints with 2 otherContraints: 1 with a link and other with a text.
+      - Create 2 legal constraints: 1 with license url and text and noConditionsApply.
+      - Create 2 legal constraints: 1 with license text and noLimitations.
+  -->
+  <xsl:template match="gmd:resourceConstraints[gmd:MD_LegalConstraints/gmd:accessConstraints/gmd:MD_RestrictionCode/@codeListValue='otherRestrictions' and
+                          count(gmd:MD_LegalConstraints/gmd:otherConstraints) = 2]">
 
-      <xsl:apply-templates select="gmd:accessConstraints" />
-      <xsl:apply-templates select="gmd:useConstraints" />
+    <xsl:variable name="hasLicenceUrl" select="count(starts-with(gmd:otherConstraints/gco:CharacterString, 'http')) =1" />
 
-      <xsl:choose>
-        <xsl:when test="count(gmd:otherConstraints[starts-with(normalize-space(gco:CharacterString), 'http')]) = 1">
-          <xsl:variable name="textValue" select="normalize-space(gmd:otherConstraints[not(starts-with(normalize-space(gco:CharacterString), 'http'))]/gco:CharacterString)" />
-          <xsl:variable name="linkValue" select="normalize-space(gmd:otherConstraints[starts-with(normalize-space(gco:CharacterString), 'http')]/gco:CharacterString)" />
+    <xsl:choose>
+      <xsl:when test="$hasLicenceUrl">
 
-          <gmd:otherConstraints>
-            <gmx:Anchor
-              xlink:href="{$linkValue}"><xsl:value-of select="$textValue" /></gmx:Anchor>
-          </gmd:otherConstraints>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:apply-templates select="gmd:otherConstraints" />
-        </xsl:otherwise>
-      </xsl:choose>
+        <xsl:variable name="licenseUrl" select="gmd:MD_LegalConstraints/gmd:otherConstraints[starts-with(gco:CharacterString, 'http')]/gco:CharacterString" />
+        <xsl:variable name="licenseText" select="gmd:MD_LegalConstraints/gmd:otherConstraints[not(starts-with(gco:CharacterString, 'http'))]/gco:CharacterString" />
 
-    </xsl:copy>
+        <gmd:resourceConstraints>
+          <gmd:MD_LegalConstraints>
+            <gmd:accessConstraints>
+              <gmd:MD_RestrictionCode
+                      codeListValue="otherRestrictions"
+                      codeList="http://www.isotc211.org/2005/resources/Codelist/
+          gmxCodelists.xml#MD_RestrictionCode"/>
+            </gmd:accessConstraints>
+            <gmd:otherConstraints>
+              <gmx:Anchor
+                      xlink:href="{$licenseUrl}">
+                <xsl:value-of select="$licenseText" />
+              </gmx:Anchor>
+            </gmd:otherConstraints>
+            <gmd:otherConstraints>
+              <gmx:Anchor
+                      xlink:href="http://inspire.ec.europa.eu/metadata-codelist
+          /ConditionsApplyingToAccessAndUse/noConditionsApply">
+                <xsl:value-of select="$licenseText" />
+              </gmx:Anchor>
+            </gmd:otherConstraints>
+          </gmd:MD_LegalConstraints>
+        </gmd:resourceConstraints>
+
+        <gmd:resourceConstraints>
+          <gmd:MD_LegalConstraints>
+            <gmd:accessConstraints>
+              <gmd:MD_RestrictionCode
+                      codeListValue="otherRestrictions"
+                      codeList="http://www.isotc211.org/2005/resources/Codelist/
+          gmxCodelists.xml#MD_RestrictionCode"/>
+            </gmd:accessConstraints>
+            <gmd:otherConstraints>
+              <gmx:Anchor
+                      xlink:href="http://inspire.ec.europa.eu/metadata-codelist/
+          LimitationsOnPublicAccess/noLimitations">
+                <xsl:value-of select="$licenseText" />
+              </gmx:Anchor>
+            </gmd:otherConstraints>
+          </gmd:MD_LegalConstraints>
+        </gmd:resourceConstraints>
+
+      </xsl:when>
+
+      <xsl:otherwise>
+        <xsl:copy-of select="gmd:resourceConstraints" />
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
 </xsl:stylesheet>
