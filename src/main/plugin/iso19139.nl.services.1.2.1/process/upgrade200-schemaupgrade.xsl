@@ -292,6 +292,9 @@
                       codeList="http://www.isotc211.org/2005/resources/Codelist/
           gmxCodelists.xml#MD_RestrictionCode"/>
             </gmd:accessConstraints>
+
+            <xsl:apply-templates select="gmd:MD_LegalConstraints/gmd:useConstraints" />
+
             <gmd:otherConstraints>
               <gmx:Anchor
                       xlink:href="{$licenseUrl}">
