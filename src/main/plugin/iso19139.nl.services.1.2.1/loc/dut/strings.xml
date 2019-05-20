@@ -121,7 +121,7 @@
     <CompletenessOmission>Compleetheid</CompletenessOmission>
     <spatialRepresentationType>Ruimtelijk schema</spatialRepresentationType>
     <extentDescription>Beschrijving temporeledekking</extentDescription>
-    <qualityScope>Niveau kwaliteitsbeschrijving</qualityScope>
+    <qualityScope>Niveau kwaliteits beschrijving</qualityScope>
 
     <useLimitation>Gebruiks beperkingen</useLimitation>
     <dutchprofile2>Nederlands profiel</dutchprofile2>
@@ -142,7 +142,7 @@
     <addLineage>Herkomst toevoegen</addLineage>
     <addLocale>Taal toevoegen</addLocale>
     <addDistribution>Distributie toevoegen</addDistribution>
-    <addUseLimitation>Gebruiksbeperking toevoegen</addUseLimitation>
+    <addUseLimitation>Gebruiks beperking toevoegen</addUseLimitation>
     <legalConstraints>Juridische restrictie</legalConstraints>
     <addLegalConstraints>Juridische restrictie toevoegen</addLegalConstraints>
     <addResourceConstraints>Beperking toevoegen</addResourceConstraints>
@@ -189,7 +189,7 @@
 
     <equivalentScale>Resolutie</equivalentScale>
     <distance>Afstand</distance>
-    <scope>Niveau kwaliteitsbeschrijving</scope>
+    <scope>Niveau kwaliteits beschrijving</scope>
     <InspireConformance>INSPIRE conformiteit</InspireConformance>
     <DQ_AbsoluteExternalPositionalAccuracyUnit>Eenheid</DQ_AbsoluteExternalPositionalAccuracyUnit>
 
