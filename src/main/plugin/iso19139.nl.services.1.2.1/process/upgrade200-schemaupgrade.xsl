@@ -29,7 +29,6 @@
                 xmlns:gmx="http://www.isotc211.org/2005/gmx"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
-                xmlns:gml="http://www.opengis.net/gml"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:java="java:org.fao.geonet.util.XslUtil" version="2.0"
@@ -72,13 +71,26 @@
 
   <!-- Do a copy of every nodes and attributes -->
   <xsl:template match="@*|node()">
-    <xsl:copy>
+    <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
   </xsl:template>
 
   <!-- Always remove geonet:* elements. -->
   <xsl:template match="geonet:*" priority="2"/>
+
+  <!-- Change gml namespace -->
+  <xsl:template match="gml:*" xmlns:gml="http://www.opengis.net/gml">
+    <xsl:element name="{name()}" namespace="http://www.opengis.net/gml/3.2">
+      <xsl:apply-templates select="@* | node()"/>
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="@gml:*" xmlns:gml="http://www.opengis.net/gml">
+    <xsl:attribute name="{name()}" namespace="http://www.opengis.net/gml/3.2">
+      <xsl:value-of select="."/>
+    </xsl:attribute>
+  </xsl:template>
 
 
   <!-- Update metadataStandardVersion -->
@@ -195,13 +207,13 @@
 
 
   <!-- Temporal element -->
-  <xsl:template match="gmd:extent/gml:TimePeriod[gml:begin]" priority="2">
-    <xsl:copy>
-      <xsl:copy-of select="@*" />
+  <xsl:template match="gmd:extent/gml:TimePeriod[gml:begin]" priority="2" xmlns:gml="http://www.opengis.net/gml">
+    <xsl:element name="{name()}" namespace="http://www.opengis.net/gml/3.2">
+      <xsl:apply-templates select="@*"/>
 
-      <gml:beginPosition><xsl:value-of select="gml:begin/gml:TimeInstant/gml:timePosition"/></gml:beginPosition>
-      <gml:endPosition><xsl:value-of select="gml:end/gml:TimeInstant/gml:timePosition"/></gml:endPosition>
-    </xsl:copy>
+      <xsl:element name="gml:beginPosition" namespace="http://www.opengis.net/gml/3.2"><xsl:value-of select="gml:begin/gml:TimeInstant/gml:timePosition"/></xsl:element>
+      <xsl:element name="gml:endPosition" namespace="http://www.opengis.net/gml/3.2"><xsl:value-of select="gml:end/gml:TimeInstant/gml:timePosition"/></xsl:element>
+    </xsl:element>
   </xsl:template>
 
   <!-- INSPIRE Theme thesaurus name -->
@@ -337,4 +349,14 @@
     </xsl:choose>
   </xsl:template>
 
+
+  <!-- Set schemaLocation to apiso.xsd -->
+  <xsl:template match="gmd:MD_Metadata">
+    <xsl:copy copy-namespaces="no">
+      <xsl:copy-of select="namespace::*[name() != 'gml']"/>
+      <xsl:copy-of select="@*[name() != 'xsi:schemaLocation']" />
+      <xsl:attribute name="xsi:schemaLocation">http://www.isotc211.org/2005/gmd http://schemas.opengis.net/csw/2.0.2/profiles/apiso/1.0.0/apiso.xsd</xsl:attribute>
+      <xsl:apply-templates select="*" />
+    </xsl:copy>
+  </xsl:template>
 </xsl:stylesheet>
