@@ -301,8 +301,7 @@
             <gmd:accessConstraints>
               <gmd:MD_RestrictionCode
                       codeListValue="otherRestrictions"
-                      codeList="http://www.isotc211.org/2005/resources/Codelist/
-          gmxCodelists.xml#MD_RestrictionCode"/>
+                      codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode"/>
             </gmd:accessConstraints>
 
             <xsl:apply-templates select="gmd:MD_LegalConstraints/gmd:useConstraints" />
@@ -315,8 +314,7 @@
             </gmd:otherConstraints>
             <gmd:otherConstraints>
               <gmx:Anchor
-                      xlink:href="http://inspire.ec.europa.eu/metadata-codelist
-          /ConditionsApplyingToAccessAndUse/noConditionsApply">
+                      xlink:href="http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply">
                 <xsl:value-of select="$licenseText" />
               </gmx:Anchor>
             </gmd:otherConstraints>
@@ -328,13 +326,11 @@
             <gmd:accessConstraints>
               <gmd:MD_RestrictionCode
                       codeListValue="otherRestrictions"
-                      codeList="http://www.isotc211.org/2005/resources/Codelist/
-          gmxCodelists.xml#MD_RestrictionCode"/>
+                      codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode"/>
             </gmd:accessConstraints>
             <gmd:otherConstraints>
               <gmx:Anchor
-                      xlink:href="http://inspire.ec.europa.eu/metadata-codelist/
-          LimitationsOnPublicAccess/noLimitations">
+                      xlink:href="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">
                 <xsl:value-of select="$licenseText" />
               </gmx:Anchor>
             </gmd:otherConstraints>
