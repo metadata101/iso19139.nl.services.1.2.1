@@ -314,9 +314,7 @@
             </gmd:otherConstraints>
             <gmd:otherConstraints>
               <gmx:Anchor
-                      xlink:href="http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply">
-                <xsl:value-of select="$licenseText" />
-              </gmx:Anchor>
+                      xlink:href="http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply">Er zijn geen condities voor toegang en gebruik</gmx:Anchor>
             </gmd:otherConstraints>
           </gmd:MD_LegalConstraints>
         </gmd:resourceConstraints>
@@ -330,9 +328,7 @@
             </gmd:accessConstraints>
             <gmd:otherConstraints>
               <gmx:Anchor
-                      xlink:href="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">
-                <xsl:value-of select="$licenseText" />
-              </gmx:Anchor>
+                      xlink:href="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">Geen beperkingen voor publieke toegang</gmx:Anchor>
             </gmd:otherConstraints>
           </gmd:MD_LegalConstraints>
         </gmd:resourceConstraints>
