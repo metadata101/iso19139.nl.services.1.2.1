@@ -60,8 +60,8 @@
   </xsl:template>
 
 
-  <!-- remove gmd:identifier with gmx:Anchor inside gmd:code
-    <xsl:template match="gmd:identifier[name(*/gmd:code/*) = 'gmx:Anchor']" /> -->
+  <!-- remove gmd:identifier with gmx:Anchor inside gmd:code -->
+    <xsl:template match="gmd:identifier[name(*/gmd:code/*) = 'gmx:Anchor']" />
     <!-- remove gmd:identifier in gmd:thesaurusName with gmx:Anchor inside gmd:code -->
     <!--<xsl:template match="gmd:thesaurusName/*/gmd:identifier[name(*/gmd:code/*) = 'gmx:Anchor']" />-->
 
