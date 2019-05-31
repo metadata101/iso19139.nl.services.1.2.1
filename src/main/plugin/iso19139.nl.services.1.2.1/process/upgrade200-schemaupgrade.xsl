@@ -342,9 +342,12 @@
   </xsl:template>
 
 
-  <!-- Set schemaLocation to apiso.xsd -->
+  <!-- Set schemaLocation to apiso.xsd, copy namespaces from children in root and and add gmx  in namespaces declaration
+       as 1.2.1 metadata doesn't usually have it, to avoid been added inline each element that uses the namespace -->
   <xsl:template match="gmd:MD_Metadata">
     <xsl:copy copy-namespaces="no">
+      <xsl:namespace name="gmx" select="'http://www.isotc211.org/2005/gmx'"/>
+
       <xsl:copy-of select="namespace::*[name() != 'gml']"/>
       <xsl:copy-of select="@*[name() != 'xsi:schemaLocation']" />
       <xsl:attribute name="xsi:schemaLocation">http://www.isotc211.org/2005/gmd http://schemas.opengis.net/csw/2.0.2/profiles/apiso/1.0.0/apiso.xsd</xsl:attribute>
