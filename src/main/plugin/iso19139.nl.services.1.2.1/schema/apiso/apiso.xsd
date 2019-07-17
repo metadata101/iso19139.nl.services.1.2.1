@@ -15,6 +15,5 @@
     <!-- ================================== Imports & Includes ================================== -->
     <xs:include schemaLocation="../gmd/gmd.xsd"/>
     <xs:import namespace="http://www.isotc211.org/2005/srv" schemaLocation="../srv/srv.xsd"/>
-    <xs:import namespace="http://www.isotc211.org/2005/gmx" schemaLocation="../gmx/gmx.xsd"/>
 </xs:schema>
  
