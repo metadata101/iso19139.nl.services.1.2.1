@@ -346,7 +346,7 @@
         <text ref="dutchProfileDescription"/>
 
          <directive data-gn-onlinesrc-list=""
-          types="thumbnail|onlinesrc|dataset"/>
+          types="thumbnail|onlinesrc|dataset|sibling|associated"/>
 
         <section name="dutchprofile">
           <!-- 5.2.1 Resource title -->
@@ -1210,7 +1210,7 @@
       <tab id="identificationInfo" default="true">
         <text ref="fullViewTitle"/>
         <text ref="fullViewDescription"/>
-        <directive data-gn-onlinesrc-list="" types="thumbnail|onlinesrc|dataset"/>
+        <directive data-gn-onlinesrc-list="" types="thumbnail|onlinesrc|dataset|sibling|associated"/>
         <section xpath="/gmd:MD_Metadata/gmd:identificationInfo" or="identificationInfo"
                  in="/gmd:MD_Metadata"/>
       </tab>
