@@ -29,7 +29,6 @@
                 xmlns:gmx="http://www.isotc211.org/2005/gmx"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
-                xmlns:gml="http://www.opengis.net/gml"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:java="java:org.fao.geonet.util.XslUtil" version="2.0"
@@ -72,13 +71,26 @@
 
   <!-- Do a copy of every nodes and attributes -->
   <xsl:template match="@*|node()">
-    <xsl:copy>
+    <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
   </xsl:template>
 
   <!-- Always remove geonet:* elements. -->
   <xsl:template match="geonet:*" priority="2"/>
+
+  <!-- Change gml namespace -->
+  <xsl:template match="gml:*" xmlns:gml="http://www.opengis.net/gml">
+    <xsl:element name="{name()}" namespace="http://www.opengis.net/gml/3.2">
+      <xsl:apply-templates select="@* | node()"/>
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="@gml:*" xmlns:gml="http://www.opengis.net/gml">
+    <xsl:attribute name="{name()}" namespace="http://www.opengis.net/gml/3.2">
+      <xsl:value-of select="."/>
+    </xsl:attribute>
+  </xsl:template>
 
 
   <!-- Update metadataStandardVersion -->
@@ -195,13 +207,13 @@
 
 
   <!-- Temporal element -->
-  <xsl:template match="gmd:extent/gml:TimePeriod[gml:begin]" priority="2">
-    <xsl:copy>
-      <xsl:copy-of select="@*" />
+  <xsl:template match="gmd:extent/gml:TimePeriod[gml:begin]" priority="2" xmlns:gml="http://www.opengis.net/gml">
+    <xsl:element name="{name()}" namespace="http://www.opengis.net/gml/3.2">
+      <xsl:apply-templates select="@*"/>
 
-      <gml:beginPosition><xsl:value-of select="gml:begin/gml:TimeInstant/gml:timePosition"/></gml:beginPosition>
-      <gml:endPosition><xsl:value-of select="gml:end/gml:TimeInstant/gml:timePosition"/></gml:endPosition>
-    </xsl:copy>
+      <xsl:element name="gml:beginPosition" namespace="http://www.opengis.net/gml/3.2"><xsl:value-of select="gml:begin/gml:TimeInstant/gml:timePosition"/></xsl:element>
+      <xsl:element name="gml:endPosition" namespace="http://www.opengis.net/gml/3.2"><xsl:value-of select="gml:end/gml:TimeInstant/gml:timePosition"/></xsl:element>
+    </xsl:element>
   </xsl:template>
 
   <!-- INSPIRE Theme thesaurus name -->
@@ -269,30 +281,77 @@
   </xsl:template>
 
 
-  <!-- Legal constraints with 2 otherContraints: 1 with a link and other with a text -> join them using an Anchor -->
-  <xsl:template match="gmd:resourceConstraints/gmd:MD_LegalConstraints[count(gmd:otherConstraints[gco:CharacterString]) = 2]">
-    <xsl:copy>
-      <xsl:copy-of select="@*" />
+  <!-- Legal constraints with 2 otherContraints: 1 with a link and other with a text.
+      - Create 2 legal constraints: 1 with license url and text and noConditionsApply.
+      - Create 2 legal constraints: 1 with license text and noLimitations.
+  -->
+  <xsl:template match="gmd:resourceConstraints[gmd:MD_LegalConstraints/gmd:accessConstraints/gmd:MD_RestrictionCode/@codeListValue='otherRestrictions' and
+                          count(gmd:MD_LegalConstraints/gmd:otherConstraints) = 2]">
 
-      <xsl:apply-templates select="gmd:accessConstraints" />
-      <xsl:apply-templates select="gmd:useConstraints" />
+    <xsl:variable name="hasLicenceUrl" select="count(starts-with(gmd:otherConstraints/gco:CharacterString, 'http')) =1" />
 
-      <xsl:choose>
-        <xsl:when test="count(gmd:otherConstraints[starts-with(normalize-space(gco:CharacterString), 'http')]) = 1">
-          <xsl:variable name="textValue" select="normalize-space(gmd:otherConstraints[not(starts-with(normalize-space(gco:CharacterString), 'http'))]/gco:CharacterString)" />
-          <xsl:variable name="linkValue" select="normalize-space(gmd:otherConstraints[starts-with(normalize-space(gco:CharacterString), 'http')]/gco:CharacterString)" />
+    <xsl:choose>
+      <xsl:when test="$hasLicenceUrl">
 
-          <gmd:otherConstraints>
-            <gmx:Anchor
-              xlink:href="{$linkValue}"><xsl:value-of select="$textValue" /></gmx:Anchor>
-          </gmd:otherConstraints>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:apply-templates select="gmd:otherConstraints" />
-        </xsl:otherwise>
-      </xsl:choose>
+        <xsl:variable name="licenseUrl" select="gmd:MD_LegalConstraints/gmd:otherConstraints[starts-with(gco:CharacterString, 'http')]/gco:CharacterString" />
+        <xsl:variable name="licenseText" select="gmd:MD_LegalConstraints/gmd:otherConstraints[not(starts-with(gco:CharacterString, 'http'))]/gco:CharacterString" />
 
-    </xsl:copy>
+        <gmd:resourceConstraints>
+          <gmd:MD_LegalConstraints>
+            <gmd:accessConstraints>
+              <gmd:MD_RestrictionCode
+                      codeListValue="otherRestrictions"
+                      codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode"/>
+            </gmd:accessConstraints>
+
+            <xsl:apply-templates select="gmd:MD_LegalConstraints/gmd:useConstraints" />
+
+            <gmd:otherConstraints>
+              <gmx:Anchor
+                      xlink:href="{$licenseUrl}">
+                <xsl:value-of select="$licenseText" />
+              </gmx:Anchor>
+            </gmd:otherConstraints>
+            <gmd:otherConstraints>
+              <gmx:Anchor
+                      xlink:href="http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply">Er zijn geen condities voor toegang en gebruik</gmx:Anchor>
+            </gmd:otherConstraints>
+          </gmd:MD_LegalConstraints>
+        </gmd:resourceConstraints>
+
+        <gmd:resourceConstraints>
+          <gmd:MD_LegalConstraints>
+            <gmd:accessConstraints>
+              <gmd:MD_RestrictionCode
+                      codeListValue="otherRestrictions"
+                      codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode"/>
+            </gmd:accessConstraints>
+            <gmd:otherConstraints>
+              <gmx:Anchor
+                      xlink:href="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">Geen beperkingen voor publieke toegang</gmx:Anchor>
+            </gmd:otherConstraints>
+          </gmd:MD_LegalConstraints>
+        </gmd:resourceConstraints>
+
+      </xsl:when>
+
+      <xsl:otherwise>
+        <xsl:copy-of select="gmd:resourceConstraints" />
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
+
+  <!-- Set schemaLocation to apiso.xsd, copy namespaces from children in root and and add gmx  in namespaces declaration
+       as 1.2.1 metadata doesn't usually have it, to avoid been added inline each element that uses the namespace -->
+  <xsl:template match="gmd:MD_Metadata">
+    <xsl:copy copy-namespaces="no">
+      <xsl:namespace name="gmx" select="'http://www.isotc211.org/2005/gmx'"/>
+
+      <xsl:copy-of select="namespace::*[name() != 'gml']"/>
+      <xsl:copy-of select="@*[name() != 'xsi:schemaLocation']" />
+      <xsl:attribute name="xsi:schemaLocation">http://www.isotc211.org/2005/gmd http://schemas.opengis.net/csw/2.0.2/profiles/apiso/1.0.0/apiso.xsd</xsl:attribute>
+      <xsl:apply-templates select="*" />
+    </xsl:copy>
+  </xsl:template>
 </xsl:stylesheet>

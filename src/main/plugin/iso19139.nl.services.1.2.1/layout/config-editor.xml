@@ -228,9 +228,9 @@
   <tableFields>
     <table for="srv:SV_OperationMetadata">
       <header>
-        <col label="srv:operationName"/>
-        <col label="srv:DCP"/>
-        <col label="srv:connectPoint"/>
+        <col label="srv:operationName" class="gn-required" />
+        <col label="srv:DCP" class="gn-required"/>
+        <col label="srv:connectPoint" class="gn-required"/>
         <col/>
       </header>
       <row>
@@ -242,6 +242,19 @@
                  or="parameters" in="srv:SV_OperationMetadata"/>
       </row>
     </table>
+    <table for="srv:operatesOn">
+      <header>
+        <col label="uuidref" class="gn-required"/>
+        <col label="operatesOn" class="gn-required"/>
+        <col/>
+      </header>
+      <row>
+        <col xpath="uuidref"/>
+        <col xpath="@xlink:href"/>
+        <col del="."/>
+      </row>
+    </table>
+
     <table for="gmd:CI_OnlineResource">
       <header>
         <col label="gmd:linkage" class="gn-required"/>
@@ -333,7 +346,7 @@
         <text ref="dutchProfileDescription"/>
 
          <directive data-gn-onlinesrc-list=""
-          types="thumbnail|onlinesrc|dataset"/>
+          types="thumbnail|onlinesrc|dataset|sibling|associated"/>
 
         <section name="dutchprofile">
           <!-- 5.2.1 Resource title -->
@@ -775,9 +788,9 @@
                  xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:coupledResource">
             <template>
               <values>
-                <key label="operationName" tooltip="srv:operationName"
+                <key label="operationName" tooltip="srv:operationName" required="true"
                      xpath="srv:SV_CoupledResource/srv:operationName/gco:CharacterString"/>
-                <key label="dsIdentifier" tooltip="srv:identifier"
+                <key label="dsIdentifier" tooltip="srv:identifier" required="true"
                      xpath="srv:SV_CoupledResource/srv:identifier/gco:CharacterString"/>
                 <key label="codeSpace" tooltip="codeSpace"
                      xpath="srv:SV_CoupledResource/gco:ScopedName/@codeSpace"/>
@@ -1197,7 +1210,7 @@
       <tab id="identificationInfo" default="true">
         <text ref="fullViewTitle"/>
         <text ref="fullViewDescription"/>
-        <directive data-gn-onlinesrc-list="" types="thumbnail|onlinesrc|dataset"/>
+        <directive data-gn-onlinesrc-list="" types="thumbnail|onlinesrc|dataset|sibling|associated"/>
         <section xpath="/gmd:MD_Metadata/gmd:identificationInfo" or="identificationInfo"
                  in="/gmd:MD_Metadata"/>
       </tab>
