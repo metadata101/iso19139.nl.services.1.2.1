@@ -223,7 +223,7 @@
 
       <gmd:title>
         <gmx:Anchor
-          xlink:href="http://inspire.ec.europa.eu/theme">GEMET - INSPIRE themes, version 1.0</gmx:Anchor>
+          xlink:href="http://www.eionet.europa.eu/gemet/nl/inspire-themes/">GEMET - INSPIRE themes, version 1.0</gmx:Anchor>
       </gmd:title>
 
       <xsl:apply-templates select="gmd:alternateTitle" />
