@@ -46,8 +46,8 @@
 
   <!-- i18n information -->
   <xsl:variable name="upgrade-schema-version-loc">
-    <msg id="a" xml:lang="eng">Update metadata to Nederlands metadataprofiel op ISO 19119 voor services 2.0.0</msg>
-    <msg id="a" xml:lang="dut">Update metadata to Nederlands metadataprofiel op ISO 19119 voor services 2.0.0</msg>
+    <msg id="a" xml:lang="eng">Update metadata to Nederlands metadataprofile on ISO 19119 for services 2.0.0</msg>
+    <msg id="a" xml:lang="dut">Update metadata naar Nederlands metadataprofiel op ISO 19119 voor services 2.0.0</msg>
   </xsl:variable>
 
   <xsl:template name="list-upgrade200-schemaupgrade">
@@ -223,7 +223,7 @@
 
       <gmd:title>
         <gmx:Anchor
-          xlink:href="http://www.eionet.europa.eu/gemet/nl/inspire-themes/">GEMET - INSPIRE themes, version 1.0</gmx:Anchor>
+          xlink:href="http://inspire.ec.europa.eu/theme">GEMET - INSPIRE themes, version 1.0</gmx:Anchor>
       </gmd:title>
 
       <xsl:apply-templates select="gmd:alternateTitle" />
