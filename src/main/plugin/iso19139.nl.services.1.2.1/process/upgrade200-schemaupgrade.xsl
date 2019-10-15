@@ -46,8 +46,8 @@
 
   <!-- i18n information -->
   <xsl:variable name="upgrade-schema-version-loc">
-    <msg id="a" xml:lang="eng">Update metadata to Nederlands metadataprofiel op ISO 19119 voor services 2.0.0</msg>
-    <msg id="a" xml:lang="dut">Update metadata to Nederlands metadataprofiel op ISO 19119 voor services 2.0.0</msg>
+    <msg id="a" xml:lang="eng">Update metadata to Nederlands metadataprofile on ISO 19119 for services 2.0.0</msg>
+    <msg id="a" xml:lang="dut">Update metadata naar Nederlands metadataprofiel op ISO 19119 voor services 2.0.0</msg>
   </xsl:variable>
 
   <xsl:template name="list-upgrade200-schemaupgrade">
