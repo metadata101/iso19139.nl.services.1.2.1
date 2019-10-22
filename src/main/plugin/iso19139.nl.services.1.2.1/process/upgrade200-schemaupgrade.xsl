@@ -165,8 +165,117 @@
         </xsl:otherwise>
       </xsl:choose>
 
+      <xsl:choose>
+        <xsl:when test="contains($protocol, 'OGC:CSW')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/cat">OGC:CSW</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OGC:WMS')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wms">OGC:WMS</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OGC:WMTS')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wmts">OGC:WMTS</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OGC:WFS')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wfs">OGC:WFS</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OGC:WCS')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wcs">OGC:WCS</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OGC:SOS')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/sos">OGC:SOS</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OGC:WCTS')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wcts">OGC:WCTS</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OGC:WPS')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wps">OGC:WPS</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OGC:WFS-G')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wfs-g">OGC:WFS-G</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OGC:SPS')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/sps">OGC:SPS</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OGC:SAS')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/sas">OGC:SAS</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OGC:WNS')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wns">OGC:WNS</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OGC:ODS')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/ols#ODS">OGC:ODS</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OGC:OGS')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/ols#OGS">OGC:OGS</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OGC:OUS')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/ols#OUS">OGC:OUS</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OGC:OPS')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/ols#OPS">OGC:OPS</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OGC:ORS')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/ols#ORS">OGC:ORS</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OGC:SensorThings')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/sensorthings">OGC:SensorThings</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'W3C:SPARQL')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="https://www.w3.org/TR/rdf-sparql-query">W3C:SPARQL</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OAS')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="https://github.com/OAI/OpenAPI-Specification">OAS</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:when test="contains($protocol, 'OASIS:OData')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="https://www.oasis-open.org/committees/odata">OASIS:OData</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="gmd:protocol" />
+        </xsl:otherwise>
+      </xsl:choose>
 
-      <xsl:apply-templates select="gmd:protocol" />
       <xsl:apply-templates select="gmd:applicationProfile" />
       <xsl:apply-templates select="gmd:name" />
 
