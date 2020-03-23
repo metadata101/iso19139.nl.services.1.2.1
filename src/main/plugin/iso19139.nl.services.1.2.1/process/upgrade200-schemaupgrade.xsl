@@ -167,44 +167,49 @@
       </xsl:choose>
 
       <xsl:choose>
+        <xsl:when test="contains($protocol, 'INSPIRE Atom')">
+          <gmd:protocol>
+            <gmx:Anchor xlink:href="https://tools.ietf.org/html/rfc4287">INSPIRE Atom</gmx:Anchor>
+          </gmd:protocol>
+        </xsl:when>
         <xsl:when test="contains($protocol, 'OGC:CSW')">
           <gmd:protocol>
-            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/cat">OGC:CSW</gmx:Anchor>
+            <gmx:Anchor xlink:href="http://www.opengis.net/def/serviceType/ogc/csw">OGC:CSW</gmx:Anchor>
           </gmd:protocol>
         </xsl:when>
         <xsl:when test="contains($protocol, 'OGC:WMS')">
           <gmd:protocol>
-            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wms">OGC:WMS</gmx:Anchor>
+            <gmx:Anchor xlink:href="http://www.opengis.net/def/serviceType/ogc/wms">OGC:WMS</gmx:Anchor>
           </gmd:protocol>
         </xsl:when>
         <xsl:when test="contains($protocol, 'OGC:WMTS')">
           <gmd:protocol>
-            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wmts">OGC:WMTS</gmx:Anchor>
+            <gmx:Anchor xlink:href="http://www.opengis.net/def/serviceType/ogc/wmts">OGC:WMTS</gmx:Anchor>
           </gmd:protocol>
         </xsl:when>
         <xsl:when test="contains($protocol, 'OGC:WFS')">
           <gmd:protocol>
-            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wfs">OGC:WFS</gmx:Anchor>
+            <gmx:Anchor xlink:href="http://www.opengis.net/def/serviceType/ogc/wfs">OGC:WFS</gmx:Anchor>
           </gmd:protocol>
         </xsl:when>
         <xsl:when test="contains($protocol, 'OGC:WCS')">
           <gmd:protocol>
-            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wcs">OGC:WCS</gmx:Anchor>
+            <gmx:Anchor xlink:href="http://www.opengis.net/def/serviceType/ogc/wcs">OGC:WCS</gmx:Anchor>
           </gmd:protocol>
         </xsl:when>
         <xsl:when test="contains($protocol, 'OGC:SOS')">
           <gmd:protocol>
-            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/sos">OGC:SOS</gmx:Anchor>
+            <gmx:Anchor xlink:href="http://www.opengis.net/def/serviceType/ogc/sos">OGC:SOS</gmx:Anchor>
           </gmd:protocol>
         </xsl:when>
         <xsl:when test="contains($protocol, 'OGC:WCTS')">
           <gmd:protocol>
-            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wcts">OGC:WCTS</gmx:Anchor>
+            <gmx:Anchor xlink:href="http://www.opengis.net/def/serviceType/ogc/wcts">OGC:WCTS</gmx:Anchor>
           </gmd:protocol>
         </xsl:when>
         <xsl:when test="contains($protocol, 'OGC:WPS')">
           <gmd:protocol>
-            <gmx:Anchor xlink:href="http://www.opengeospatial.org/standards/wps">OGC:WPS</gmx:Anchor>
+            <gmx:Anchor xlink:href="http://www.opengis.net/def/serviceType/ogc/wps">OGC:WPS</gmx:Anchor>
           </gmd:protocol>
         </xsl:when>
         <xsl:when test="contains($protocol, 'OGC:WFS-G')">
