@@ -29,6 +29,7 @@
                 xmlns:gmx="http://www.isotc211.org/2005/gmx"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:srv="http://www.isotc211.org/2005/srv"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:java="java:org.fao.geonet.util.XslUtil" version="2.0"
@@ -103,7 +104,8 @@
   <!-- Use Anchor for gmd:MD_Identifier/gmd:code -->
   <!-- Keep xlink:href empty so users can fill the proper value -->
   <xsl:template match="gmd:identifier/gmd:MD_Identifier/gmd:code" priority="2">
-    <xsl:copy>
+    <!-- To avoid adding old gml namespace when using xsl:copy -->
+    <xsl:element name="{concat('gmd:', local-name())}" namespace="http://www.isotc211.org/2005/gmd">
       <xsl:copy-of select="@*" />
       <xsl:choose>
         <xsl:when test="gmx:Anchor">
@@ -116,14 +118,15 @@
             <xsl:value-of select="$code"/></gmx:Anchor>
         </xsl:otherwise>
       </xsl:choose>
-    </xsl:copy>
+    </xsl:element>
   </xsl:template>
 
 
   <!-- Online resources description: accessPoint, endPoint -->
   <xsl:template match="gmd:onLine/gmd:CI_OnlineResource" priority="2">
 
-    <xsl:copy>
+    <!-- To avoid adding old gml namespace when using xsl:copy -->
+    <xsl:element name="{concat('gmd:', local-name())}" namespace="http://www.isotc211.org/2005/gmd">
       <xsl:copy-of select="@*" />
 
       <xsl:variable name="protocol" select="gmd:protocol/*/text()" />
@@ -330,7 +333,7 @@
       </xsl:choose>
 
       <xsl:apply-templates select="gmd:function" />
-    </xsl:copy>
+    </xsl:element>
   </xsl:template>
 
 
@@ -346,7 +349,8 @@
 
   <!-- INSPIRE Theme thesaurus name -->
   <xsl:template match="gmd:thesaurusName/gmd:CI_Citation[gmd:title/gco:CharacterString = 'GEMET - INSPIRE themes, version 1.0']" priority="2">
-    <xsl:copy>
+    <!-- To avoid adding old gml namespace when using xsl:copy -->
+    <xsl:element name="{concat('gmd:', local-name())}" namespace="http://www.isotc211.org/2005/gmd">
       <xsl:copy-of select="@*" />
 
       <gmd:title>
@@ -367,12 +371,13 @@
       <xsl:apply-templates select="gmd:otherCitationDetails" />
       <xsl:apply-templates select="gmd:ISBN" />
       <xsl:apply-templates select="gmd:ISSN" />
-    </xsl:copy>
+    </xsl:element>
   </xsl:template>
 
   <!-- INSPIRE Theme keywords -->
   <xsl:template match="gmd:keyword[../gmd:thesaurusName/*/gmd:title/gco:CharacterString = 'GEMET - INSPIRE themes, version 1.0']" priority="2">
-    <xsl:copy>
+    <!-- To avoid adding old gml namespace when using xsl:copy -->
+    <xsl:element name="{concat('gmd:', local-name())}" namespace="http://www.isotc211.org/2005/gmd">
       <xsl:copy-of select="@*" />
 
       <xsl:choose>
@@ -391,7 +396,7 @@
         </xsl:otherwise>
       </xsl:choose>
 
-    </xsl:copy>
+    </xsl:element>
   </xsl:template>
 
 
@@ -470,16 +475,94 @@
   </xsl:template>
 
 
+  <!-- Add #MD_DataIdentification in xlink:href attribute -->
+  <xsl:template match="srv:operatesOn">
+    <!-- To avoid adding old gml namespace when using xsl:copy -->
+    <xsl:element name="{concat('srv:', local-name())}" namespace="http://www.isotc211.org/2005/srv">
+      <xsl:variable name="xlinkHref">
+        <xsl:choose>
+          <xsl:when test="ends-with(@xlink:href, '#MD_DataIdentification')"><xsl:value-of select="@xlink:href" /></xsl:when>
+          <xsl:otherwise><xsl:value-of select="concat(@xlink:href, '#MD_DataIdentification')" /></xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+
+      <xsl:attribute name="xlink:href" select="normalize-space($xlinkHref)" />
+
+      <xsl:apply-templates select="@uuidref" />
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="gmd:scope/gmd:DQ_Scope">
+    <!-- To avoid adding old gml namespace when using xsl:copy -->
+    <xsl:element name="{concat('gmd:', local-name())}" namespace="http://www.isotc211.org/2005/gmd">
+      <xsl:apply-templates select="@*" />
+
+      <xsl:apply-templates select="gmd:level|gmd:extent|gmd:levelDescription" />
+
+      <!-- Add gmd:levelDescription if missing -->
+      <xsl:if test="not(gmd:levelDescription)">
+        <gmd:levelDescription  xmlns:gml="http://www.opengis.net/gml/3.2">
+          <gmd:MD_ScopeDescription>
+            <gmd:other gco:nilReason="missing">
+              <gco:CharacterString/>
+            </gmd:other>
+          </gmd:MD_ScopeDescription>
+        </gmd:levelDescription>
+      </xsl:if>
+    </xsl:element>
+  </xsl:template>
+
   <!-- Set schemaLocation to apiso.xsd, copy namespaces from children in root and and add gmx  in namespaces declaration
        as 1.2.1 metadata doesn't usually have it, to avoid been added inline each element that uses the namespace -->
   <xsl:template match="gmd:MD_Metadata">
     <xsl:copy copy-namespaces="no">
       <xsl:namespace name="gmx" select="'http://www.isotc211.org/2005/gmx'"/>
+      <xsl:namespace name="gml" select="'http://www.opengis.net/gml/3.2'"/>
 
       <xsl:copy-of select="namespace::*[name() != 'gml']"/>
       <xsl:copy-of select="@*[name() != 'xsi:schemaLocation']" />
       <xsl:attribute name="xsi:schemaLocation">http://www.isotc211.org/2005/gmd http://schemas.opengis.net/csw/2.0.2/profiles/apiso/1.0.0/apiso.xsd</xsl:attribute>
-      <xsl:apply-templates select="*" />
+
+
+      <xsl:apply-templates
+        select="gmd:fileIdentifier|
+		    gmd:language|
+		    gmd:characterSet|
+		    gmd:parentIdentifier|
+		    gmd:hierarchyLevel|
+		    gmd:hierarchyLevelName" />
+
+      <!-- Add gmd:hierarchyLevelName if missing -->
+      <xsl:if test="not(gmd:hierarchyLevelName)">
+        <gmd:hierarchyLevelName>
+          <gco:CharacterString>service</gco:CharacterString>
+        </gmd:hierarchyLevelName>
+      </xsl:if>
+
+      <xsl:apply-templates
+        select="gmd:contact|
+		    gmd:dateStamp|
+		    gmd:metadataStandardName|
+		    gmd:metadataStandardVersion|
+		    gmd:dataSetURI|
+		    gmd:locale|
+		    gmd:spatialRepresentationInfo|
+		    gmd:referenceSystemInfo|
+		    gmd:metadataExtensionInfo|
+        gmd:identificationInfo|
+        gmd:contentInfo|
+        gmd:distributionInfo|
+        gmd:dataQualityInfo|
+        gmd:portrayalCatalogueInfo|
+        gmd:metadataConstraints|
+        gmd:applicationSchemaInfo|
+        gmd:metadataMaintenance|
+        gmd:series|
+        gmd:describes|
+        gmd:propertyType|
+        gmd:featureType|
+        gmd:featureAttribute" />
+
     </xsl:copy>
   </xsl:template>
 </xsl:stylesheet>
