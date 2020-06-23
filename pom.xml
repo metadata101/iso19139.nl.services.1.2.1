@@ -5,24 +5,29 @@
   <parent>
     <artifactId>schemas</artifactId>
     <groupId>org.geonetwork-opensource</groupId>
-    <version>3.6</version>
+    <version>3.7</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
+  <groupId>org.geonetwork-opensource</groupId>
   <artifactId>schema-iso19139.nl.services.1.2.1</artifactId>
+  <version>3.10.3-SNAPSHOT</version>
+
   <name>GeoNetwork schema plugin for iso19139.nl.services.1.2.1</name>
 
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>schema-core</artifactId>
-      <version>${project.version}</version>
+      <version>${gn.schemas.version}</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>schema-iso19139</artifactId>
-      <version>${project.version}</version>
+      <version>${gn.schemas.version}</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -36,18 +41,19 @@
       <artifactId>commons-lang</artifactId>
       <version>2.6</version>
     </dependency>
-    <dependency>
-      <groupId>org.geonetwork-opensource</groupId>
-      <artifactId>schema-iso19139</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.geonetwork-opensource</groupId>
-      <artifactId>schema-iso19139</artifactId>
-      <version>${project.version}</version>
-    </dependency>
   </dependencies>
 
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+      <resource>
+        <directory>src/main/plugin</directory>
+        <targetPath>plugin</targetPath>
+      </resource>
+    </resources>
+
     <plugins>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
@@ -60,6 +66,26 @@
           </execution>
         </executions>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+              <goals>
+                <goal>single</goal>
+              </goals>
+              <configuration>
+                <finalName>${project.artifactId}-${project.version}</finalName>
+                <appendAssemblyId>false</appendAssemblyId>
+                <descriptors>
+                  <descriptor>src/main/assembly/zip.xml</descriptor>
+                </descriptors>
+              </configuration>
+            </execution>
+            </executions>
+        </plugin>
     </plugins>
   </build>
 
