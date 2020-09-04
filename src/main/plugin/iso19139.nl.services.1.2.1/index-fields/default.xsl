@@ -832,7 +832,7 @@
       <!-- index distributor
        -->
       <xsl:for-each
-        select="gmd:distributo/gmd:MD_Distributor/gmd:distributorContact">
+        select="gmd:distributor/gmd:MD_Distributor/gmd:distributorContact">
 
       <xsl:apply-templates mode="index-contact" select="*">
         <xsl:with-param name="type" select="'distributor'"/>
