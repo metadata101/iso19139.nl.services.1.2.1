@@ -4,6 +4,7 @@
                 xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="#all">
 
+  <xsl:import href="../../iso19139/layout/utility-tpl.xsl"/>
   <xsl:include href="utility-tpl-multilingual.xsl"/>
 
   <xsl:template name="get-iso19139.nl.services.1.2.1-online-source-config">

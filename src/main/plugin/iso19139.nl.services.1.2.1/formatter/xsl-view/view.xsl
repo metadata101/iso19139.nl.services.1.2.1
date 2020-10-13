@@ -39,6 +39,7 @@
                 extension-element-prefixes="saxon"
                 exclude-result-prefixes="#all">
   <xsl:import href="../../layout/evaluate.xsl"/>
+  <xsl:import href="../../layout/utility-tpl-multilingual.xsl"/>
   <xsl:import href="../../../iso19139/formatter/xsl-view/view.xsl"/>
 
   <!-- Load the editor configuration to be able
