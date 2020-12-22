@@ -13,7 +13,7 @@
 	<!-- Unieke identifier van dit metadata voor services document -->
 	<gmd:fileIdentifier>
 		<!-- Voorbeeld: C2DFBDBC-5092-11E0-BA8E-B62DE0D72085 -->
-		<gco:CharacterString>C2DFBDBC-5092-11E0-BA8E-B62DE0D72085</gco:CharacterString>
+		<gco:CharacterString></gco:CharacterString>
 	</gmd:fileIdentifier>
 	<gmd:language>
 		<!-- Codering van de metadata taal in 3 letterige ISO 639-2 code -->

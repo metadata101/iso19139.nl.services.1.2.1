@@ -10,7 +10,7 @@
                  xmlns:gml="http://www.opengis.net/gml"
                  xsi:schemaLocation="http://www.isotc211.org/2005/gmd http://schemas.opengis.net/csw/2.0.2/profiles/apiso/1.0.0/apiso.xsd">
   <gmd:fileIdentifier>
-      <gco:CharacterString>f40738f0-99c3-446b-ab1d-c61d4891f227</gco:CharacterString>
+      <gco:CharacterString></gco:CharacterString>
   </gmd:fileIdentifier>
   <gmd:language>
     <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="dut" />
