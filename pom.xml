@@ -9,7 +9,6 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.geonetwork-opensource</groupId>
   <artifactId>schema-iso19139.nl.services.1.2.1</artifactId>
   <version>3.10-SNAPSHOT</version>
 
