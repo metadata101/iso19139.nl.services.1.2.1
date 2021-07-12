@@ -5,12 +5,12 @@
   <parent>
     <artifactId>schemas</artifactId>
     <groupId>org.geonetwork-opensource.schemas</groupId>
-    <version>3.10-SNAPSHOT</version>
+    <version>3.10.7</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>schema-iso19139.nl.services.1.2.1</artifactId>
-  <version>3.10-SNAPSHOT</version>
+  <version>3.10.7</version>
 
   <name>GeoNetwork schema plugin for iso19139.nl.services.1.2.1</name>
 
