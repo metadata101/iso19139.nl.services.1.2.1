@@ -234,4 +234,6 @@
     <addConceptualConsistency>Conceptuele consistentie toevoegen</addConceptualConsistency>
 
     <spatial>Ruimtelijke informatie</spatial>
+    <overviews>Overzicht</overviews>
+    <spatialExtent>Ruimtelijke dekking</spatialExtent>
 </strings>
