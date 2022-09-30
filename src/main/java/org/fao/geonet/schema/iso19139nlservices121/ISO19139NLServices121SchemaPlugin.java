@@ -444,4 +444,71 @@ public class ISO19139NLServices121SchemaPlugin
         }
         return extents;
     }
+
+    @Override
+    public Set<AssociatedResource> getAssociatedSources(Element metadata) {
+        Set<AssociatedResource> associatedResources = collectAssociatedResources(metadata, "*//gmd:source");
+        return associatedResources;
+    }
+
+    @Override
+    public Set<AssociatedResource> getAssociatedFeatureCatalogues(Element metadata) {
+        Set<AssociatedResource> associatedResources = collectAssociatedResources(metadata, "*//gmd:featureCatalogueCitation");
+        return associatedResources;
+    }
+
+    @Override
+    public Set<AssociatedResource> getAssociatedDatasets(Element metadata) {
+        Set<AssociatedResource> associatedResources = collectAssociatedResources(metadata, "*//srv:operatesOn");
+        return associatedResources;
+    }
+
+    @Override
+    public Set<AssociatedResource> getAssociatedParents(Element metadata) {
+        Set<AssociatedResource> associatedResources = new HashSet<>();
+
+        Element parentIdentifier = metadata.getChild("parentIdentifier", ISO19139Namespaces.GMD);
+        if (parentIdentifier != null) {
+            Element characterString = parentIdentifier.getChild("CharacterString", ISO19139Namespaces.GCO);
+            if (characterString != null) {
+                associatedResources.add(new AssociatedResource(characterString.getText(), "", ""));
+            }
+            Element anchor = parentIdentifier.getChild("Anchor", ISO19139Namespaces.GMX);
+            if (anchor != null) {
+                associatedResources.add(elementAsAssociatedResource(anchor));
+            }
+        }
+        // Parent relation is also frequently encoded using
+        // aggregation. See parentAssociatedResourceType in ISO19115-3
+        return associatedResources;
+    }
+
+    private Set<AssociatedResource> collectAssociatedResources(Element metadata, String XPATH) {
+        Set<AssociatedResource> associatedResources = new HashSet<>();
+        try {
+            final List<?> parentMetadata = Xml
+                    .selectNodes(
+                            metadata,
+                            XPATH,
+                            allNamespaces.asList());
+            for (Object o : parentMetadata) {
+                Element sib = (Element) o;
+                AssociatedResource resource = elementAsAssociatedResource(sib);
+                associatedResources.add(resource);
+            }
+        } catch (JDOMException e) {
+            e.printStackTrace();
+        }
+        return associatedResources;
+    }
+
+    private AssociatedResource elementAsAssociatedResource(Element ref) {
+        String sibUuid = ref.getAttributeValue("uuidref");
+        if (StringUtils.isEmpty(sibUuid)) {
+            sibUuid = ref.getTextNormalize();
+        }
+        String title = ref.getAttributeValue("title", ISO19139Namespaces.XLINK);
+        String url = ref.getAttributeValue("href", ISO19139Namespaces.XLINK);
+        return new AssociatedResource(sibUuid, "", "", url, title);
+    }
 }
