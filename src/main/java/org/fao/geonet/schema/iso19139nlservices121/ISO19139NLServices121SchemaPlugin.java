@@ -507,8 +507,8 @@ public class ISO19139NLServices121SchemaPlugin
         if (StringUtils.isEmpty(sibUuid)) {
             sibUuid = ref.getTextNormalize();
         }
-        String title = ref.getAttributeValue("title", ISO19139Namespaces.XLINK);
-        String url = ref.getAttributeValue("href", ISO19139Namespaces.XLINK);
+        String title = ref.getAttributeValue("title", ISO19139Namespaces.XLINK, "");
+        String url = ref.getAttributeValue("href", ISO19139Namespaces.XLINK, "");
         return new AssociatedResource(sibUuid, "", "", url, title);
     }
 }
