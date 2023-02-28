@@ -61,10 +61,10 @@
     <dataQualityInfo>Kwaliteit</dataQualityInfo>
     <spatialRepresentationInfo>Spatial rep.</spatialRepresentationInfo>
     <referenceSystemInfo>Referentie systeem</referenceSystemInfo>
-    <contentInfo>Content</contentInfo>
-    <portrayalCatalogueInfo>Portrayal</portrayalCatalogueInfo>
-    <metadataConstraints>Md. constraints</metadataConstraints>
-    <metadataMaintenance>Md. maintenance</metadataMaintenance>
+    <contentInfo>Inhoud</contentInfo>
+    <portrayalCatalogueInfo>Weergave</portrayalCatalogueInfo>
+    <metadataConstraints>Md. beperkingen</metadataConstraints>
+    <metadataMaintenance>Md. onderhoud</metadataMaintenance>
     <applicationSchemaInfo>Schema info</applicationSchemaInfo>
     <noThesaurusName>Trefwoorden</noThesaurusName>
     <bboxesSection>Geographic coverage</bboxesSection>
