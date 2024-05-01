@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--  
-Stylesheet used to update metadata for a service and 
+<!--
+Stylesheet used to update metadata for a service and
 attached it to the metadata for data.
 -->
-<xsl:stylesheet version="2.0" 
+<xsl:stylesheet version="2.0"
 	xmlns:gmd="http://www.isotc211.org/2005/gmd"
-	xmlns:gco="http://www.isotc211.org/2005/gco" 
+	xmlns:gco="http://www.isotc211.org/2005/gco"
 	xmlns:gts="http://www.isotc211.org/2005/gts"
-	xmlns:gml="http://www.opengis.net/gml" 
+	xmlns:gml="http://www.opengis.net/gml"
 	xmlns:srv="http://www.isotc211.org/2005/srv"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:date="http://exslt.org/dates-and-times"
 	exclude-result-prefixes="#all">
@@ -24,7 +24,7 @@ attached it to the metadata for data.
 	<xsl:param name="protocol" select="'OGC:WMS'"/>
 	<xsl:param name="url"/>
 	<xsl:param name="desc"/>
-	
+
 	<!-- ============================================================================= -->
 
 	<xsl:template match="/gmd:MD_Metadata|*[@gco:isoType='gmd:MD_Metadata']">
@@ -48,7 +48,7 @@ attached it to the metadata for data.
 		    gmd:referenceSystemInfo|
 		    gmd:metadataExtensionInfo"/>
 
-			<!-- Check current metadata is a service metadata record 
+			<!-- Check current metadata is a service metadata record
 		    And add the link to the dataset -->
 			<xsl:choose>
 				<xsl:when
@@ -154,13 +154,13 @@ attached it to the metadata for data.
 							gmd:identificationInfo/srv:SV_ServiceIdentification/srv:operatesOn[@uuidref!=$source]|
 							gmd:identificationInfo/*[@gco:isoType='srv:SV_ServiceIdentification']/srv:operatesOn[@uuidref!=$source]"/>
 
-							<!-- Handle operatesOn 
-							
-							// TODO : it looks like the dataset identifier and not the 
-							// metadata UUID should be set in the operatesOn element of 
+							<!-- Handle operatesOn
+
+							// TODO : it looks like the dataset identifier and not the
+							// metadata UUID should be set in the operatesOn element of
 							// the service metadata record.
 							-->
-							<srv:operatesOn uuidref="{$source}"
+							<srv:operatesOn uuidref="{$uuidref}"
 								xlink:href="{$siteUrl}csw?service=CSW&amp;request=GetRecordById&amp;version=2.0.2&amp;outputSchema=http://www.isotc211.org/2005/gmd&amp;elementSetName=full&amp;id={$uuidref}"/>
 
 						</srv:SV_ServiceIdentification>
@@ -198,7 +198,7 @@ attached it to the metadata for data.
 										select="gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions[1]/gmd:MD_DigitalTransferOptions/gmd:transferSize"/>
 									<xsl:copy-of
 										select="gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions[1]/gmd:MD_DigitalTransferOptions/gmd:onLine"/>
-									
+
 										<xsl:for-each select="tokenize($scopedName, ',')">
 											<gmd:onLine>
 												<gmd:CI_OnlineResource>
