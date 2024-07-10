@@ -60,7 +60,7 @@
         data-search-action="true"
         data-popup-action="false"
         data-insert-modes="text"
-        data-filter='{"_root": "gmd:DQ_DomainConsistency"}'
+        data-filter='{"root": "gmd:DQ_DomainConsistency"}'
         data-template-type="report"/>
     </for>
 
@@ -71,7 +71,7 @@
       <directiveAttributes
               data-template-add-action="true"
               data-template-type="onLine"
-              data-filter='{"_root": "gmd:CI_OnlineResource"}'/>
+              data-filter='{"root": "gmd:CI_OnlineResource"}'/>
     </for>
     -->
     <for name="gmd:descriptiveKeywords" addDirective="data-gn-thesaurus-selector">
