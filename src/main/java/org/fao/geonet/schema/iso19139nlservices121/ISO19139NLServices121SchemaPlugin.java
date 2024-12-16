@@ -34,6 +34,7 @@ import org.fao.geonet.kernel.schema.MultilingualSchemaPlugin;
 import org.fao.geonet.schema.iso19139.ISO19139Namespaces;
 import org.fao.geonet.utils.Log;
 import org.fao.geonet.utils.Xml;
+import org.jdom.Attribute;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.Namespace;
@@ -43,6 +44,8 @@ import org.jdom.xpath.XPath;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+
+import java.util.stream.Collectors;
 
 /**
  * Created by francois on 6/15/14.
@@ -96,7 +99,7 @@ public class ISO19139NLServices121SchemaPlugin
         String XPATH_FOR_AGGRGATIONINFO = "*//gmd:aggregationInfo/*" +
                 "[gmd:aggregateDataSetIdentifier/*/gmd:code " +
                 "and gmd:associationType/gmd:DS_AssociationTypeCode/@codeListValue!='']";
-        Set<AssociatedResource> listOfResources = new HashSet<AssociatedResource>();
+        Set<AssociatedResource> listOfResources = new HashSet<>();
         List<?> sibs = null;
         try {
             sibs = Xml.selectNodes(
@@ -151,6 +154,31 @@ public class ISO19139NLServices121SchemaPlugin
                 elementFilter,
                 "CharacterString", ISO19139Namespaces.GCO,
                 null);
+    }
+
+    @Override
+    public boolean duplicateElementsForMultilingual() {
+        return false;
+    }
+
+    @Override
+    public List<String> getMetadataLanguages(Element metadata) {
+        try {
+            return Xml.selectNodes(metadata, ".//gmd:locale/gmd:PT_Locale/@id", allNamespaces.asList())
+                .stream()
+                .filter(Attribute.class::isInstance)
+                .map(node -> ((Attribute)node).getValue())
+                .filter(s -> s != null && !s.isBlank())
+                .collect(Collectors.toList());
+        } catch (JDOMException ignored) {
+        }
+        return Collections.emptyList();
+    }
+
+    @Override
+    public boolean isMultilingualElementType(String elementType) {
+        // Not required in ISO schemas, only required for schemas where duplicateElementsForMultilingual returns true.
+        return false;
     }
 
     public Set<String> getAssociatedDatasetUUIDs(Element metadata) {
@@ -218,7 +246,7 @@ public class ISO19139NLServices121SchemaPlugin
                     " using XPath '" + path +
                     "updatedLocalizedTextElement exception " + e.getMessage());
         }
-        return null;
+        return Collections.emptyList();
     }
 
     /**
@@ -261,11 +289,11 @@ public class ISO19139NLServices121SchemaPlugin
     }
 
     /**
-     * Remove all multingual aspect of an element. Keep the md language localized strings
+     * Remove all multilingual aspect of an element. Keep the md language localized strings
      * as default gco:CharacterString for the element.
      *
      * @param element
-     * @param mdLang Metadata lang encoded as #EN
+     * @param langs Metadata languages. The main language MUST be the first one.
      * @return
      * @throws JDOMException
      */
@@ -306,6 +334,7 @@ public class ISO19139NLServices121SchemaPlugin
         }
 
         // Remove unused lang entries
+        // eg. the directory entry contains more languages than requested.
         List<Element> translationNodes = (List<Element>)Xml.selectNodes(element, "*//node()[@locale]");
         for(Element el : translationNodes) {
             // Remove all translations if there is no or only one language requested
