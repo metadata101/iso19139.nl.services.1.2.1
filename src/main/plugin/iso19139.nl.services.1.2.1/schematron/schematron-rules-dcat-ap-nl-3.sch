@@ -114,11 +114,7 @@
       <sch:assert test="$hasContact = true()">Informatie die nodig is om contact op te nemen met de verantwoordelijke persoon of organisatie ontbreekt</sch:assert>
     </sch:rule>
 
-    <sch:rule context="//gmd:MD_Metadata/gmd:identificationInfo/*/gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/gmd:maintenanceAndUpdateFrequency">
-      <sch:let name="frequency" value="*/@codeListValue"/>
 
-      <sch:assert test="$frequency != ''">Herzieningsfrequentie van de service ontbreekt</sch:assert>
-    </sch:rule>
 
     <sch:rule context="//gmd:MD_Metadata">
       <sch:assert test="gmd:distributionInfo/*/gmd:transferOptions/*/gmd:onLine">De online bron moet ten minste één online resource bevatten met een geldige protocol waarde: OGC:WMS, OGC:WMTS, OGC:WFS, OGC:WCS, OGC:WPS, OGC:SOS, TMS, OGC:CSW, OAS, OGC:API features, OGC:API tiles, OGC:API styles, OGC:API 3dgeovolumes, OGC:API maps, OGC:OLS, OGC:SensorThings, W3C:SPARQL, OASIS:OData, landingpage, INSPIRE Atom</sch:assert>
